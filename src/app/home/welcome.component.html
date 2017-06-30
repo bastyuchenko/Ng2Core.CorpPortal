@@ -1,0 +1,10 @@
+﻿<div class="panel">
+    <h2>Welcome to Pet Project</h2>
+    <div class="panel panel-default" *ngIf="userInfo!=null && !userInfo.IsMember">
+        <div class="alert alert-danger" role="alert">
+            <strong>Unauthorized!</strong>
+            <p>Unfortunately you don't have access to this functionality.</p>
+            <p>Please clarify your permission with system administrator.</p>
+        </div>
+    </div>
+</div>

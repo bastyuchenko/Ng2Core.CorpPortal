@@ -1,0 +1,9 @@
+﻿.validationMessage{
+    color:red;
+    font-style: italic;
+}
+
+.required-asterisk:after {
+    content: " *";
+    color: red;
+}

@@ -1,0 +1,39 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Ng2Core.CorpPortal</a>
+		</div>
+		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li>
+					<a [routerLink]="['welcome']">Home</a>
+				</li>
+				<li>
+					<a [routerLink]="['role-list']">Roles</a>
+				</li>
+			</ul>
+			<login-info></login-info>
+		</div>
+	</div>
+</nav>
+<div class="container body-content">
+	<div class="row">
+		<div class="col-md-12">
+			<main class="col-sm-9 offset-sm-3 col-md-9 offset-md-3 pt-3">
+				<router-outlet></router-outlet>
+				<router-outlet name="lastNews"></router-outlet>
+			</main>
+
+		</div>
+	</div>
+	<hr />
+	<footer>
+		<p>&copy; 2017 - Ng2Core.CorpPortal</p>
+	</footer>
+</div>
