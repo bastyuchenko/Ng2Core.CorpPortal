@@ -12,18 +12,22 @@ export class LoginInfoComponent {
     userInfo: ApplicationUser;
 
     constructor(private service: AccountManagementService) {
-        this.service._userInfo.subscribe((data:ApplicationUser):void => {
+        this.service.getUserInfo()
+            .subscribe((data: ApplicationUser): void => {
+                this.service.setUser(data);
+            })
+
+        this.service._userInfo.subscribe((data: ApplicationUser): void => {
             this.userInfo = data;
         });
     }
 
-    logout():void{
+    logout(): void {
         this.service.logout()
-        .subscribe((data):void=>{
-            if(data.status===200)
-            {
-                this.service.setUser(new ApplicationUser());
-            }
-        });
+            .subscribe((data): void => {
+                if (data.status === 200) {
+                    this.service.setUser(new ApplicationUser());
+                }
+            });
     }
 }

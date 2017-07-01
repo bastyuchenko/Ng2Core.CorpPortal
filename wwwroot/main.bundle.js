@@ -16,7 +16,7 @@ webpackEmptyContext.id = "./src async recursive";
 /***/ "./src/app/about/about.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n    <h2> {{pageTitle}}</h2>\r\n    <div class=\"panel panel-default\">\r\n        <div class=\"panel-body\">\r\n           blablabla\r\n        </div>\r\n    </div>\r\n</div>"
+module.exports = "<div class=\"container\">\r\n    blabla\r\n</div>"
 
 /***/ }),
 
@@ -238,7 +238,7 @@ module.exports = module.exports.toString();
 /***/ "./src/app/account-management/login-account/login-account.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<alert-helper></alert-helper>\r\n<div class=\"panel\">\r\n  <form class=\"form-horizontal\">\r\n    <h4>Login</h4>\r\n    <hr />\r\n    <div class=\"text-danger\"></div>\r\n    <div class=\"form-group\">\r\n      <label class=\"col-md-3 control-label required-asterisk\">Email</label>\r\n      <div class=\"col-md-9\">\r\n        <input [(ngModel)]=\"model.Email\" required name=\"Email\" #email='ngModel' class=\"form-control\" />\r\n        <div *ngIf=\"email.errors && (email.dirty || email.touched)\">\r\n          <span class=\"validationMessage\" [hidden]=\"!email.errors.required\">Email is required</span>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label class=\"col-md-3 control-label required-asterisk\">Password</label>\r\n      <div class=\"col-md-9\">\r\n        <input type=\"password\" [(ngModel)]=\"model.Password\" name=\"Password\" class=\"form-control\" />\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label class=\"col-md-3 control-label\">Remember me?</label>\r\n      <div class=\"col-md-9\">\r\n        <input type=\"checkbox\" [(ngModel)]=\"model.RememberMe\" name=\"RememberMe\" />\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <div class=\"col-md-offset-3 col-md-9\">\r\n        <button type=\"submit\" (click)='login()' class=\"btn btn-default\">Login</button>\r\n      </div>\r\n    </div>\r\n  </form>\r\n</div>\r\n"
+module.exports = "<alert-helper></alert-helper>\r\n<form class=\"form-horizontal\">\r\n  <h4>Login</h4>\r\n  <hr />\r\n  <div class=\"text-danger\"></div>\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label required-asterisk\">Email</label>\r\n    <div class=\"col-md-9\">\r\n      <input [(ngModel)]=\"model.Email\" required name=\"Email\" #email='ngModel' class=\"form-control\" />\r\n      <div *ngIf=\"email.errors && (email.dirty || email.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!email.errors.required\">Email is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label required-asterisk\">Password</label>\r\n    <div class=\"col-md-9\">\r\n      <input type=\"password\" [(ngModel)]=\"model.Password\" name=\"Password\" class=\"form-control\" />\r\n    </div>\r\n  </div>\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label\">Remember me?</label>\r\n    <div class=\"col-md-9\">\r\n      <input type=\"checkbox\" [(ngModel)]=\"model.RememberMe\" name=\"RememberMe\" />\r\n    </div>\r\n  </div>\r\n  <div class=\"form-group\">\r\n    <div class=\"col-md-offset-3 col-md-9\">\r\n      <button type=\"submit\" (click)='login()' class=\"btn btn-default\">Login</button>\r\n    </div>\r\n  </div>\r\n</form>\r\n"
 
 /***/ }),
 
@@ -275,11 +275,12 @@ var LoginAccountComponent = (function () {
     LoginAccountComponent.prototype.login = function () {
         var _this = this;
         this.accountService.loginAccount(this.model).subscribe(function (data) {
-            _this.alertService.addAlert({
-                id: 1,
-                type: 'success',
-                message: 'This is an success alert',
-            });
+            // this.alertService.addAlert({
+            //     id: 1,
+            //     type: 'success',
+            //     message: 'You have been successfully signed in.',
+            // });
+            _this.router.navigate(['/welcome']);
         });
     };
     return LoginAccountComponent;
@@ -329,6 +330,10 @@ var LoginInfoComponent = (function () {
     function LoginInfoComponent(service) {
         var _this = this;
         this.service = service;
+        this.service.getUserInfo()
+            .subscribe(function (data) {
+            _this.service.setUser(data);
+        });
         this.service._userInfo.subscribe(function (data) {
             _this.userInfo = data;
         });
@@ -379,7 +384,7 @@ module.exports = module.exports.toString();
 /***/ "./src/app/account-management/register-account/register-account.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"panel\">\r\n  <form class=\"form-horizontal\">\r\n    <h4>Create a new account</h4>\r\n    <hr />\r\n    <div class=\"text-danger\"></div>\r\n    <div class=\"form-group\">\r\n      <label class=\"col-md-3 control-label required-asterisk\">Email</label>\r\n      <div class=\"col-md-9\">\r\n        <input [(ngModel)]=\"model.Email\" required name=\"Email\" #email='ngModel' class=\"form-control\" />\r\n        <div *ngIf=\"email.errors && (email.dirty || email.touched)\">\r\n          <span class=\"validationMessage\" [hidden]=\"!email.errors.required\">Email is required</span>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label class=\"col-md-3 control-label required-asterisk\">Password</label>\r\n      <div class=\"col-md-9\">\r\n        <input type=\"password\" [(ngModel)]=\"model.Password\" name=\"Password\" class=\"form-control\" />\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label class=\"col-md-3 control-label required-asterisk\">Confirm password</label>\r\n      <div class=\"col-md-9\">\r\n        <input type=\"password\" [(ngModel)]=\"model.ConfirmPassword\" name=\"ConfirmPassword\" class=\"form-control\" />\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <div class=\"col-md-offset-3 col-md-9\">\r\n        <button type=\"submit\" (click)='register()' class=\"btn btn-default\">Register</button>\r\n      </div>\r\n    </div>\r\n  </form>\r\n</div>\r\n"
+module.exports = "  <form class=\"form-horizontal\">\r\n    <h4>Create a new account</h4>\r\n    <hr />\r\n    <div class=\"text-danger\"></div>\r\n    <div class=\"form-group\">\r\n      <label class=\"col-md-3 control-label required-asterisk\">Email</label>\r\n      <div class=\"col-md-9\">\r\n        <input [(ngModel)]=\"model.Email\" required name=\"Email\" #email='ngModel' class=\"form-control\" />\r\n        <div *ngIf=\"email.errors && (email.dirty || email.touched)\">\r\n          <span class=\"validationMessage\" [hidden]=\"!email.errors.required\">Email is required</span>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label class=\"col-md-3 control-label required-asterisk\">Password</label>\r\n      <div class=\"col-md-9\">\r\n        <input type=\"password\" [(ngModel)]=\"model.Password\" name=\"Password\" class=\"form-control\" />\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <label class=\"col-md-3 control-label required-asterisk\">Confirm password</label>\r\n      <div class=\"col-md-9\">\r\n        <input type=\"password\" [(ngModel)]=\"model.ConfirmPassword\" name=\"ConfirmPassword\" class=\"form-control\" />\r\n      </div>\r\n    </div>\r\n    <div class=\"form-group\">\r\n      <div class=\"col-md-offset-3 col-md-9\">\r\n        <button type=\"submit\" (click)='register()' class=\"btn btn-default\">Register</button>\r\n      </div>\r\n    </div>\r\n  </form>"
 
 /***/ }),
 
@@ -459,7 +464,7 @@ var _a, _b, _c;
 /***/ "./src/app/account-management/role/role-list/role-list.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"panel\">\r\n  <h2>Role list</h2>\r\n  <div *ngFor=\"let role of roleList\">\r\n    <span>{{role.name}}</span>\r\n  </div>\r\n</div>\r\n"
+module.exports = "  <h2>Role list</h2>\r\n  <div *ngFor=\"let role of roleList\">\r\n    <span>{{role.name}}</span>\r\n  </div>"
 
 /***/ }),
 
@@ -518,7 +523,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "li {\r\n    font-size: large;\r\n}\r\n\r\ndiv.panel-heading {\r\n    font-size: x-large;\r\n}\r\n\r\n.greenBorder {\r\n    border-width: 4px;\r\n    border-color: green;\r\n}\r\n\r\nmain {\r\n    padding-top: 40px !important;\r\n    padding-bottom: 100px;\r\n}\r\n\r\n.btn-primary {\r\n    background-color: #5586a1;\r\n    border-color: #5687a3;\r\n    color: #ffffff;\r\n    font-weight: 600;\r\n    width: 100%;\r\n    margin-top: 20px;\r\n    margin-bottom: 30px;\r\n}\r\n\r\n\r\n/*.menu-items {\r\n    padding-right: 40px;\r\n    padding-left: 160px;\r\n}*/\r\n\r\n.bg-faded {\r\n    background-color: #ebeced;\r\n}\r\n\r\n.bg-inverse {\r\n    background-color: #00426b !important;\r\n}\r\n\r\n.navbar-inverse .navbar-brand,\r\n.navbar-inverse .navbar-toggler {\r\n    font-weight: 700;\r\n}\r\n\r\n.sidebar>a {\r\n    color: #999999;\r\n}\r\n\r\n.sidebar>a:hover {\r\n    color: #014c8c !important\r\n}\r\n\r\n.menu-icon {\r\n    color: #999999;\r\n    margin-right: 10px;\r\n}\r\n\r\na {\r\n    color: #999999;\r\n}\r\n\r\n\r\n/*html, body, .container-fluid, .row {\r\n\theight: 100%;\r\n    width: 100%;\r\n}*/\r\n\r\n\r\n/*.sidebar {\r\n  background-color: #CCCCCC;\r\n}\r\n\r\n@media (min-width: 992px) {\r\n  .sidebar {\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    bottom: 0;\r\n    z-index: 1000;\r\n    display: block;\r\n    background-color: #CCCCCC;\r\n  }\r\n}*/", ""]);
+exports.push([module.i, ".navbar-default {\r\n    background-color: #eee;\r\n    border-color: #e9e9e9;\r\n}", ""]);
 
 // exports
 
@@ -531,7 +536,7 @@ module.exports = module.exports.toString();
 /***/ "./src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-inverse navbar-fixed-top\">\r\n\t<div class=\"container\">\r\n\t\t<div class=\"navbar-header\">\r\n\t\t\t<button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-collapse\">\r\n\t\t\t\t<span class=\"sr-only\">Toggle navigation</span>\r\n\t\t\t\t<span class=\"icon-bar\"></span>\r\n\t\t\t\t<span class=\"icon-bar\"></span>\r\n\t\t\t\t<span class=\"icon-bar\"></span>\r\n\t\t\t</button>\r\n\t\t\t<a asp-area=\"\" asp-controller=\"Home\" asp-action=\"Index\" class=\"navbar-brand\">Ng2Core.CorpPortal</a>\r\n\t\t</div>\r\n\t\t<div class=\"navbar-collapse collapse\">\r\n\t\t\t<ul class=\"nav navbar-nav\">\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<a [routerLink]=\"['welcome']\">Home</a>\r\n\t\t\t\t</li>\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<a [routerLink]=\"['role-list']\">Roles</a>\r\n\t\t\t\t</li>\r\n\t\t\t</ul>\r\n\t\t\t<login-info></login-info>\r\n\t\t</div>\r\n\t</div>\r\n</nav>\r\n<div class=\"container body-content\">\r\n\t<div class=\"row\">\r\n\t\t<div class=\"col-md-12\">\r\n\t\t\t<main class=\"col-sm-9 offset-sm-3 col-md-9 offset-md-3 pt-3\">\r\n\t\t\t\t<router-outlet></router-outlet>\r\n\t\t\t\t<router-outlet name=\"lastNews\"></router-outlet>\r\n\t\t\t</main>\r\n\r\n\t\t</div>\r\n\t</div>\r\n\t<hr />\r\n\t<footer>\r\n\t\t<p>&copy; 2017 - Ng2Core.CorpPortal</p>\r\n\t</footer>\r\n</div>"
+module.exports = "<nav class=\"navbar navbar-default bg-primary\">\r\n  <div class=\"container\">\r\n    <div class=\"navbar-header\">\r\n      <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-collapse\">\r\n\t\t\t\t<span class=\"sr-only\">Toggle navigation</span>\r\n\t\t\t\t<span class=\"icon-bar\"></span>\r\n\t\t\t\t<span class=\"icon-bar\"></span>\r\n\t\t\t\t<span class=\"icon-bar\"></span>\r\n\t\t\t</button>\r\n      <a asp-area=\"\" asp-controller=\"Home\" asp-action=\"Index\" class=\"navbar-brand\">Ng2Core.CorpPortal</a>\r\n    </div>\r\n    <div class=\"navbar-collapse collapse\">\r\n      <ul class=\"nav navbar-nav\">\r\n        <li>\r\n          <a [routerLink]=\"['welcome']\">Home</a>\r\n        </li>\r\n        <li>\r\n          <a [routerLink]=\"['role-list']\">Roles</a>\r\n        </li>\r\n      </ul>\r\n      <login-info></login-info>\r\n    </div>\r\n  </div>\r\n</nav>\r\n<div class=\"container body-content\">\r\n  <div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <main class=\"col-sm-9 offset-sm-3 col-md-9 offset-md-3 pt-3\">\r\n        <router-outlet></router-outlet>\r\n        <router-outlet name=\"lastNews\"></router-outlet>\r\n      </main>\r\n\r\n    </div>\r\n  </div>\r\n  <hr />\r\n  <footer>\r\n    <p>&copy; 2017 - Ng2Core.CorpPortal</p>\r\n  </footer>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -674,7 +679,7 @@ module.exports = module.exports.toString();
 /***/ "./src/app/home/welcome.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"panel\">\r\n    <h2>Welcome to Pet Project</h2>\r\n    <div class=\"panel panel-default\" *ngIf=\"userInfo!=null && !userInfo.IsMember\">\r\n        <div class=\"alert alert-danger\" role=\"alert\">\r\n            <strong>Unauthorized!</strong>\r\n            <p>Unfortunately you don't have access to this functionality.</p>\r\n            <p>Please clarify your permission with system administrator.</p>\r\n        </div>\r\n    </div>\r\n</div>"
+module.exports = "    <h2>Welcome to Pet Project</h2>\r\n    <div *ngIf=\"userInfo!=null && !userInfo.IsMember\">\r\n        <div class=\"alert alert-danger\" role=\"alert\">\r\n            <strong>Unauthorized!</strong>\r\n            <p>Unfortunately you don't have access to this functionality.</p>\r\n            <p>Please clarify your permission with system administrator.</p>\r\n        </div>\r\n    </div>"
 
 /***/ }),
 

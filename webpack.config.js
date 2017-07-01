@@ -353,8 +353,7 @@ module.exports = {
     new NoEmitOnErrorsPlugin(),
     new GlobCopyWebpackPlugin({
       "patterns": [
-        "assets",
-        "favicon.ico"
+        "assets"
       ],
       "globOptions": {
         "cwd": "D:\\Ng2Core.CorpPortal\\src",
@@ -369,7 +368,6 @@ module.exports = {
       "hash": false,
       "inject": true,
       "compile": true,
-      "favicon": false,
       "minify": false,
       "cache": true,
       "showErrors": true,

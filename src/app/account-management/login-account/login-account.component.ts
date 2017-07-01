@@ -26,11 +26,12 @@ export class LoginAccountComponent {
     login(): void {
         this.accountService.loginAccount(this.model).subscribe(
             (data): void => {
-                this.alertService.addAlert({
-                    id: 1,
-                    type: 'success',
-                    message: 'You have been successfully signed in.',
-                });
+                // this.alertService.addAlert({
+                //     id: 1,
+                //     type: 'success',
+                //     message: 'You have been successfully signed in.',
+                // });
+                this.router.navigate(['/welcome']);
             });
     }
 }

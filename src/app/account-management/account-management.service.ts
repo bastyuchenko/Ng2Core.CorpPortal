@@ -55,7 +55,7 @@ export class AccountManagementService {
             .catch(this.errorHandler);
     }
 
-    private getUserInfo(): Observable<ApplicationUser> {
+    getUserInfo(): Observable<ApplicationUser> {
         return this.http.get('/api/Account/UserInfo')
             .map(response => { return response.json() as ApplicationUser });
     }
