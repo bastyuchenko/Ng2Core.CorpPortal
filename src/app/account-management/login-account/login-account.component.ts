@@ -29,7 +29,7 @@ export class LoginAccountComponent {
                 this.alertService.addAlert({
                     id: 1,
                     type: 'success',
-                    message: 'This is an success alert',
+                    message: 'You have been successfully signed in.',
                 });
             });
     }

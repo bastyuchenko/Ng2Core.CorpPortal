@@ -13,7 +13,6 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Ng2Core.CorpPortal.Models;
 using Ng2Core.CorpPortal.Models.AccountViewModels;
-using Ng2Core.CorpPortal.Services;
 
 namespace Ng2Core.CorpPortal.Controllers
 {

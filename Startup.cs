@@ -80,6 +80,7 @@ namespace WebApplication
             //     }));
             // }
 
+            app.UseDefaultFiles();
             app.UseStaticFiles();
 
             app.UseIdentity();
