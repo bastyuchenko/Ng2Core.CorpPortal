@@ -94,6 +94,7 @@ namespace WebApplication
             {
                 cfg.CreateMap<ApplicationUser, UserDto>();
                 cfg.CreateMap<UserDto, ApplicationUser>();
+                cfg.CreateMap<CandidateDto, Candidate>();
                 cfg.CreateMap<RegisterModel, ApplicationUser>()
                 .ForMember(dest=>dest.UserName,
                 source=>source.MapFrom(x=>x.Email));

@@ -1,6 +1,6 @@
 ﻿import { Component, OnInit, Input } from '@angular/core';
 import { AccountManagementService } from './../account-management.service';
-import { ApplicationUser } from './../../models/account'
+import { ApplicationUser } from './../../models/application-user'
 
 @Component({
     selector: 'login-info',

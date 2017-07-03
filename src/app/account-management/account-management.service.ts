@@ -1,4 +1,4 @@
-﻿import { ApplicationUser } from "./../models/account"
+﻿import { ApplicationUser } from "./../models/application-user"
 import { IRole } from "./../models/role"
 import { IRegisterModel } from "./register-model"
 import { ILoginModel } from "./login-model"

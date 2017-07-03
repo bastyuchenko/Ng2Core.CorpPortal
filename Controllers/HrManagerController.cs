@@ -13,13 +13,21 @@ using Ng2Core.CorpPortal.Repository;
 
 namespace Ng2Core.CorpPortal.Controllers
 {
-    [Route("api/hrdepartment")]
-    public class UsersController : Controller
+    [Route("api/hrmanager")]
+    public class HrManagerController : Controller
     {
         IUserRepository userRepository;
-        public UsersController(IUserRepository _userRepository)
+        public HrManagerController(IUserRepository _userRepository)
         {
             userRepository = _userRepository;
+        }
+
+        [HttpGet("candidates")]
+        public IActionResult GetAllCandidates()
+        {
+            var usersDb = userRepository.GetAllCandidates();
+            var users = Mapper.Map<IEnumerable<CandidateDto>>(usersDb);
+            return Ok(users);
         }
 
         // GET: api/values

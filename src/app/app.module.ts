@@ -16,6 +16,10 @@ import { RouterModule } from '@angular/router'
 import { SharedService } from './shared/shared.service'
 import { AccountManagementService } from './account-management/account-management.service'
 
+import { HrService } from './hr-management/hr-management.service'
+import { HrManagementModule } from './hr-management/hr-management.module'
+
+
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { AlertService } from './shared/alert/alert.service'
 
@@ -25,22 +29,25 @@ import { AlertService } from './shared/alert/alert.service'
         HttpModule,
         AccountManagementModule,
         NewsModule,
+        HrManagementModule,
         FormsModule,
         NgbModule.forRoot(),
         RouterModule.forRoot([
             { path: 'welcome', component: WelcomeComponent },
-            { path: 'news', component: LastNewsComponent, outlet:'lastNews' }, // http://localhost:5000/#/welcome(lastNews:news)
+            { path: 'news', component: LastNewsComponent, outlet: 'lastNews' }, // http://localhost:5000/#/welcome(lastNews:news)
             { path: 'about', component: AboutComponent },
             { path: '', redirectTo: 'welcome', pathMatch: 'full' },
             { path: '**', component: PageNotFoundComponent },
         ], { useHash: true })
     ],
     declarations: [
+
         AppComponent,
         AboutComponent,
         WelcomeComponent,
         PageNotFoundComponent],
     providers: [
+        HrService,
         AlertService,
         SharedService,
         AccountManagementService],

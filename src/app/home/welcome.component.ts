@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AccountManagementService } from './../account-management/account-management.service';
-import { ApplicationUser } from './../models/account';
+import { ApplicationUser } from './../models/application-user';
 
 @Component({
     templateUrl: './welcome.component.html'

@@ -312,7 +312,7 @@ module.exports = "<div *ngIf=\"userInfo!=null && userInfo.isAuthenticated\">\r\n
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__account_management_service__ = __webpack_require__("./src/app/account-management/account-management.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_account__ = __webpack_require__("./src/app/models/account.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_application_user__ = __webpack_require__("./src/app/models/application-user.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginInfoComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -343,7 +343,7 @@ var LoginInfoComponent = (function () {
         this.service.logout()
             .subscribe(function (data) {
             if (data.status === 200) {
-                _this.service.setUser(new __WEBPACK_IMPORTED_MODULE_2__models_account__["a" /* ApplicationUser */]());
+                _this.service.setUser(new __WEBPACK_IMPORTED_MODULE_2__models_application_user__["a" /* ApplicationUser */]());
             }
         });
     };
@@ -536,7 +536,7 @@ module.exports = module.exports.toString();
 /***/ "./src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default bg-primary\">\r\n  <div class=\"container\">\r\n    <div class=\"navbar-header\">\r\n      <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-collapse\">\r\n\t\t\t\t<span class=\"sr-only\">Toggle navigation</span>\r\n\t\t\t\t<span class=\"icon-bar\"></span>\r\n\t\t\t\t<span class=\"icon-bar\"></span>\r\n\t\t\t\t<span class=\"icon-bar\"></span>\r\n\t\t\t</button>\r\n      <a asp-area=\"\" asp-controller=\"Home\" asp-action=\"Index\" class=\"navbar-brand\">Ng2Core.CorpPortal</a>\r\n    </div>\r\n    <div class=\"navbar-collapse collapse\">\r\n      <ul class=\"nav navbar-nav\">\r\n        <li>\r\n          <a [routerLink]=\"['welcome']\">Home</a>\r\n        </li>\r\n        <li>\r\n          <a [routerLink]=\"['role-list']\">Roles</a>\r\n        </li>\r\n      </ul>\r\n      <login-info></login-info>\r\n    </div>\r\n  </div>\r\n</nav>\r\n<div class=\"container body-content\">\r\n  <div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <main class=\"col-sm-9 offset-sm-3 col-md-9 offset-md-3 pt-3\">\r\n        <router-outlet></router-outlet>\r\n        <router-outlet name=\"lastNews\"></router-outlet>\r\n      </main>\r\n\r\n    </div>\r\n  </div>\r\n  <hr />\r\n  <footer>\r\n    <p>&copy; 2017 - Ng2Core.CorpPortal</p>\r\n  </footer>\r\n</div>\r\n"
+module.exports = "<nav class=\"navbar navbar-default bg-primary\">\r\n  <div class=\"container\">\r\n    <div class=\"navbar-header\">\r\n      <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-collapse\">\r\n\t\t\t\t<span class=\"sr-only\">Toggle navigation</span>\r\n\t\t\t\t<span class=\"icon-bar\"></span>\r\n\t\t\t\t<span class=\"icon-bar\"></span>\r\n\t\t\t\t<span class=\"icon-bar\"></span>\r\n\t\t\t</button>\r\n      <a asp-area=\"\" asp-controller=\"Home\" asp-action=\"Index\" class=\"navbar-brand\">Ng2Core.CorpPortal</a>\r\n    </div>\r\n    <div class=\"navbar-collapse collapse\">\r\n      <ul class=\"nav navbar-nav\">\r\n        <li>\r\n          <a [routerLink]=\"['welcome']\">Home</a>\r\n        </li>\r\n        <li>\r\n          <a [routerLink]=\"['role-list']\">Roles</a>\r\n        </li>\r\n        <li>\r\n          <a [routerLink]=\"['candidate-list']\">Candidates</a>\r\n        </li>\r\n      </ul>\r\n      <login-info></login-info>\r\n    </div>\r\n  </div>\r\n</nav>\r\n<div class=\"container body-content\">\r\n  <div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <main class=\"col-sm-9 offset-sm-3 col-md-9 offset-md-3 pt-3\">\r\n        <router-outlet></router-outlet>\r\n        <router-outlet name=\"lastNews\"></router-outlet>\r\n      </main>\r\n\r\n    </div>\r\n  </div>\r\n  <hr />\r\n  <footer>\r\n    <p>&copy; 2017 - Ng2Core.CorpPortal</p>\r\n  </footer>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -592,8 +592,10 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__shared_shared_service__ = __webpack_require__("./src/app/shared/shared.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__account_management_account_management_service__ = __webpack_require__("./src/app/account-management/account-management.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__shared_alert_alert_service__ = __webpack_require__("./src/app/shared/alert/alert.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__hr_management_hr_management_service__ = __webpack_require__("./src/app/hr-management/hr-management.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__hr_management_hr_management_module__ = __webpack_require__("./src/app/hr-management/hr-management.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__shared_alert_alert_service__ = __webpack_require__("./src/app/shared/alert/alert.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -601,6 +603,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -629,8 +633,9 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_10__angular_http__["a" /* HttpModule */],
             __WEBPACK_IMPORTED_MODULE_3__account_management_account_management_module__["a" /* AccountManagementModule */],
             __WEBPACK_IMPORTED_MODULE_8__news_news_module__["a" /* NewsModule */],
+            __WEBPACK_IMPORTED_MODULE_15__hr_management_hr_management_module__["a" /* HrManagementModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */],
-            __WEBPACK_IMPORTED_MODULE_14__ng_bootstrap_ng_bootstrap__["a" /* NgbModule */].forRoot(),
+            __WEBPACK_IMPORTED_MODULE_16__ng_bootstrap_ng_bootstrap__["a" /* NgbModule */].forRoot(),
             __WEBPACK_IMPORTED_MODULE_11__angular_router__["a" /* RouterModule */].forRoot([
                 { path: 'welcome', component: __WEBPACK_IMPORTED_MODULE_6__home_welcome_component__["a" /* WelcomeComponent */] },
                 { path: 'news', component: __WEBPACK_IMPORTED_MODULE_9__news_last_news_last_news_component__["a" /* LastNewsComponent */], outlet: 'lastNews' },
@@ -646,7 +651,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_5__shared_page_notfound_component__["a" /* PageNotFoundComponent */]
         ],
         providers: [
-            __WEBPACK_IMPORTED_MODULE_15__shared_alert_alert_service__["a" /* AlertService */],
+            __WEBPACK_IMPORTED_MODULE_14__hr_management_hr_management_service__["a" /* HrService */],
+            __WEBPACK_IMPORTED_MODULE_17__shared_alert_alert_service__["a" /* AlertService */],
             __WEBPACK_IMPORTED_MODULE_12__shared_shared_service__["a" /* SharedService */],
             __WEBPACK_IMPORTED_MODULE_13__account_management_account_management_service__["a" /* AccountManagementService */]
         ],
@@ -719,7 +725,185 @@ var _a;
 
 /***/ }),
 
-/***/ "./src/app/models/account.ts":
+/***/ "./src/app/hr-management/candidate/candidate-list/candidate-list.html":
+/***/ (function(module, exports) {
+
+module.exports = "  <h2>Role list</h2>\r\n  <div *ngFor=\"let candidate of candidatesList\">\r\n    <span>{{candidate.name}}</span>\r\n  </div>"
+
+/***/ }),
+
+/***/ "./src/app/hr-management/candidate/candidate-list/candidate-list.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__hr_management_service__ = __webpack_require__("./src/app/hr-management/hr-management.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CandidateListComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var CandidateListComponent = (function () {
+    function CandidateListComponent(service) {
+        this.service = service;
+    }
+    CandidateListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.service.getCandidates().subscribe(function (data) {
+            _this.candidatesList = data;
+        }, function (error) {
+            console.log('Something went wrong! Get candidates failed!');
+        });
+    };
+    return CandidateListComponent;
+}());
+CandidateListComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_0" /* Component */])({
+        selector: "candidate-list",
+        template: __webpack_require__("./src/app/hr-management/candidate/candidate-list/candidate-list.html")
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__hr_management_service__["a" /* HrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__hr_management_service__["a" /* HrService */]) === "function" && _a || Object])
+], CandidateListComponent);
+
+var _a;
+//# sourceMappingURL=candidate-list.js.map
+
+/***/ }),
+
+/***/ "./src/app/hr-management/hr-management.module.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("./node_modules/@angular/forms/@angular/forms.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__("./node_modules/@angular/platform-browser/@angular/platform-browser.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__("./node_modules/@angular/http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_shared_module__ = __webpack_require__("./src/app/shared/shared.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__candidate_candidate_list_candidate_list__ = __webpack_require__("./src/app/hr-management/candidate/candidate-list/candidate-list.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__hr_management_service__ = __webpack_require__("./src/app/hr-management/hr-management.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__shared_alert_alert_service__ = __webpack_require__("./src/app/shared/alert/alert.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HrManagementModule; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+
+
+
+
+
+var HrManagementModule = (function () {
+    function HrManagementModule() {
+    }
+    return HrManagementModule;
+}());
+HrManagementModule = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["b" /* NgModule */])({
+        imports: [
+            __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["a" /* BrowserModule */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormsModule */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* HttpModule */],
+            __WEBPACK_IMPORTED_MODULE_5__shared_shared_module__["a" /* SharedModule */],
+            __WEBPACK_IMPORTED_MODULE_8__ng_bootstrap_ng_bootstrap__["a" /* NgbModule */],
+            __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* RouterModule */].forChild([
+                { path: 'candidate-list', component: __WEBPACK_IMPORTED_MODULE_6__candidate_candidate_list_candidate_list__["a" /* CandidateListComponent */] },
+            ])
+        ],
+        declarations: [
+            __WEBPACK_IMPORTED_MODULE_6__candidate_candidate_list_candidate_list__["a" /* CandidateListComponent */]
+        ],
+        exports: [
+            __WEBPACK_IMPORTED_MODULE_6__candidate_candidate_list_candidate_list__["a" /* CandidateListComponent */]
+        ],
+        providers: [
+            __WEBPACK_IMPORTED_MODULE_7__hr_management_service__["a" /* HrService */],
+            __WEBPACK_IMPORTED_MODULE_9__shared_alert_alert_service__["a" /* AlertService */]
+        ]
+    })
+], HrManagementModule);
+
+//# sourceMappingURL=hr-management.module.js.map
+
+/***/ }),
+
+/***/ "./src/app/hr-management/hr-management.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("./node_modules/@angular/http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__("./node_modules/rxjs/Observable.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__("./node_modules/rxjs/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_do__ = __webpack_require__("./node_modules/rxjs/add/operator/do.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_do___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_do__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_catch__ = __webpack_require__("./node_modules/rxjs/add/operator/catch.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_catch__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HrService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var HrService = (function () {
+    function HrService(http) {
+        this.http = http;
+        this._userInfo = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* EventEmitter */]();
+        this.headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Headers */]({ 'Content-Type': 'application/json' });
+        this.options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* RequestOptions */]({ headers: this.headers });
+    }
+    HrService.prototype.getCandidates = function () {
+        return this.http.get('/api/hrmanager/candidates')
+            .map(function (response) {
+            var tempResult = response.json();
+            return tempResult;
+        })
+            .do(function () { })
+            .catch(this.errorHandler);
+    };
+    HrService.prototype.errorHandler = function (err) {
+        return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].throw(err);
+    };
+    return HrService;
+}());
+HrService = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Injectable */])(),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* Http */]) === "function" && _a || Object])
+], HrService);
+
+var _a;
+//# sourceMappingURL=hr-management.service.js.map
+
+/***/ }),
+
+/***/ "./src/app/models/application-user.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -730,7 +914,7 @@ var ApplicationUser = (function () {
     return ApplicationUser;
 }());
 
-//# sourceMappingURL=account.js.map
+//# sourceMappingURL=application-user.js.map
 
 /***/ }),
 

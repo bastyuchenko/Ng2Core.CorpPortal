@@ -1,7 +1,7 @@
 ﻿import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Component, OnInit } from "@angular/core";
 import { NgForm, AbstractControl } from '@angular/forms';
-import { ApplicationUser } from "./../../models/account"
+import { ApplicationUser } from "./../../models/application-user"
 import { ILoginModel } from "./../login-model"
 import { AccountManagementService } from "./../account-management.service"
 import { AlertService } from './../../shared/alert/alert.service'
