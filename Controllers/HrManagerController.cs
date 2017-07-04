@@ -40,6 +40,13 @@ namespace Ng2Core.CorpPortal.Controllers
         }
 
         // GET api/values/5
+        [HttpGet("candidates/candidate/{id}", Name = "GetCandidate")]
+        public IActionResult GetCandidate(int id)
+        {
+            var candidateDb = userRepository.GetCandidate(id);
+            return Ok(Mapper.Map<CandidateDto>(candidateDb));
+        }
+
         [HttpGet("users/user/{id}", Name = "GetUser")]
         public IActionResult GetUser(int id)
         {
@@ -66,6 +73,27 @@ namespace Ng2Core.CorpPortal.Controllers
             else
             {
                 throw new Exception("Unfortunatelly the user wasn't saved. Try again later.");
+            }
+        }
+
+        [HttpPost("candidates/candidate")]
+        public IActionResult InserCandidate([FromBody]CandidateDto cDto)
+        {
+            if (cDto == null)
+            {
+                return BadRequest("Object is null or request body is corrupted.");
+            }
+
+            var cand = Mapper.Map<Candidate>(cDto);
+
+            userRepository.AddCandidate(cand);
+            if (userRepository.Save())
+            {
+                return CreatedAtRoute("GetCandidate", new { id = cand.CandidatId }, null);
+            }
+            else
+            {
+                throw new Exception("Unfortunatelly the candidate wasn't saved. Try again later.");
             }
         }
 

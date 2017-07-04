@@ -11,10 +11,9 @@ namespace Ng2Core.CorpPortal.Models
     {
         [Key]
         public int CandidatId { get; set; }
-        public string UserId { get; set; }
-        [ForeignKey("UserId")]
-        public ApplicationUser User { get; set; }
 
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public int VacancyKey { get; set; }
         [ForeignKey("VacancyKey")]
         public Vacancy Vacancy { get; set; }

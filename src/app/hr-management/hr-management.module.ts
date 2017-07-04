@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http'
 import { RouterModule } from '@angular/router';
 import { SharedModule } from './../shared/shared.module'
 import { CandidateListComponent } from './candidate/candidate-list/candidate-list';
+import { CandidateEditItemComponent } from './candidate/candidate-edit-item/candidate-edit-item';
 import { HrService } from './hr-management.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AlertService } from './../shared/alert/alert.service'
@@ -19,13 +20,16 @@ import { AlertService } from './../shared/alert/alert.service'
         NgbModule,
         RouterModule.forChild([
             { path: 'candidate-list', component: CandidateListComponent },
+            { path: 'candidate-edit-item', component: CandidateEditItemComponent },
         ])
     ],
     declarations: [
-        CandidateListComponent
+        CandidateListComponent,
+        CandidateEditItemComponent
     ],
     exports: [
-        CandidateListComponent
+        CandidateListComponent,
+        CandidateEditItemComponent
     ],
     providers: [
         HrService,

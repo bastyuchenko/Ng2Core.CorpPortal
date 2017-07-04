@@ -8,7 +8,7 @@ using Ng2Core.CorpPortal.Models;
 namespace Ng2Core.CorpPortal.dbmodel.migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170630101303_ApplicationDbContextMigration")]
+    [Migration("20170704151013_ApplicationDbContextMigration")]
     partial class ApplicationDbContextMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -185,14 +185,13 @@ namespace Ng2Core.CorpPortal.dbmodel.migrations
                     b.Property<int>("CandidatId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("UserId");
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
 
                     b.Property<int>("VacancyKey");
 
                     b.HasKey("CandidatId");
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
 
                     b.HasIndex("VacancyKey");
 
@@ -350,10 +349,6 @@ namespace Ng2Core.CorpPortal.dbmodel.migrations
 
             modelBuilder.Entity("Ng2Core.CorpPortal.Models.Candidate", b =>
                 {
-                    b.HasOne("Ng2Core.CorpPortal.Models.ApplicationUser", "User")
-                        .WithOne("Candidate")
-                        .HasForeignKey("Ng2Core.CorpPortal.Models.Candidate", "UserId");
-
                     b.HasOne("Ng2Core.CorpPortal.Models.Vacancy", "Vacancy")
                         .WithMany("Candidates")
                         .HasForeignKey("VacancyKey")

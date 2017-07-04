@@ -1,5 +1,5 @@
 import {ApplicationUser} from './../models/application-user'
-import {ICandidate} from './../models/candidate'
+import {Candidate} from './../models/candidate'
 import {IEmployee} from './../models/employee'
 import {IProject} from './../models/project'
 import {IRoleAssignment} from './../models/role-assignment'
@@ -23,14 +23,20 @@ export class HrService {
 
     constructor(private http: Http) { }
 
-    getCandidates(): Observable<ICandidate[]> {
+    getCandidates(): Observable<Candidate[]> {
         return this.http.get('/api/hrmanager/candidates')
             .map((response: Response) => {
                 var tempResult = response.json();
-                return <ICandidate[]>tempResult;
+                return <Candidate[]>tempResult;
             })
             .do((): void => { })
             .catch(this.errorHandler);
+    }
+
+    createCandidate(model:Candidate): Observable<Response> {
+        return this.http.post("/api/hrmanager/candidates/candidate", model)
+            .do((): void => { })
+            .catch(this.errorHandler)
     }
 
     errorHandler(err: Response) {

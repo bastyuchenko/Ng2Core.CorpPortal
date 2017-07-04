@@ -1,12 +1,11 @@
 import { ApplicationUser } from "./application-user";
 import { IVacancy } from "./vacancy";
 
-export interface ICandidate
-{
-         CandidatId:number;
-         UserId :string;
-         User:ApplicationUser;
+export class Candidate {
+    CandidatId: number;
+    FirstName: string;
+    LastName: string;
 
-         VacancyKey:number;
-         Vacancy:IVacancy;
+    VacancyKey: number;
+    Vacancy: IVacancy;
 }

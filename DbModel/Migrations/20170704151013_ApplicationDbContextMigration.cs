@@ -266,18 +266,13 @@ namespace Ng2Core.CorpPortal.dbmodel.migrations
                 {
                     CandidatId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    UserId = table.Column<string>(nullable: true),
+                    FirstName = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true),
                     VacancyKey = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Candidates", x => x.CandidatId);
-                    table.ForeignKey(
-                        name: "FK_Candidates_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Candidates_Vacancies_VacancyKey",
                         column: x => x.VacancyKey,
@@ -347,12 +342,6 @@ namespace Ng2Core.CorpPortal.dbmodel.migrations
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Candidates_UserId",
-                table: "Candidates",
-                column: "UserId",
                 unique: true);
 
             migrationBuilder.CreateIndex(

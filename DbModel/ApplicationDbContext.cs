@@ -50,11 +50,6 @@ namespace Ng2Core.CorpPortal.Models
                 .HasOne<Employee>(x => x.Employee)
                 .WithOne(x => x.User)
                 .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<ApplicationUser>()
-                .HasOne<Candidate>(x => x.Candidate)
-                .WithOne(x => x.User)
-                .OnDelete(DeleteBehavior.Restrict);
         }
 
         public DbSet<ApplicationUser> People { get; set; }

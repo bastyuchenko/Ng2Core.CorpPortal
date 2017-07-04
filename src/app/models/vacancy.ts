@@ -1,5 +1,5 @@
 import { IProject } from "./project";
-import { ICandidate } from "./candidate";
+import { Candidate } from "./candidate";
 import { ISkillVacancy } from "./skill-vacancy";
 
 
@@ -8,7 +8,7 @@ export interface IVacancy {
     VacancyTitle: string;
     DueDate: Date;
     SkillVacancy: ISkillVacancy[];
-    Candidates: ICandidate[];
+    Candidates: Candidate[];
     ProjectKey: number;
     Project: IProject;
 }

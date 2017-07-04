@@ -13,8 +13,6 @@ namespace Ng2Core.CorpPortal.Models
         public DateTime BirthDay { get; set; }
         [InverseProperty("User")]
         public Employee Employee { get; set; }
-        [InverseProperty("User")]
-        public Candidate Candidate { get; set; }
         [Timestamp]
         public byte[] TimeStamp { get; set; }
 

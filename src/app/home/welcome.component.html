@@ -1,8 +1,8 @@
-﻿    <h2>Welcome to Pet Project</h2>
-    <div *ngIf="userInfo!=null && !userInfo.IsMember">
+﻿    <h2>Welcome</h2>
+    <div *ngIf="userInfo!=null">
         <div class="alert alert-danger" role="alert">
             <strong>Unauthorized!</strong>
             <p>Unfortunately you don't have access to this functionality.</p>
-            <p>Please clarify your permission with system administrator.</p>
+            <p>Please login.</p>
         </div>
     </div>

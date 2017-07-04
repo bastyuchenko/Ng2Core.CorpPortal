@@ -1,4 +1,18 @@
-  <h2>Role list</h2>
-  <div *ngFor="let candidate of candidatesList">
-    <span>{{candidate.name}}</span>
-  </div>
+  <h2>Candidate list</h2>
+   <button type="submit" (click)='moveToCreateForm()' class="btn btn-default">Add candidate</button>
+
+  <table>
+      <thead>
+        <tr>
+          <th>EmployeeId</th>
+          <th>FirstName</th>
+          <th>LastName</th>
+          <th>BirthDay</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let candidate of candidatesList">
+          <td>{{candidate.firstName}}</td>
+        </tr>
+      </tbody>
+    </table>

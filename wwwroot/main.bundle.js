@@ -523,7 +523,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, ".navbar-default {\r\n    background-color: #eee;\r\n    border-color: #e9e9e9;\r\n}", ""]);
+exports.push([module.i, ".navbar-default {\r\n    background-color: #eee;\r\n    border-color: #e9e9e9;\r\n}\r\n\r\ntable {\r\n    border-collapse: collapse;\r\n    width: 100%;\r\n}\r\n\r\nth, td {\r\n    text-align: left;\r\n    padding: 8px;\r\n}\r\n\r\ntr:nth-child(even){background-color: #f2f2f2}\r\n\r\nth {\r\n    background-color: #4CAF50;\r\n    color: white;\r\n}", ""]);
 
 // exports
 
@@ -685,7 +685,7 @@ module.exports = module.exports.toString();
 /***/ "./src/app/home/welcome.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "    <h2>Welcome to Pet Project</h2>\r\n    <div *ngIf=\"userInfo!=null && !userInfo.IsMember\">\r\n        <div class=\"alert alert-danger\" role=\"alert\">\r\n            <strong>Unauthorized!</strong>\r\n            <p>Unfortunately you don't have access to this functionality.</p>\r\n            <p>Please clarify your permission with system administrator.</p>\r\n        </div>\r\n    </div>"
+module.exports = "    <h2>Welcome</h2>\r\n    <div *ngIf=\"userInfo!=null\">\r\n        <div class=\"alert alert-danger\" role=\"alert\">\r\n            <strong>Unauthorized!</strong>\r\n            <p>Unfortunately you don't have access to this functionality.</p>\r\n            <p>Please login.</p>\r\n        </div>\r\n    </div>"
 
 /***/ }),
 
@@ -725,10 +725,100 @@ var _a;
 
 /***/ }),
 
+/***/ "./src/app/hr-management/candidate/candidate-edit-item/candidate-edit-item.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "./src/app/hr-management/candidate/candidate-edit-item/candidate-edit-item.html":
+/***/ (function(module, exports) {
+
+module.exports = "<alert-helper></alert-helper>\r\n<form class=\"form-horizontal\">\r\n  <h4>Create new candidate</h4>\r\n  <hr />\r\n  <div class=\"text-danger\"></div>\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label required-asterisk\">Name</label>\r\n    <div class=\"col-md-9\">\r\n      <input [(ngModel)]=\"model.FirstName\" required name=\"FirstName\" #firstName='ngModel' class=\"form-control\" />\r\n      <div *ngIf=\"firstName.errors && (firstName.dirty || firstName.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!firstName.errors.required\">First Name is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  \r\n  <div class=\"form-group\">\r\n    <div class=\"col-md-offset-3 col-md-9\">\r\n      <button type=\"submit\" (click)='save()' class=\"btn btn-default\">Save</button>\r\n    </div>\r\n  </div>\r\n</form>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/hr-management/candidate/candidate-edit-item/candidate-edit-item.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__hr_management_service__ = __webpack_require__("./src/app/hr-management/hr-management.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_candidate__ = __webpack_require__("./src/app/models/candidate.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CandidateEditItemComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var CandidateEditItemComponent = (function () {
+    function CandidateEditItemComponent(service) {
+        this.service = service;
+        this.model = new __WEBPACK_IMPORTED_MODULE_2__models_candidate__["a" /* Candidate */]();
+    }
+    CandidateEditItemComponent.prototype.save = function () {
+        this.service.createCandidate(this.model).subscribe(function (data) {
+        }, function (error) {
+            console.log('Something went wrong! Get candidates failed!');
+        });
+    };
+    return CandidateEditItemComponent;
+}());
+CandidateEditItemComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_0" /* Component */])({
+        selector: "candidate-edit",
+        template: __webpack_require__("./src/app/hr-management/candidate/candidate-edit-item/candidate-edit-item.html"),
+        styles: [__webpack_require__("./src/app/hr-management/candidate/candidate-edit-item/candidate-edit-item.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__hr_management_service__["a" /* HrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__hr_management_service__["a" /* HrService */]) === "function" && _a || Object])
+], CandidateEditItemComponent);
+
+var _a;
+//# sourceMappingURL=candidate-edit-item.js.map
+
+/***/ }),
+
+/***/ "./src/app/hr-management/candidate/candidate-list/candidate-list.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "table {\r\n    border-collapse: collapse;\r\n    width: 100%;\r\n}\r\n\r\nth, td {\r\n    text-align: left;\r\n    padding: 8px;\r\n}\r\n\r\ntr:nth-child(even){background-color: #f2f2f2}\r\n\r\nth {\r\n    background-color: #4CAF50;\r\n    color: white;\r\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
 /***/ "./src/app/hr-management/candidate/candidate-list/candidate-list.html":
 /***/ (function(module, exports) {
 
-module.exports = "  <h2>Role list</h2>\r\n  <div *ngFor=\"let candidate of candidatesList\">\r\n    <span>{{candidate.name}}</span>\r\n  </div>"
+module.exports = "  <h2>Candidate list</h2>\r\n   <button type=\"submit\" (click)='moveToCreateForm()' class=\"btn btn-default\">Add candidate</button>\r\n\r\n  <table>\r\n      <thead>\r\n        <tr>\r\n          <th>EmployeeId</th>\r\n          <th>FirstName</th>\r\n          <th>LastName</th>\r\n          <th>BirthDay</th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr *ngFor=\"let candidate of candidatesList\">\r\n          <td>{{candidate.firstName}}</td>\r\n        </tr>\r\n      </tbody>\r\n    </table>"
 
 /***/ }),
 
@@ -737,7 +827,8 @@ module.exports = "  <h2>Role list</h2>\r\n  <div *ngFor=\"let candidate of candi
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__hr_management_service__ = __webpack_require__("./src/app/hr-management/hr-management.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__hr_management_service__ = __webpack_require__("./src/app/hr-management/hr-management.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CandidateListComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -750,9 +841,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var CandidateListComponent = (function () {
-    function CandidateListComponent(service) {
+    function CandidateListComponent(service, route, router) {
         this.service = service;
+        this.route = route;
+        this.router = router;
     }
     CandidateListComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -762,17 +856,21 @@ var CandidateListComponent = (function () {
             console.log('Something went wrong! Get candidates failed!');
         });
     };
+    CandidateListComponent.prototype.moveToCreateForm = function () {
+        this.router.navigate(['/candidate-edit-item']);
+    };
     return CandidateListComponent;
 }());
 CandidateListComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_0" /* Component */])({
         selector: "candidate-list",
-        template: __webpack_require__("./src/app/hr-management/candidate/candidate-list/candidate-list.html")
+        template: __webpack_require__("./src/app/hr-management/candidate/candidate-list/candidate-list.html"),
+        styles: [__webpack_require__("./src/app/hr-management/candidate/candidate-list/candidate-list.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__hr_management_service__["a" /* HrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__hr_management_service__["a" /* HrService */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__hr_management_service__["a" /* HrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__hr_management_service__["a" /* HrService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _c || Object])
 ], CandidateListComponent);
 
-var _a;
+var _a, _b, _c;
 //# sourceMappingURL=candidate-list.js.map
 
 /***/ }),
@@ -788,9 +886,10 @@ var _a;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_shared_module__ = __webpack_require__("./src/app/shared/shared.module.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__candidate_candidate_list_candidate_list__ = __webpack_require__("./src/app/hr-management/candidate/candidate-list/candidate-list.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__hr_management_service__ = __webpack_require__("./src/app/hr-management/hr-management.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__shared_alert_alert_service__ = __webpack_require__("./src/app/shared/alert/alert.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__candidate_candidate_edit_item_candidate_edit_item__ = __webpack_require__("./src/app/hr-management/candidate/candidate-edit-item/candidate-edit-item.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__hr_management_service__ = __webpack_require__("./src/app/hr-management/hr-management.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__shared_alert_alert_service__ = __webpack_require__("./src/app/shared/alert/alert.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HrManagementModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -798,6 +897,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -820,20 +920,23 @@ HrManagementModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormsModule */],
             __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* HttpModule */],
             __WEBPACK_IMPORTED_MODULE_5__shared_shared_module__["a" /* SharedModule */],
-            __WEBPACK_IMPORTED_MODULE_8__ng_bootstrap_ng_bootstrap__["a" /* NgbModule */],
+            __WEBPACK_IMPORTED_MODULE_9__ng_bootstrap_ng_bootstrap__["a" /* NgbModule */],
             __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* RouterModule */].forChild([
                 { path: 'candidate-list', component: __WEBPACK_IMPORTED_MODULE_6__candidate_candidate_list_candidate_list__["a" /* CandidateListComponent */] },
+                { path: 'candidate-edit-item', component: __WEBPACK_IMPORTED_MODULE_7__candidate_candidate_edit_item_candidate_edit_item__["a" /* CandidateEditItemComponent */] },
             ])
         ],
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_6__candidate_candidate_list_candidate_list__["a" /* CandidateListComponent */]
+            __WEBPACK_IMPORTED_MODULE_6__candidate_candidate_list_candidate_list__["a" /* CandidateListComponent */],
+            __WEBPACK_IMPORTED_MODULE_7__candidate_candidate_edit_item_candidate_edit_item__["a" /* CandidateEditItemComponent */]
         ],
         exports: [
-            __WEBPACK_IMPORTED_MODULE_6__candidate_candidate_list_candidate_list__["a" /* CandidateListComponent */]
+            __WEBPACK_IMPORTED_MODULE_6__candidate_candidate_list_candidate_list__["a" /* CandidateListComponent */],
+            __WEBPACK_IMPORTED_MODULE_7__candidate_candidate_edit_item_candidate_edit_item__["a" /* CandidateEditItemComponent */]
         ],
         providers: [
-            __WEBPACK_IMPORTED_MODULE_7__hr_management_service__["a" /* HrService */],
-            __WEBPACK_IMPORTED_MODULE_9__shared_alert_alert_service__["a" /* AlertService */]
+            __WEBPACK_IMPORTED_MODULE_8__hr_management_service__["a" /* HrService */],
+            __WEBPACK_IMPORTED_MODULE_10__shared_alert_alert_service__["a" /* AlertService */]
         ]
     })
 ], HrManagementModule);
@@ -888,6 +991,11 @@ var HrService = (function () {
             .do(function () { })
             .catch(this.errorHandler);
     };
+    HrService.prototype.createCandidate = function (model) {
+        return this.http.post("/api/hrmanager/candidates/candidate", model)
+            .do(function () { })
+            .catch(this.errorHandler);
+    };
     HrService.prototype.errorHandler = function (err) {
         return __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].throw(err);
     };
@@ -915,6 +1023,21 @@ var ApplicationUser = (function () {
 }());
 
 //# sourceMappingURL=application-user.js.map
+
+/***/ }),
+
+/***/ "./src/app/models/candidate.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Candidate; });
+var Candidate = (function () {
+    function Candidate() {
+    }
+    return Candidate;
+}());
+
+//# sourceMappingURL=candidate.js.map
 
 /***/ }),
 
