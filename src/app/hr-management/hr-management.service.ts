@@ -24,7 +24,7 @@ export class HrService {
     constructor(private http: Http) { }
 
     getCandidates(): Observable<Candidate[]> {
-        return this.http.get('/api/hrmanager/candidates')
+        return this.http.get('/api/candidates')
             .map((response: Response) => {
                 var tempResult = response.json();
                 return <Candidate[]>tempResult;
@@ -34,7 +34,7 @@ export class HrService {
     }
 
     createCandidate(model:Candidate): Observable<Response> {
-        return this.http.post("/api/hrmanager/candidates/candidate", model)
+        return this.http.post("/api/candidates/candidate", model)
             .do((): void => { })
             .catch(this.errorHandler)
     }

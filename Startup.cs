@@ -31,12 +31,6 @@ namespace WebApplication
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
 
-            if (env.IsDevelopment())
-            {
-                // For more details on using the user secret store see https://go.microsoft.com/fwlink/?LinkID=532709
-                // builder.AddUserSecrets();
-            }
-
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
         }
@@ -53,9 +47,9 @@ namespace WebApplication
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
-            services.AddMvc();
-
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ICandidateRepository, CandidateRepository>();
+            services.AddScoped<IVacancyRepository, VacancyRepository>();
             services.AddMvc();
         }
 
@@ -69,26 +63,13 @@ namespace WebApplication
             {
                 app.UseDeveloperExceptionPage();
             }
-            // else
-            // {
-            //     app.UseExceptionHandler(appBuilder => appBuilder.Run(async context =>
-            //     {
-            //         context.Response.StatusCode = 500;
-            //         await context.Response.WriteAsync("An unexpected error occured.");
-            //     }));
-            // }
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
             app.UseIdentity();
 
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-            });
+            app.UseMvc();
 
             Mapper.Initialize(cfg =>
             {

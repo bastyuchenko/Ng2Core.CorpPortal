@@ -746,7 +746,7 @@ module.exports = module.exports.toString();
 /***/ "./src/app/hr-management/candidate/candidate-edit-item/candidate-edit-item.html":
 /***/ (function(module, exports) {
 
-module.exports = "<alert-helper></alert-helper>\r\n<form class=\"form-horizontal\">\r\n  <h4>Create new candidate</h4>\r\n  <hr />\r\n  <div class=\"text-danger\"></div>\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label required-asterisk\">Name</label>\r\n    <div class=\"col-md-9\">\r\n      <input [(ngModel)]=\"model.FirstName\" required name=\"FirstName\" #firstName='ngModel' class=\"form-control\" />\r\n      <div *ngIf=\"firstName.errors && (firstName.dirty || firstName.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!firstName.errors.required\">First Name is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  \r\n  <div class=\"form-group\">\r\n    <div class=\"col-md-offset-3 col-md-9\">\r\n      <button type=\"submit\" (click)='save()' class=\"btn btn-default\">Save</button>\r\n    </div>\r\n  </div>\r\n</form>\r\n"
+module.exports = "<alert-helper></alert-helper>\r\n<form class=\"form-horizontal\">\r\n  <h4>Create new candidate</h4>\r\n  <hr />\r\n  <div class=\"text-danger\"></div>\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label required-asterisk\">Name</label>\r\n    <div class=\"col-md-9\">\r\n      <input [(ngModel)]=\"model.FirstName\" required name=\"FirstName\" #firstName='ngModel' class=\"form-control\" />\r\n      <div *ngIf=\"firstName.errors && (firstName.dirty || firstName.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!firstName.errors.required\">First Name is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label required-asterisk\">Name</label>\r\n    <div class=\"col-md-9\">\r\n      <input [(ngModel)]=\"model.LastName\" required name=\"LastName\" #lastName='ngModel' class=\"form-control\" />\r\n      <div *ngIf=\"lastName.errors && (lastName.dirty || lastName.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!lastName.errors.required\">First Name is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label required-asterisk\">Name</label>\r\n    <div class=\"col-md-9\">\r\n      <select #countrySelect='ngModel' class=\"form-control\" id=\"country-selector\" name=\"countrySelect\" [(ngModel)]=\"award.Country.TermGuid\" required>\r\n                            <option *ngFor=\"let country of countryList\" [ngValue]=\"country.TermId\">\r\n                                {{country.TermLabel}}\r\n                            </option>\r\n                        </select>\r\n      <div *ngIf=\"firstName.errors && (firstName.dirty || firstName.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!firstName.errors.required\">First Name is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  \r\n  <div class=\"form-group\">\r\n    <div class=\"col-md-offset-3 col-md-9\">\r\n      <button type=\"submit\" (click)='save()' class=\"btn btn-default\">Save</button>\r\n    </div>\r\n  </div>\r\n</form>\r\n"
 
 /***/ }),
 
@@ -983,7 +983,7 @@ var HrService = (function () {
         this.options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* RequestOptions */]({ headers: this.headers });
     }
     HrService.prototype.getCandidates = function () {
-        return this.http.get('/api/hrmanager/candidates')
+        return this.http.get('/api/candidates')
             .map(function (response) {
             var tempResult = response.json();
             return tempResult;
@@ -992,7 +992,7 @@ var HrService = (function () {
             .catch(this.errorHandler);
     };
     HrService.prototype.createCandidate = function (model) {
-        return this.http.post("/api/hrmanager/candidates/candidate", model)
+        return this.http.post("/api/candidates/candidate", model)
             .do(function () { })
             .catch(this.errorHandler);
     };

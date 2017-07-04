@@ -13,25 +13,17 @@ using Ng2Core.CorpPortal.Repository;
 
 namespace Ng2Core.CorpPortal.Controllers
 {
-    [Route("api/hrmanager")]
-    public class HrManagerController : Controller
+    [Route("api/users")]
+    public class UserController : Controller
     {
         IUserRepository userRepository;
-        public HrManagerController(IUserRepository _userRepository)
+        public UserController(IUserRepository _userRepository)
         {
             userRepository = _userRepository;
         }
 
-        [HttpGet("candidates")]
-        public IActionResult GetAllCandidates()
-        {
-            var usersDb = userRepository.GetAllCandidates();
-            var users = Mapper.Map<IEnumerable<CandidateDto>>(usersDb);
-            return Ok(users);
-        }
-
         // GET: api/values
-        [HttpGet("users")]
+        [HttpGet]
         public IActionResult GetAllUsers()
         {
             var usersDb = userRepository.GetAllUsers();
@@ -39,15 +31,7 @@ namespace Ng2Core.CorpPortal.Controllers
             return Ok(users);
         }
 
-        // GET api/values/5
-        [HttpGet("candidates/candidate/{id}", Name = "GetCandidate")]
-        public IActionResult GetCandidate(int id)
-        {
-            var candidateDb = userRepository.GetCandidate(id);
-            return Ok(Mapper.Map<CandidateDto>(candidateDb));
-        }
-
-        [HttpGet("users/user/{id}", Name = "GetUser")]
+        [HttpGet("user/{id}", Name = "GetUser")]
         public IActionResult GetUser(int id)
         {
             var userDb = userRepository.GetUser(id);
@@ -55,7 +39,7 @@ namespace Ng2Core.CorpPortal.Controllers
         }
 
         // POST api/values
-        [HttpPost("users/user")]
+        [HttpPost("user")]
         public IActionResult InserUser([FromBody]UserDto userDto)
         {
             if (userDto == null)
@@ -76,29 +60,8 @@ namespace Ng2Core.CorpPortal.Controllers
             }
         }
 
-        [HttpPost("candidates/candidate")]
-        public IActionResult InserCandidate([FromBody]CandidateDto cDto)
-        {
-            if (cDto == null)
-            {
-                return BadRequest("Object is null or request body is corrupted.");
-            }
-
-            var cand = Mapper.Map<Candidate>(cDto);
-
-            userRepository.AddCandidate(cand);
-            if (userRepository.Save())
-            {
-                return CreatedAtRoute("GetCandidate", new { id = cand.CandidatId }, null);
-            }
-            else
-            {
-                throw new Exception("Unfortunatelly the candidate wasn't saved. Try again later.");
-            }
-        }
-
         // PUT api/values/5
-        [HttpPut("users/user")]
+        [HttpPut("user")]
         public IActionResult UpdateUser([FromBody]ApplicationUser user)
         {
             userRepository.UpdateUser(user);
