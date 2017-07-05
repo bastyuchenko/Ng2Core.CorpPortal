@@ -43,7 +43,7 @@ namespace Ng2Core.CorpPortal.dbmodel.migrations
                 {
                     Id = table.Column<string>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
-                    BirthDay = table.Column<DateTime>(nullable: false),
+                    BirthDay = table.Column<DateTime>(type: "date", nullable: false),
                     ConcurrencyStamp = table.Column<string>(nullable: true),
                     Email = table.Column<string>(maxLength: 256, nullable: true),
                     EmailConfirmed = table.Column<bool>(nullable: false),
@@ -84,7 +84,7 @@ namespace Ng2Core.CorpPortal.dbmodel.migrations
                 {
                     SkillId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Title = table.Column<int>(nullable: false)
+                    Title = table.Column<string>(maxLength: 100, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -202,9 +202,9 @@ namespace Ng2Core.CorpPortal.dbmodel.migrations
                 {
                     VacancyId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    DueDate = table.Column<DateTime>(nullable: false),
+                    DueDate = table.Column<DateTime>(type: "date", nullable: false),
                     ProjectKey = table.Column<int>(nullable: false),
-                    VacancyTitle = table.Column<string>(nullable: true)
+                    VacancyTitle = table.Column<string>(maxLength: 200, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -266,8 +266,8 @@ namespace Ng2Core.CorpPortal.dbmodel.migrations
                 {
                     CandidatId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    FirstName = table.Column<string>(nullable: true),
-                    LastName = table.Column<string>(nullable: true),
+                    FirstName = table.Column<string>(maxLength: 50, nullable: true),
+                    LastName = table.Column<string>(maxLength: 200, nullable: true),
                     VacancyKey = table.Column<int>(nullable: false)
                 },
                 constraints: table =>

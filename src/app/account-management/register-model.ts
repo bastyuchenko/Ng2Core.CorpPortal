@@ -1,4 +1,4 @@
-export interface IRegisterModel {
+export class RegisterModel {
     Email: string;
     Password: string;
     ConfirmPassword: string;

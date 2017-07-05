@@ -1,5 +1,5 @@
 import { ApplicationUser } from "./application-user";
-import { IVacancy } from "./vacancy";
+import { Vacancy } from "./vacancy";
 
 export class Candidate {
     CandidatId: number;
@@ -7,5 +7,5 @@ export class Candidate {
     LastName: string;
 
     VacancyKey: number;
-    Vacancy: IVacancy;
+    Vacancy: Vacancy;
 }

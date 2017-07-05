@@ -248,8 +248,9 @@ module.exports = "<alert-helper></alert-helper>\r\n<form class=\"form-horizontal
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__account_management_service__ = __webpack_require__("./src/app/account-management/account-management.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_alert_alert_service__ = __webpack_require__("./src/app/shared/alert/alert.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login_model__ = __webpack_require__("./src/app/account-management/login-model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__account_management_service__ = __webpack_require__("./src/app/account-management/account-management.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_alert_alert_service__ = __webpack_require__("./src/app/shared/alert/alert.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginAccountComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -264,13 +265,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var LoginAccountComponent = (function () {
     function LoginAccountComponent(route, router, accountService, alertService) {
         this.route = route;
         this.router = router;
         this.accountService = accountService;
         this.alertService = alertService;
-        this.model = { Email: '', Password: '', RememberMe: false };
+        this.model = new __WEBPACK_IMPORTED_MODULE_2__login_model__["a" /* LoginModel */]();
     }
     LoginAccountComponent.prototype.login = function () {
         var _this = this;
@@ -291,7 +293,7 @@ LoginAccountComponent = __decorate([
         template: __webpack_require__("./src/app/account-management/login-account/login-account.component.html"),
         styles: [__webpack_require__("./src/app/account-management/login-account/login-account.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_router__["b" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__account_management_service__["a" /* AccountManagementService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__account_management_service__["a" /* AccountManagementService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__shared_alert_alert_service__["a" /* AlertService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__shared_alert_alert_service__["a" /* AlertService */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_router__["b" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__account_management_service__["a" /* AccountManagementService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__account_management_service__["a" /* AccountManagementService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__shared_alert_alert_service__["a" /* AlertService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__shared_alert_alert_service__["a" /* AlertService */]) === "function" && _d || Object])
 ], LoginAccountComponent);
 
 var _a, _b, _c, _d;
@@ -363,6 +365,21 @@ var _a;
 
 /***/ }),
 
+/***/ "./src/app/account-management/login-model.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginModel; });
+var LoginModel = (function () {
+    function LoginModel() {
+    }
+    return LoginModel;
+}());
+
+//# sourceMappingURL=login-model.js.map
+
+/***/ }),
+
 /***/ "./src/app/account-management/register-account/register-account.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -394,7 +411,8 @@ module.exports = "  <form class=\"form-horizontal\">\r\n    <h4>Create a new acc
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__account_management_service__ = __webpack_require__("./src/app/account-management/account-management.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__register_model__ = __webpack_require__("./src/app/account-management/register-model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__account_management_service__ = __webpack_require__("./src/app/account-management/account-management.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegisterAccountComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -408,12 +426,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var RegisterAccountComponent = (function () {
     function RegisterAccountComponent(route, router, accountService) {
         this.route = route;
         this.router = router;
         this.accountService = accountService;
-        this.model = { Email: '', Password: '', ConfirmPassword: '' };
+        this.model = new __WEBPACK_IMPORTED_MODULE_2__register_model__["a" /* RegisterModel */]();
         this.alerts = [];
         this.updating = {
             country: false,
@@ -453,11 +472,26 @@ RegisterAccountComponent = __decorate([
         template: __webpack_require__("./src/app/account-management/register-account/register-account.component.html"),
         styles: [__webpack_require__("./src/app/account-management/register-account/register-account.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_router__["b" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__account_management_service__["a" /* AccountManagementService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__account_management_service__["a" /* AccountManagementService */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_router__["b" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__account_management_service__["a" /* AccountManagementService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__account_management_service__["a" /* AccountManagementService */]) === "function" && _c || Object])
 ], RegisterAccountComponent);
 
 var _a, _b, _c;
 //# sourceMappingURL=register-account.component.js.map
+
+/***/ }),
+
+/***/ "./src/app/account-management/register-model.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegisterModel; });
+var RegisterModel = (function () {
+    function RegisterModel() {
+    }
+    return RegisterModel;
+}());
+
+//# sourceMappingURL=register-model.js.map
 
 /***/ }),
 
@@ -536,7 +570,7 @@ module.exports = module.exports.toString();
 /***/ "./src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default bg-primary\">\r\n  <div class=\"container\">\r\n    <div class=\"navbar-header\">\r\n      <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-collapse\">\r\n\t\t\t\t<span class=\"sr-only\">Toggle navigation</span>\r\n\t\t\t\t<span class=\"icon-bar\"></span>\r\n\t\t\t\t<span class=\"icon-bar\"></span>\r\n\t\t\t\t<span class=\"icon-bar\"></span>\r\n\t\t\t</button>\r\n      <a asp-area=\"\" asp-controller=\"Home\" asp-action=\"Index\" class=\"navbar-brand\">Ng2Core.CorpPortal</a>\r\n    </div>\r\n    <div class=\"navbar-collapse collapse\">\r\n      <ul class=\"nav navbar-nav\">\r\n        <li>\r\n          <a [routerLink]=\"['welcome']\">Home</a>\r\n        </li>\r\n        <li>\r\n          <a [routerLink]=\"['role-list']\">Roles</a>\r\n        </li>\r\n        <li>\r\n          <a [routerLink]=\"['candidate-list']\">Candidates</a>\r\n        </li>\r\n      </ul>\r\n      <login-info></login-info>\r\n    </div>\r\n  </div>\r\n</nav>\r\n<div class=\"container body-content\">\r\n  <div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <main class=\"col-sm-9 offset-sm-3 col-md-9 offset-md-3 pt-3\">\r\n        <router-outlet></router-outlet>\r\n        <router-outlet name=\"lastNews\"></router-outlet>\r\n      </main>\r\n\r\n    </div>\r\n  </div>\r\n  <hr />\r\n  <footer>\r\n    <p>&copy; 2017 - Ng2Core.CorpPortal</p>\r\n  </footer>\r\n</div>\r\n"
+module.exports = "<nav class=\"navbar navbar-default bg-primary\">\r\n  <div class=\"container\">\r\n    <div class=\"navbar-header\">\r\n      <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-collapse\">\r\n\t\t\t\t<span class=\"sr-only\">Toggle navigation</span>\r\n\t\t\t\t<span class=\"icon-bar\"></span>\r\n\t\t\t\t<span class=\"icon-bar\"></span>\r\n\t\t\t\t<span class=\"icon-bar\"></span>\r\n\t\t\t</button>\r\n      <a asp-area=\"\" asp-controller=\"Home\" asp-action=\"Index\" class=\"navbar-brand\">Ng2Core.CorpPortal</a>\r\n    </div>\r\n    <div class=\"navbar-collapse collapse\">\r\n      <ul class=\"nav navbar-nav\">\r\n        <li>\r\n          <a [routerLink]=\"['welcome']\">Home</a>\r\n        </li>\r\n        <li>\r\n          <a [routerLink]=\"['role-list']\">Roles</a>\r\n        </li>\r\n        <li>\r\n          <a [routerLink]=\"['candidate-list']\">Candidates</a>\r\n        </li>\r\n        <li>\r\n          <a [routerLink]=\"['project-list']\">Projects</a>\r\n        </li>\r\n        <li>\r\n          <a [routerLink]=\"['skill-list']\">Projects</a>\r\n        </li>\r\n      </ul>\r\n      <login-info></login-info>\r\n    </div>\r\n  </div>\r\n</nav>\r\n<div class=\"container body-content\">\r\n  <div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <main class=\"col-sm-9 offset-sm-3 col-md-9 offset-md-3 pt-3\">\r\n        <router-outlet></router-outlet>\r\n        <router-outlet name=\"lastNews\"></router-outlet>\r\n      </main>\r\n\r\n    </div>\r\n  </div>\r\n  <hr />\r\n  <footer>\r\n    <p>&copy; 2017 - Ng2Core.CorpPortal</p>\r\n  </footer>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -887,9 +921,13 @@ var _a, _b, _c;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_shared_module__ = __webpack_require__("./src/app/shared/shared.module.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__candidate_candidate_list_candidate_list__ = __webpack_require__("./src/app/hr-management/candidate/candidate-list/candidate-list.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__candidate_candidate_edit_item_candidate_edit_item__ = __webpack_require__("./src/app/hr-management/candidate/candidate-edit-item/candidate-edit-item.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__hr_management_service__ = __webpack_require__("./src/app/hr-management/hr-management.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__shared_alert_alert_service__ = __webpack_require__("./src/app/shared/alert/alert.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__project_project_list_project_list__ = __webpack_require__("./src/app/hr-management/project/project-list/project-list.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__project_project_edit_item_project_edit_item__ = __webpack_require__("./src/app/hr-management/project/project-edit-item/project-edit-item.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__skill_skill_list_skill_list__ = __webpack_require__("./src/app/hr-management/skill/skill-list/skill-list.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__skill_skill_edit_item_skill_edit_item__ = __webpack_require__("./src/app/hr-management/skill/skill-edit-item/skill-edit-item.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__hr_management_service__ = __webpack_require__("./src/app/hr-management/hr-management.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__shared_alert_alert_service__ = __webpack_require__("./src/app/shared/alert/alert.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HrManagementModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -897,6 +935,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
+
+
 
 
 
@@ -920,23 +962,35 @@ HrManagementModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormsModule */],
             __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* HttpModule */],
             __WEBPACK_IMPORTED_MODULE_5__shared_shared_module__["a" /* SharedModule */],
-            __WEBPACK_IMPORTED_MODULE_9__ng_bootstrap_ng_bootstrap__["a" /* NgbModule */],
+            __WEBPACK_IMPORTED_MODULE_13__ng_bootstrap_ng_bootstrap__["a" /* NgbModule */],
             __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* RouterModule */].forChild([
                 { path: 'candidate-list', component: __WEBPACK_IMPORTED_MODULE_6__candidate_candidate_list_candidate_list__["a" /* CandidateListComponent */] },
                 { path: 'candidate-edit-item', component: __WEBPACK_IMPORTED_MODULE_7__candidate_candidate_edit_item_candidate_edit_item__["a" /* CandidateEditItemComponent */] },
+                { path: 'project-list', component: __WEBPACK_IMPORTED_MODULE_8__project_project_list_project_list__["a" /* ProjectListComponent */] },
+                { path: 'project-edit-item', component: __WEBPACK_IMPORTED_MODULE_9__project_project_edit_item_project_edit_item__["a" /* ProjectEditItemComponent */] },
+                { path: 'skill-list', component: __WEBPACK_IMPORTED_MODULE_10__skill_skill_list_skill_list__["a" /* SkillListComponent */] },
+                { path: 'skill-edit-item', component: __WEBPACK_IMPORTED_MODULE_11__skill_skill_edit_item_skill_edit_item__["a" /* SkillEditItemComponent */] },
             ])
         ],
         declarations: [
             __WEBPACK_IMPORTED_MODULE_6__candidate_candidate_list_candidate_list__["a" /* CandidateListComponent */],
-            __WEBPACK_IMPORTED_MODULE_7__candidate_candidate_edit_item_candidate_edit_item__["a" /* CandidateEditItemComponent */]
+            __WEBPACK_IMPORTED_MODULE_7__candidate_candidate_edit_item_candidate_edit_item__["a" /* CandidateEditItemComponent */],
+            __WEBPACK_IMPORTED_MODULE_8__project_project_list_project_list__["a" /* ProjectListComponent */],
+            __WEBPACK_IMPORTED_MODULE_9__project_project_edit_item_project_edit_item__["a" /* ProjectEditItemComponent */],
+            __WEBPACK_IMPORTED_MODULE_10__skill_skill_list_skill_list__["a" /* SkillListComponent */],
+            __WEBPACK_IMPORTED_MODULE_11__skill_skill_edit_item_skill_edit_item__["a" /* SkillEditItemComponent */]
         ],
         exports: [
             __WEBPACK_IMPORTED_MODULE_6__candidate_candidate_list_candidate_list__["a" /* CandidateListComponent */],
-            __WEBPACK_IMPORTED_MODULE_7__candidate_candidate_edit_item_candidate_edit_item__["a" /* CandidateEditItemComponent */]
+            __WEBPACK_IMPORTED_MODULE_7__candidate_candidate_edit_item_candidate_edit_item__["a" /* CandidateEditItemComponent */],
+            __WEBPACK_IMPORTED_MODULE_8__project_project_list_project_list__["a" /* ProjectListComponent */],
+            __WEBPACK_IMPORTED_MODULE_9__project_project_edit_item_project_edit_item__["a" /* ProjectEditItemComponent */],
+            __WEBPACK_IMPORTED_MODULE_10__skill_skill_list_skill_list__["a" /* SkillListComponent */],
+            __WEBPACK_IMPORTED_MODULE_11__skill_skill_edit_item_skill_edit_item__["a" /* SkillEditItemComponent */]
         ],
         providers: [
-            __WEBPACK_IMPORTED_MODULE_8__hr_management_service__["a" /* HrService */],
-            __WEBPACK_IMPORTED_MODULE_10__shared_alert_alert_service__["a" /* AlertService */]
+            __WEBPACK_IMPORTED_MODULE_12__hr_management_service__["a" /* HrService */],
+            __WEBPACK_IMPORTED_MODULE_14__shared_alert_alert_service__["a" /* AlertService */]
         ]
     })
 ], HrManagementModule);
@@ -991,8 +1045,36 @@ var HrService = (function () {
             .do(function () { })
             .catch(this.errorHandler);
     };
+    HrService.prototype.getProjects = function () {
+        return this.http.get('/api/projects')
+            .map(function (response) {
+            var tempResult = response.json();
+            return tempResult;
+        })
+            .do(function () { })
+            .catch(this.errorHandler);
+    };
+    HrService.prototype.getSkills = function () {
+        return this.http.get('/api/skills')
+            .map(function (response) {
+            var tempResult = response.json();
+            return tempResult;
+        })
+            .do(function () { })
+            .catch(this.errorHandler);
+    };
     HrService.prototype.createCandidate = function (model) {
         return this.http.post("/api/candidates/candidate", model)
+            .do(function () { })
+            .catch(this.errorHandler);
+    };
+    HrService.prototype.createProject = function (model) {
+        return this.http.post("/api/projects/project", model)
+            .do(function () { })
+            .catch(this.errorHandler);
+    };
+    HrService.prototype.createSkill = function (model) {
+        return this.http.post("/api/skills/skill", model)
             .do(function () { })
             .catch(this.errorHandler);
     };
@@ -1008,6 +1090,306 @@ HrService = __decorate([
 
 var _a;
 //# sourceMappingURL=hr-management.service.js.map
+
+/***/ }),
+
+/***/ "./src/app/hr-management/project/project-edit-item/project-edit-item.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "./src/app/hr-management/project/project-edit-item/project-edit-item.html":
+/***/ (function(module, exports) {
+
+module.exports = "<alert-helper></alert-helper>\r\n<form class=\"form-horizontal\">\r\n  <h4>Create new project</h4>\r\n  <hr />\r\n  <div class=\"text-danger\"></div>\r\n  <div class=\"form-group\">\t\r\n    <label class=\"col-md-3 control-label required-asterisk\">Title</label>\r\n    <div class=\"col-md-9\">\r\n      <input [(ngModel)]=\"model.Title\" required name=\"Title\" #title='ngModel' class=\"form-control\" />\r\n      <div *ngIf=\"title.errors && (title.dirty || title.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!title.errors.required\">Title is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label required-asterisk\">Content</label>\r\n    <div class=\"col-md-9\">\r\n      <input [(ngModel)]=\"model.Content\" required name=\"Content\" #content='ngModel' class=\"form-control\" />\r\n      <div *ngIf=\"content.errors && (content.dirty || content.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!content.errors.required\">Content is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n    <div class=\"col-md-offset-3 col-md-9\">\r\n      <button type=\"submit\" (click)='save()' class=\"btn btn-default\">Save</button>\r\n    </div>\r\n  </div>\r\n</form>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/hr-management/project/project-edit-item/project-edit-item.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__hr_management_service__ = __webpack_require__("./src/app/hr-management/hr-management.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_project__ = __webpack_require__("./src/app/models/project.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProjectEditItemComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var ProjectEditItemComponent = (function () {
+    function ProjectEditItemComponent(service) {
+        this.service = service;
+        this.model = new __WEBPACK_IMPORTED_MODULE_2__models_project__["a" /* Project */]();
+    }
+    ProjectEditItemComponent.prototype.save = function () {
+        this.service.createProject(this.model).subscribe(function (data) {
+        }, function (error) {
+            console.log('Something went wrong! Get projects failed!');
+        });
+    };
+    return ProjectEditItemComponent;
+}());
+ProjectEditItemComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_0" /* Component */])({
+        selector: "project-edit",
+        template: __webpack_require__("./src/app/hr-management/project/project-edit-item/project-edit-item.html"),
+        styles: [__webpack_require__("./src/app/hr-management/project/project-edit-item/project-edit-item.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__hr_management_service__["a" /* HrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__hr_management_service__["a" /* HrService */]) === "function" && _a || Object])
+], ProjectEditItemComponent);
+
+var _a;
+//# sourceMappingURL=project-edit-item.js.map
+
+/***/ }),
+
+/***/ "./src/app/hr-management/project/project-list/project-list.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "table {\r\n    border-collapse: collapse;\r\n    width: 100%;\r\n}\r\n\r\nth, td {\r\n    text-align: left;\r\n    padding: 8px;\r\n}\r\n\r\ntr:nth-child(even){background-color: #f2f2f2}\r\n\r\nth {\r\n    background-color: #4CAF50;\r\n    color: white;\r\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "./src/app/hr-management/project/project-list/project-list.html":
+/***/ (function(module, exports) {
+
+module.exports = "  <h2>Project list</h2>\r\n   <button type=\"submit\" (click)='moveToCreateForm()' class=\"btn btn-default\">Add project</button>\r\n\r\n  <table>\r\n      <thead>\r\n        <tr>\r\n          <th>ProjectId</th>\r\n          <th>Title</th>\r\n          <th>Content</th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr *ngFor=\"let project of projectsList\">\r\n          <td>{{project.projectId}}</td>\r\n          <td>{{project.title}}</td>\r\n          <td>{{project.content}}</td>\r\n        </tr>\r\n      </tbody>\r\n    </table>"
+
+/***/ }),
+
+/***/ "./src/app/hr-management/project/project-list/project-list.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__hr_management_service__ = __webpack_require__("./src/app/hr-management/hr-management.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProjectListComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var ProjectListComponent = (function () {
+    function ProjectListComponent(service, route, router) {
+        this.service = service;
+        this.route = route;
+        this.router = router;
+    }
+    ProjectListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.service.getProjects().subscribe(function (data) {
+            _this.projectsList = data;
+        }, function (error) {
+            console.log('Something went wrong! Get projects failed!');
+        });
+    };
+    ProjectListComponent.prototype.moveToCreateForm = function () {
+        this.router.navigate(['/project-edit-item']);
+    };
+    return ProjectListComponent;
+}());
+ProjectListComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_0" /* Component */])({
+        selector: "proejct-list",
+        template: __webpack_require__("./src/app/hr-management/project/project-list/project-list.html"),
+        styles: [__webpack_require__("./src/app/hr-management/project/project-list/project-list.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__hr_management_service__["a" /* HrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__hr_management_service__["a" /* HrService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _c || Object])
+], ProjectListComponent);
+
+var _a, _b, _c;
+//# sourceMappingURL=project-list.js.map
+
+/***/ }),
+
+/***/ "./src/app/hr-management/skill/skill-edit-item/skill-edit-item.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "./src/app/hr-management/skill/skill-edit-item/skill-edit-item.html":
+/***/ (function(module, exports) {
+
+module.exports = "<alert-helper></alert-helper>\r\n<form class=\"form-horizontal\">\r\n  <h4>Create new skill</h4>\r\n  <hr />\r\n  <div class=\"text-danger\"></div>\r\n  <div class=\"form-group\">\t\r\n    <label class=\"col-md-3 control-label required-asterisk\">Title</label>\r\n    <div class=\"col-md-9\">\r\n      <input [(ngModel)]=\"model.Title\" required name=\"Title\" #title='ngModel' class=\"form-control\" />\r\n      <div *ngIf=\"title.errors && (title.dirty || title.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!title.errors.required\">Title is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n    <div class=\"col-md-offset-3 col-md-9\">\r\n      <button type=\"submit\" (click)='save()' class=\"btn btn-default\">Save</button>\r\n    </div>\r\n  </div>\r\n</form>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/hr-management/skill/skill-edit-item/skill-edit-item.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__hr_management_service__ = __webpack_require__("./src/app/hr-management/hr-management.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_skill__ = __webpack_require__("./src/app/models/skill.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SkillEditItemComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var SkillEditItemComponent = (function () {
+    function SkillEditItemComponent(service) {
+        this.service = service;
+        this.model = new __WEBPACK_IMPORTED_MODULE_2__models_skill__["a" /* Skill */]();
+    }
+    SkillEditItemComponent.prototype.save = function () {
+        this.service.createSkill(this.model).subscribe(function (data) {
+        }, function (error) {
+            console.log('Something went wrong! Get skills failed!');
+        });
+    };
+    return SkillEditItemComponent;
+}());
+SkillEditItemComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_0" /* Component */])({
+        selector: "skill-edit",
+        template: __webpack_require__("./src/app/hr-management/skill/skill-edit-item/skill-edit-item.html"),
+        styles: [__webpack_require__("./src/app/hr-management/skill/skill-edit-item/skill-edit-item.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__hr_management_service__["a" /* HrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__hr_management_service__["a" /* HrService */]) === "function" && _a || Object])
+], SkillEditItemComponent);
+
+var _a;
+//# sourceMappingURL=skill-edit-item.js.map
+
+/***/ }),
+
+/***/ "./src/app/hr-management/skill/skill-list/skill-list.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "table {\r\n    border-collapse: collapse;\r\n    width: 100%;\r\n}\r\n\r\nth, td {\r\n    text-align: left;\r\n    padding: 8px;\r\n}\r\n\r\ntr:nth-child(even){background-color: #f2f2f2}\r\n\r\nth {\r\n    background-color: #4CAF50;\r\n    color: white;\r\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "./src/app/hr-management/skill/skill-list/skill-list.html":
+/***/ (function(module, exports) {
+
+module.exports = "  <h2>Skill list</h2>\r\n   <button type=\"submit\" (click)='moveToCreateForm()' class=\"btn btn-default\">Add skill</button>\r\n\r\n  <table>\r\n      <thead>\r\n        <tr>\r\n          <th>SkillId</th>\r\n          <th>Title</th>\r\n          <th>Content</th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr *ngFor=\"let skill of skillsList\">\r\n          <td>{{skill.skillId}}</td>\r\n          <td>{{skill.title}}</td>\r\n          <td>{{skill.content}}</td>\r\n        </tr>\r\n      </tbody>\r\n    </table>"
+
+/***/ }),
+
+/***/ "./src/app/hr-management/skill/skill-list/skill-list.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__hr_management_service__ = __webpack_require__("./src/app/hr-management/hr-management.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SkillListComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var SkillListComponent = (function () {
+    function SkillListComponent(service, route, router) {
+        this.service = service;
+        this.route = route;
+        this.router = router;
+    }
+    SkillListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.service.getSkills().subscribe(function (data) {
+            _this.skillsList = data;
+        }, function (error) {
+            console.log('Something went wrong! Get skills failed!');
+        });
+    };
+    SkillListComponent.prototype.moveToCreateForm = function () {
+        this.router.navigate(['/skill-edit-item']);
+    };
+    return SkillListComponent;
+}());
+SkillListComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_0" /* Component */])({
+        selector: "proejct-list",
+        template: __webpack_require__("./src/app/hr-management/skill/skill-list/skill-list.html"),
+        styles: [__webpack_require__("./src/app/hr-management/skill/skill-list/skill-list.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__hr_management_service__["a" /* HrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__hr_management_service__["a" /* HrService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _c || Object])
+], SkillListComponent);
+
+var _a, _b, _c;
+//# sourceMappingURL=skill-list.js.map
 
 /***/ }),
 
@@ -1038,6 +1420,36 @@ var Candidate = (function () {
 }());
 
 //# sourceMappingURL=candidate.js.map
+
+/***/ }),
+
+/***/ "./src/app/models/project.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Project; });
+var Project = (function () {
+    function Project() {
+    }
+    return Project;
+}());
+
+//# sourceMappingURL=project.js.map
+
+/***/ }),
+
+/***/ "./src/app/models/skill.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Skill; });
+var Skill = (function () {
+    function Skill() {
+    }
+    return Skill;
+}());
+
+//# sourceMappingURL=skill.js.map
 
 /***/ }),
 

@@ -1,7 +1,7 @@
 ﻿import { ApplicationUser } from "./../models/application-user"
-import { IRole } from "./../models/role"
-import { IRegisterModel } from "./register-model"
-import { ILoginModel } from "./login-model"
+import { Role } from "./../models/role"
+import { RegisterModel } from "./register-model"
+import { LoginModel } from "./login-model"
 import { Injectable, EventEmitter } from "@angular/core"
 import { Http, Response, Headers, RequestOptions } from '@angular/http'
 import { Observable } from 'rxjs/Observable'
@@ -28,23 +28,23 @@ export class AccountManagementService {
         this._userInfo.emit(user);
     }
 
-    registerAccount(model: IRegisterModel): Observable<ApplicationUser> {
+    registerAccount(model: RegisterModel): Observable<ApplicationUser> {
         return this.http.post('/api/account/register', model, this.options)
             .do((): void => { })
             .catch(this.errorHandler);
     }
 
-    getAllRoles(): Observable<IRole[]> {
+    getAllRoles(): Observable<Role[]> {
         return this.http.get('/api/role/roles')
             .map((response: Response) => {
                 var tempResult = response.json();
-                return <IRole[]>tempResult;
+                return <Role[]>tempResult;
             })
             .do((): void => { })
             .catch(this.errorHandler);
     }
 
-    loginAccount(model: ILoginModel): Observable<void> {
+    loginAccount(model: LoginModel): Observable<void> {
         return this.http.post('/api/account/login', model, this.options)
             .do((): void => {
                 this.getUserInfo()

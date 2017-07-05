@@ -1,17 +1,17 @@
-import { IEmployee } from "./employee";
-import { IProject } from "./project";
+import { Employee } from "./employee";
+import { Project } from "./project";
 
-export interface IRoleAssignment {
+export class RoleAssignment {
      RoleAssignmentId: number;
      Position: string;
      Capacity: number;
      Duration: number;
      GroupLeadId: number;
-     GroupLead: IEmployee;
+     GroupLead: Employee;
      DirectMgrId: number;
-     DirectMgr: IEmployee;
+     DirectMgr: Employee;
      EmployeeId: number;
-     Employee: IEmployee;
+     Employee: Employee;
      ProjectId: number;
-     Project: IProject;
+     Project: Project;
 }

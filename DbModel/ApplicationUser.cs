@@ -10,6 +10,7 @@ namespace Ng2Core.CorpPortal.Models
 {
     public class ApplicationUser : IdentityUser
     {
+        [Column(TypeName="date")]
         public DateTime BirthDay { get; set; }
         [InverseProperty("User")]
         public Employee Employee { get; set; }

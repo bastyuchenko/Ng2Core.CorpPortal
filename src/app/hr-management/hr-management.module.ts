@@ -6,6 +6,10 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from './../shared/shared.module'
 import { CandidateListComponent } from './candidate/candidate-list/candidate-list';
 import { CandidateEditItemComponent } from './candidate/candidate-edit-item/candidate-edit-item';
+import { ProjectListComponent } from './project/project-list/project-list';
+import { ProjectEditItemComponent } from './project/project-edit-item/project-edit-item';
+import { SkillListComponent } from './skill/skill-list/skill-list';
+import { SkillEditItemComponent } from './skill/skill-edit-item/skill-edit-item';
 import { HrService } from './hr-management.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AlertService } from './../shared/alert/alert.service'
@@ -21,15 +25,29 @@ import { AlertService } from './../shared/alert/alert.service'
         RouterModule.forChild([
             { path: 'candidate-list', component: CandidateListComponent },
             { path: 'candidate-edit-item', component: CandidateEditItemComponent },
+            { path: 'project-list', component: ProjectListComponent },
+            { path: 'project-edit-item', component: ProjectEditItemComponent },
+            { path: 'skill-list', component: SkillListComponent },
+            { path: 'skill-edit-item', component: SkillEditItemComponent },
         ])
     ],
     declarations: [
         CandidateListComponent,
-        CandidateEditItemComponent
+        CandidateEditItemComponent,
+
+        ProjectListComponent,
+        ProjectEditItemComponent,
+        
+        SkillListComponent,
+        SkillEditItemComponent
     ],
     exports: [
         CandidateListComponent,
-        CandidateEditItemComponent
+        CandidateEditItemComponent,
+        ProjectListComponent,
+        ProjectEditItemComponent,
+        SkillListComponent,
+        SkillEditItemComponent
     ],
     providers: [
         HrService,

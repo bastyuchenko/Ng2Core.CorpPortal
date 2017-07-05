@@ -1,10 +1,10 @@
-import { IVacancy } from "./vacancy";
-import { IRoleAssignment } from "./role-assignment";
+import { Vacancy } from "./vacancy";
+import { RoleAssignment } from "./role-assignment";
 
-export interface IProject {
+export class Project {
     ProjectId: number;
     Title: string;
     Content: string;
-    RoleAssignments: IRoleAssignment[];
-    Vacancies: IVacancy[];
+    RoleAssignments: RoleAssignment[];
+    Vacancies: Vacancy[];
 }

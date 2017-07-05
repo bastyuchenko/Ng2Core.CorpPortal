@@ -12,7 +12,9 @@ namespace Ng2Core.CorpPortal.Models
         [Key]
         public int CandidatId { get; set; }
 
+		[MaxLength(50)]
         public string FirstName { get; set; }
+		[MaxLength(200)]
         public string LastName { get; set; }
         public int VacancyKey { get; set; }
         [ForeignKey("VacancyKey")]

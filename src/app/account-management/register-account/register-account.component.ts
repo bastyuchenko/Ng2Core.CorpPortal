@@ -2,7 +2,7 @@
 import { Component, OnInit } from "@angular/core";
 import { NgForm, AbstractControl } from '@angular/forms';
 import { ApplicationUser } from "./../../models/application-user"
-import { IRegisterModel } from "./../register-model"
+import { RegisterModel } from "./../register-model"
 import { AccountManagementService } from "./../account-management.service"
 
 @Component({
@@ -13,7 +13,7 @@ import { AccountManagementService } from "./../account-management.service"
 
 export class RegisterAccountComponent implements OnInit {
 
-    private model: IRegisterModel = { Email:'', Password:'', ConfirmPassword:''};
+    private model: RegisterModel = new RegisterModel();
     private alerts: any = [];
 
     private updating = {

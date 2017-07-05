@@ -1,13 +1,13 @@
 import { ApplicationUser } from "./application-user";
-import { IRoleAssignment } from "./role-assignment";
+import { RoleAssignment } from "./role-assignment";
 
 
-export interface IEmployee {
+export class Employee {
      EmployeeId: number;
      UserId: string;
      User: ApplicationUser;
-     RoleAssignmentsGroupLead: IRoleAssignment[];
-     RoleAssignmentsDirectMgr: IRoleAssignment[];
-     RoleAssignmentsEmployee: IRoleAssignment[];
+     RoleAssignmentsGroupLead: RoleAssignment[];
+     RoleAssignmentsDirectMgr: RoleAssignment[];
+     RoleAssignmentsEmployee: RoleAssignment[];
      Salary: number;
 }

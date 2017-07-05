@@ -1,14 +1,14 @@
-import { IProject } from "./project";
+import { Project } from "./project";
 import { Candidate } from "./candidate";
-import { ISkillVacancy } from "./skill-vacancy";
+import { SkillVacancy } from "./skill-vacancy";
 
 
-export interface IVacancy {
+export class Vacancy {
     VacancyId: number;
     VacancyTitle: string;
     DueDate: Date;
-    SkillVacancy: ISkillVacancy[];
+    SkillVacancy: SkillVacancy[];
     Candidates: Candidate[];
     ProjectKey: number;
-    Project: IProject;
+    Project: Project;
 }

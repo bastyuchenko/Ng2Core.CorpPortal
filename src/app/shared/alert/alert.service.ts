@@ -1,11 +1,11 @@
 import { Injectable, EventEmitter } from '@angular/core'
-import { IAlert } from './alert'
+import { Alert } from './alert'
 
 @Injectable()
 export class AlertService {
-    _alertArrayChanged: EventEmitter<IAlert> = new EventEmitter<IAlert>();
+    _alertArrayChanged: EventEmitter<Alert> = new EventEmitter<Alert>();
     
-    addAlert(alert:IAlert){
+    addAlert(alert:Alert){
         this._alertArrayChanged.emit(alert);
     }
 }

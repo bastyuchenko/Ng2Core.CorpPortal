@@ -50,6 +50,8 @@ namespace WebApplication
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ICandidateRepository, CandidateRepository>();
             services.AddScoped<IVacancyRepository, VacancyRepository>();
+            services.AddScoped<IProjectRepository, ProjectRepository>();
+            services.AddScoped<ISkillRepository, SkillRepository>();
             services.AddMvc();
         }
 
@@ -75,8 +77,16 @@ namespace WebApplication
             {
                 cfg.CreateMap<ApplicationUser, UserDto>();
                 cfg.CreateMap<UserDto, ApplicationUser>();
+
+                cfg.CreateMap<Project, ProjectDto>();
+                cfg.CreateMap<ProjectDto, Project>();
+
                 cfg.CreateMap<CandidateDto, Candidate>();
                 cfg.CreateMap<Candidate, CandidateDto>();
+
+                cfg.CreateMap<SkillDto, Skill>();
+                cfg.CreateMap<Skill, SkillDto>();
+
                 cfg.CreateMap<RegisterModel, ApplicationUser>()
                 .ForMember(dest=>dest.UserName,
                 source=>source.MapFrom(x=>x.Email));

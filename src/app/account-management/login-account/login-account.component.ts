@@ -2,7 +2,7 @@
 import { Component, OnInit } from "@angular/core";
 import { NgForm, AbstractControl } from '@angular/forms';
 import { ApplicationUser } from "./../../models/application-user"
-import { ILoginModel } from "./../login-model"
+import { LoginModel } from "./../login-model"
 import { AccountManagementService } from "./../account-management.service"
 import { AlertService } from './../../shared/alert/alert.service'
 
@@ -14,7 +14,7 @@ import { AlertService } from './../../shared/alert/alert.service'
 
 export class LoginAccountComponent {
 
-    private model: ILoginModel = { Email: '', Password: '', RememberMe: false };
+    private model: LoginModel = new LoginModel();
 
     constructor(
         private route: ActivatedRoute,

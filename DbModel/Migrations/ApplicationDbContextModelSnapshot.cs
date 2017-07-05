@@ -130,7 +130,8 @@ namespace Ng2Core.CorpPortal.dbmodel.migrations
 
                     b.Property<int>("AccessFailedCount");
 
-                    b.Property<DateTime>("BirthDay");
+                    b.Property<DateTime>("BirthDay")
+                        .HasColumnType("date");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
@@ -184,9 +185,11 @@ namespace Ng2Core.CorpPortal.dbmodel.migrations
                     b.Property<int>("CandidatId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("FirstName");
+                    b.Property<string>("FirstName")
+                        .HasMaxLength(50);
 
-                    b.Property<string>("LastName");
+                    b.Property<string>("LastName")
+                        .HasMaxLength(200);
 
                     b.Property<int>("VacancyKey");
 
@@ -266,7 +269,8 @@ namespace Ng2Core.CorpPortal.dbmodel.migrations
                     b.Property<int>("SkillId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("Title");
+                    b.Property<string>("Title")
+                        .HasMaxLength(100);
 
                     b.HasKey("SkillId");
 
@@ -296,11 +300,13 @@ namespace Ng2Core.CorpPortal.dbmodel.migrations
                     b.Property<int>("VacancyId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("DueDate");
+                    b.Property<DateTime>("DueDate")
+                        .HasColumnType("date");
 
                     b.Property<int>("ProjectKey");
 
-                    b.Property<string>("VacancyTitle");
+                    b.Property<string>("VacancyTitle")
+                        .HasMaxLength(200);
 
                     b.HasKey("VacancyId");
 

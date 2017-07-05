@@ -1,5 +1,5 @@
 import { Component, EventEmitter } from '@angular/core'
-import { IAlert } from './alert'
+import { Alert } from './alert'
 import { AlertService } from './alert.service'
 
 @Component({
@@ -9,14 +9,14 @@ import { AlertService } from './alert.service'
 })
 
 export class AlertHelperComponent {
-    alerts: IAlert[] = [];
+    alerts: Alert[] = [];
     constructor(alertService: AlertService) {
-        alertService._alertArrayChanged.subscribe((alert: IAlert): void => {
+        alertService._alertArrayChanged.subscribe((alert: Alert): void => {
             this.alerts.push(alert);
         });
     }
 
-    public closeAlert(alert: IAlert) {
+    public closeAlert(alert: Alert) {
         const index: number = this.alerts.indexOf(alert);
         this.alerts.splice(index, 1);
     }

@@ -11,7 +11,9 @@ namespace Ng2Core.CorpPortal.Models
     {
         [Key]
         public int VacancyId { get; set; }
+		[MaxLength(200)]
         public string VacancyTitle { get; set; }
+		[Column(TypeName="date")]
         public DateTime DueDate { get; set; }
 
         [InverseProperty("Vacancy")]

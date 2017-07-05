@@ -1,5 +1,5 @@
 import { Component } from "@angular/core"
-import { IRole } from "./../../../models/role"
+import { Role } from "./../../../models/role"
 import { AccountManagementService } from "./../../account-management.service"
 
 @Component({
@@ -12,12 +12,12 @@ export class RoleListComponent {
     }
 
     errorMessage: string = '';
-    roleList: IRole[];
+    roleList: Role[];
 
     ngOnInit(): void {
         this.accountService.getAllRoles().subscribe(
             (data) => {
-                this.roleList = <IRole[]>data;
+                this.roleList = <Role[]>data;
             },
             (error): void => {
                 console.log('Something went wrong! Get roles failed!');

@@ -1,0 +1,19 @@
+  <h2>Skill list</h2>
+   <button type="submit" (click)='moveToCreateForm()' class="btn btn-default">Add skill</button>
+
+  <table>
+      <thead>
+        <tr>
+          <th>SkillId</th>
+          <th>Title</th>
+          <th>Content</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let skill of skillsList">
+          <td>{{skill.skillId}}</td>
+          <td>{{skill.title}}</td>
+          <td>{{skill.content}}</td>
+        </tr>
+      </tbody>
+    </table>

@@ -1,0 +1,21 @@
+<alert-helper></alert-helper>
+<form class="form-horizontal">
+  <h4>Create new skill</h4>
+  <hr />
+  <div class="text-danger"></div>
+  <div class="form-group">	
+    <label class="col-md-3 control-label required-asterisk">Title</label>
+    <div class="col-md-9">
+      <input [(ngModel)]="model.Title" required name="Title" #title='ngModel' class="form-control" />
+      <div *ngIf="title.errors && (title.dirty || title.touched)">
+        <span class="validationMessage" [hidden]="!title.errors.required">Title is required</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-offset-3 col-md-9">
+      <button type="submit" (click)='save()' class="btn btn-default">Save</button>
+    </div>
+  </div>
+</form>

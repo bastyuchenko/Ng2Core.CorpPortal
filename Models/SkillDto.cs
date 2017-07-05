@@ -7,14 +7,10 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Ng2Core.CorpPortal.Models
 {
-    public class Skill
+    public class SkillDto
     {
-        [Key]
         public int SkillId { get; set; }
-		[MaxLength(100)]
-        public string Title { get; set; }
-
-        [InverseProperty("Skill")]
+        public int Title { get; set; }
         public List<SkillVacancy> SkillVacancies { get; set; }
     }
 }

@@ -1,0 +1,19 @@
+  <h2>Project list</h2>
+   <button type="submit" (click)='moveToCreateForm()' class="btn btn-default">Add project</button>
+
+  <table>
+      <thead>
+        <tr>
+          <th>ProjectId</th>
+          <th>Title</th>
+          <th>Content</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let project of projectsList">
+          <td>{{project.projectId}}</td>
+          <td>{{project.title}}</td>
+          <td>{{project.content}}</td>
+        </tr>
+      </tbody>
+    </table>

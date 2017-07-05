@@ -1,10 +1,10 @@
-import { IVacancy } from "./vacancy";
-import { ISkill } from "./skill";
+import { Vacancy } from "./vacancy";
+import { Skill } from "./skill";
 
-export interface ISkillVacancy {
+export class SkillVacancy {
      SkillVacancyId: number;
      SkillKey: number;
-     Skill: ISkill;
+     Skill: Skill;
      VacancyId: number;
-     Vacancy: IVacancy;
+     Vacancy: Vacancy;
 }

@@ -1,4 +1,4 @@
-export interface ILoginModel {
+export class LoginModel {
     Email: string;
     Password: string;
     RememberMe: boolean;
