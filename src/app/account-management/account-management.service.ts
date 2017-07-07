@@ -8,15 +8,17 @@ import { Observable } from 'rxjs/Observable'
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/do'
 import 'rxjs/add/operator/catch'
+import 'rxjs/add/observable/throw';
 import * as _ from '@types/underscore'
 
 @Injectable()
 export class AccountManagementService {
     _userInfo: EventEmitter<ApplicationUser> = new EventEmitter<ApplicationUser>();
-    headers:Headers = new Headers({ 'Content-Type': 'application/json' });
-    options:RequestOptions = new RequestOptions({ headers: this.headers });
+    headers: Headers = new Headers({ 'Content-Type': 'application/json' });
+    options: RequestOptions = new RequestOptions({ headers: this.headers });
 
-    constructor(private http: Http) { }
+    constructor(
+        private http: Http) { }
 
     logout(): Observable<Response> {
         return this.http.post("/api/account/logout", {})
@@ -48,7 +50,7 @@ export class AccountManagementService {
         return this.http.post('/api/account/login', model, this.options)
             .do((): void => {
                 this.getUserInfo()
-                    .subscribe((data:ApplicationUser):void=>{
+                    .subscribe((data: ApplicationUser): void => {
                         this.setUser(data);
                     })
             })

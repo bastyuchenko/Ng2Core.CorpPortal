@@ -10,6 +10,8 @@ import { ProjectListComponent } from './project/project-list/project-list';
 import { ProjectEditItemComponent } from './project/project-edit-item/project-edit-item';
 import { SkillListComponent } from './skill/skill-list/skill-list';
 import { SkillEditItemComponent } from './skill/skill-edit-item/skill-edit-item';
+import { VacancyListComponent } from './vacancy/vacancy-list/vacancy-list';
+import { VacancyEditItemComponent } from './vacancy/vacancy-edit-item/vacancy-edit-item';
 import { HrService } from './hr-management.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AlertService } from './../shared/alert/alert.service'
@@ -29,6 +31,8 @@ import { AlertService } from './../shared/alert/alert.service'
             { path: 'project-edit-item', component: ProjectEditItemComponent },
             { path: 'skill-list', component: SkillListComponent },
             { path: 'skill-edit-item', component: SkillEditItemComponent },
+            { path: 'vacancy-list', component: SkillListComponent },
+            { path: 'vacancy-edit-item', component: SkillEditItemComponent },
         ])
     ],
     declarations: [
@@ -37,17 +41,25 @@ import { AlertService } from './../shared/alert/alert.service'
 
         ProjectListComponent,
         ProjectEditItemComponent,
-        
+
         SkillListComponent,
-        SkillEditItemComponent
+        SkillEditItemComponent,
+
+        VacancyListComponent,
+        VacancyEditItemComponent
     ],
     exports: [
         CandidateListComponent,
         CandidateEditItemComponent,
+
         ProjectListComponent,
         ProjectEditItemComponent,
+
         SkillListComponent,
-        SkillEditItemComponent
+        SkillEditItemComponent,
+
+        VacancyListComponent,
+        VacancyEditItemComponent
     ],
     providers: [
         HrService,

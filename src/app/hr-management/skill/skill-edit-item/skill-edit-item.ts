@@ -1,6 +1,10 @@
 import { Component, OnInit } from "@angular/core"
 import { HrService } from "./../../hr-management.service"
 import { Skill } from "./../../../models/skill"
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { AlertService } from './../../../shared/alert/alert.service'
+
+
 
 @Component({
     selector: "skill-edit",
@@ -9,20 +13,31 @@ import { Skill } from "./../../../models/skill"
 })
 
 export class SkillEditItemComponent {
-    constructor(private service: HrService) {
+    constructor(
+        private service: HrService,
+        private router: Router,
+        private alertService: AlertService) {
     }
 
-    private model: Skill = new Skill(); 
-    
+    private model: Skill = new Skill();
 
-    save():void{
+
+    save(): void {
         this.service.createSkill(this.model).subscribe(
             (data) => {
-               
+                this.router.navigate(['/skill-list']);
             },
             (error): void => {
-                console.log('Something went wrong! Get skills failed!');
+                this.alertService.addAlert({
+                    id: 1,
+                    type: 'danger',
+                    message: error.text(),
+                });
             });
+    }
+
+    cancel(): void {
+        this.router.navigate(['/skill-list']);
     }
 
 }

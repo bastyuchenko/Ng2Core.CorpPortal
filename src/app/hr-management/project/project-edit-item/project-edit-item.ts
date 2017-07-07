@@ -1,6 +1,9 @@
 import { Component, OnInit } from "@angular/core"
 import { HrService } from "./../../hr-management.service"
 import { Project } from "./../../../models/project"
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { AlertService } from './../../../shared/alert/alert.service'
+
 
 @Component({
     selector: "project-edit",
@@ -9,7 +12,10 @@ import { Project } from "./../../../models/project"
 })
 
 export class ProjectEditItemComponent {
-    constructor(private service: HrService) {
+    constructor(
+        private service: HrService,
+        private router: Router,
+        private alertService: AlertService) {
     }
 
     private model: Project = new Project(); 
@@ -18,11 +24,21 @@ export class ProjectEditItemComponent {
     save():void{
         this.service.createProject(this.model).subscribe(
             (data) => {
-               
+                 this.router.navigate(['/project-list']);
             },
             (error): void => {
-                console.log('Something went wrong! Get projects failed!');
+                this.alertService.addAlert({
+                    id: 1,
+                    type: 'danger',
+                    message: error.text(),
+                });
             });
     }
+    
+    cancel():void{
+        this.router.navigate(['/project-list']);
+    }
+
+
 
 }

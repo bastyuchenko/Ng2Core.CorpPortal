@@ -1,27 +1,27 @@
 import { Component, OnInit } from "@angular/core"
 import { HrService } from "./../../hr-management.service"
-import { Candidate } from "./../../../models/candidate"
+import { Vacancy } from "./../../../models/vacancy"
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { AlertService } from './../../../shared/alert/alert.service'
 
 @Component({
-    selector: "candidate-edit",
-    templateUrl: "./candidate-edit-item.html",
-    styleUrls: ["candidate-edit-item.css"]
+    selector: "vacancy-edit",
+    templateUrl: "./vacancy-edit-item.html",
+    styleUrls: ["vacancy-edit-item.css"]
 })
 
-export class CandidateEditItemComponent {
+export class VacancyEditItemComponent {
     constructor(
         private service: HrService,
         private router: Router,
         private alertService: AlertService) {
     }
 
-    private model: Candidate = new Candidate(); 
+    private model: Vacancy = new Vacancy(); 
     
 
     save():void{
-        this.service.createCandidate(this.model).subscribe(
+        this.service.createVacancy(this.model).subscribe(
             (data) => {
                
             },
@@ -35,7 +35,7 @@ export class CandidateEditItemComponent {
     }
     
     cancel():void{
-        this.router.navigate(['/candidate-list']);
+        this.router.navigate(['/vacancy-list']);
     }
 
 }

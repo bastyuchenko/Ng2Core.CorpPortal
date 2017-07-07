@@ -53,6 +53,16 @@ export class HrService {
             .catch(this.errorHandler);
     }
 
+     getVacancies(): Observable<Vacancy[]> {
+        return this.http.get('/api/vacancies')
+            .map((response: Response) => {
+                var tempResult = response.json();
+                return <Vacancy[]>tempResult;
+            })
+            .do((): void => { })
+            .catch(this.errorHandler);
+    }
+
     createCandidate(model: Candidate): Observable<Response> {
         return this.http.post("/api/candidates/candidate", model)
             .do((): void => { })
@@ -67,6 +77,12 @@ export class HrService {
 
     createSkill(model: Skill): Observable<Response> {
         return this.http.post("/api/skills/skill", model)
+            .do((): void => { })
+            .catch(this.errorHandler)
+    }
+
+    createVacancy(model: Vacancy): Observable<Response> {
+        return this.http.post("/api/vacancies/vacancy", model)
             .do((): void => { })
             .catch(this.errorHandler)
     }

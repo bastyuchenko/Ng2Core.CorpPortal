@@ -142,6 +142,8 @@ AccountManagementModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_do___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_do__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_catch__ = __webpack_require__("./node_modules/rxjs/add/operator/catch.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_catch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_catch__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_observable_throw__ = __webpack_require__("./node_modules/rxjs/add/observable/throw.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_observable_throw___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_observable_throw__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AccountManagementService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -152,6 +154,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -225,7 +228,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, ".validationMessage{\r\n    color:red;\r\n    font-style: italic;\r\n}\r\n\r\n.required-asterisk:after {\r\n    content: \" *\";\r\n    color: red;\r\n}", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -238,7 +241,7 @@ module.exports = module.exports.toString();
 /***/ "./src/app/account-management/login-account/login-account.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<alert-helper></alert-helper>\r\n<form class=\"form-horizontal\">\r\n  <h4>Login</h4>\r\n  <hr />\r\n  <div class=\"text-danger\"></div>\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label required-asterisk\">Email</label>\r\n    <div class=\"col-md-9\">\r\n      <input [(ngModel)]=\"model.Email\" required name=\"Email\" #email='ngModel' class=\"form-control\" />\r\n      <div *ngIf=\"email.errors && (email.dirty || email.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!email.errors.required\">Email is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label required-asterisk\">Password</label>\r\n    <div class=\"col-md-9\">\r\n      <input type=\"password\" [(ngModel)]=\"model.Password\" name=\"Password\" class=\"form-control\" />\r\n    </div>\r\n  </div>\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label\">Remember me?</label>\r\n    <div class=\"col-md-9\">\r\n      <input type=\"checkbox\" [(ngModel)]=\"model.RememberMe\" name=\"RememberMe\" />\r\n    </div>\r\n  </div>\r\n  <div class=\"form-group\">\r\n    <div class=\"col-md-offset-3 col-md-9\">\r\n      <button type=\"submit\" (click)='login()' class=\"btn btn-default\">Login</button>\r\n    </div>\r\n  </div>\r\n</form>\r\n"
+module.exports = "<form class=\"form-horizontal\">\r\n  <h4>Login</h4>\r\n  <hr />\r\n  <div class=\"text-danger\"></div>\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label required-asterisk\">Email</label>\r\n    <div class=\"col-md-9\">\r\n      <input [(ngModel)]=\"model.Email\" required name=\"Email\" #email='ngModel' class=\"form-control\" />\r\n      <div *ngIf=\"email.errors && (email.dirty || email.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!email.errors.required\">Email is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label required-asterisk\">Password</label>\r\n    <div class=\"col-md-9\">\r\n      <input type=\"password\" [(ngModel)]=\"model.Password\" name=\"Password\" class=\"form-control\" />\r\n    </div>\r\n  </div>\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label\">Remember me?</label>\r\n    <div class=\"col-md-9\">\r\n      <input type=\"checkbox\" [(ngModel)]=\"model.RememberMe\" name=\"RememberMe\" />\r\n    </div>\r\n  </div>\r\n  <div class=\"form-group\">\r\n    <div class=\"col-md-offset-3 col-md-9\">\r\n      <button type=\"submit\" (click)='login()' class=\"btn btn-default\">Login</button>\r\n    </div>\r\n  </div>\r\n</form>\r\n"
 
 /***/ }),
 
@@ -277,11 +280,6 @@ var LoginAccountComponent = (function () {
     LoginAccountComponent.prototype.login = function () {
         var _this = this;
         this.accountService.loginAccount(this.model).subscribe(function (data) {
-            // this.alertService.addAlert({
-            //     id: 1,
-            //     type: 'success',
-            //     message: 'You have been successfully signed in.',
-            // });
             _this.router.navigate(['/welcome']);
         });
     };
@@ -293,7 +291,7 @@ LoginAccountComponent = __decorate([
         template: __webpack_require__("./src/app/account-management/login-account/login-account.component.html"),
         styles: [__webpack_require__("./src/app/account-management/login-account/login-account.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_router__["b" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__account_management_service__["a" /* AccountManagementService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__account_management_service__["a" /* AccountManagementService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__shared_alert_alert_service__["a" /* AlertService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__shared_alert_alert_service__["a" /* AlertService */]) === "function" && _d || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__account_management_service__["a" /* AccountManagementService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__account_management_service__["a" /* AccountManagementService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__shared_alert_alert_service__["a" /* AlertService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__shared_alert_alert_service__["a" /* AlertService */]) === "function" && _d || Object])
 ], LoginAccountComponent);
 
 var _a, _b, _c, _d;
@@ -388,7 +386,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, ".validationMessage{\r\n    color:red;\r\n    font-style: italic;\r\n}\r\n\r\n.required-asterisk:after {\r\n    content: \" *\";\r\n    color: red;\r\n}", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -413,6 +411,7 @@ module.exports = "  <form class=\"form-horizontal\">\r\n    <h4>Create a new acc
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__register_model__ = __webpack_require__("./src/app/account-management/register-model.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__account_management_service__ = __webpack_require__("./src/app/account-management/account-management.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_alert_alert_service__ = __webpack_require__("./src/app/shared/alert/alert.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RegisterAccountComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -427,41 +426,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var RegisterAccountComponent = (function () {
-    function RegisterAccountComponent(route, router, accountService) {
+    function RegisterAccountComponent(route, router, accountService, alertService) {
         this.route = route;
         this.router = router;
         this.accountService = accountService;
+        this.alertService = alertService;
         this.model = new __WEBPACK_IMPORTED_MODULE_2__register_model__["a" /* RegisterModel */]();
-        this.alerts = [];
-        this.updating = {
-            country: false,
-            links: false,
-        };
-        this.patterns = {
-            Url: /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/,
-            Img: /.*\.png/,
-            Text: /^[a-zA-Z ]*$/
-        };
     }
     RegisterAccountComponent.prototype.ngOnInit = function () {
     };
     RegisterAccountComponent.prototype.register = function () {
         var _this = this;
         this.accountService.registerAccount(this.model).subscribe(function (data) {
-            _this.updating.country = false;
-            _this.alerts.push({
+            _this.alertService.addAlert({
+                id: 1,
                 type: 'success',
-                msg: "Country Item has been updated successfully.",
+                message: 'User has been registered successfully',
             });
         }, function (error) {
-            _this.alerts.push({
+            _this.alertService.addAlert({
+                id: 1,
                 type: 'danger',
-                msg: error,
+                message: error.text(),
             });
-        }, function () {
-            window.scrollTo(0, 0);
-            _this.updating.country = false;
         });
     };
     return RegisterAccountComponent;
@@ -472,10 +461,10 @@ RegisterAccountComponent = __decorate([
         template: __webpack_require__("./src/app/account-management/register-account/register-account.component.html"),
         styles: [__webpack_require__("./src/app/account-management/register-account/register-account.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_router__["b" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__account_management_service__["a" /* AccountManagementService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__account_management_service__["a" /* AccountManagementService */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_router__["c" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__account_management_service__["a" /* AccountManagementService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__account_management_service__["a" /* AccountManagementService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__shared_alert_alert_service__["a" /* AlertService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__shared_alert_alert_service__["a" /* AlertService */]) === "function" && _d || Object])
 ], RegisterAccountComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d;
 //# sourceMappingURL=register-account.component.js.map
 
 /***/ }),
@@ -557,7 +546,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, ".navbar-default {\r\n    background-color: #eee;\r\n    border-color: #e9e9e9;\r\n}\r\n\r\ntable {\r\n    border-collapse: collapse;\r\n    width: 100%;\r\n}\r\n\r\nth, td {\r\n    text-align: left;\r\n    padding: 8px;\r\n}\r\n\r\ntr:nth-child(even){background-color: #f2f2f2}\r\n\r\nth {\r\n    background-color: #4CAF50;\r\n    color: white;\r\n}", ""]);
+exports.push([module.i, ".navbar-default {\r\n    background-color: #eee;\r\n    border-color: #e9e9e9;\r\n}", ""]);
 
 // exports
 
@@ -570,7 +559,7 @@ module.exports = module.exports.toString();
 /***/ "./src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default bg-primary\">\r\n  <div class=\"container\">\r\n    <div class=\"navbar-header\">\r\n      <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-collapse\">\r\n\t\t\t\t<span class=\"sr-only\">Toggle navigation</span>\r\n\t\t\t\t<span class=\"icon-bar\"></span>\r\n\t\t\t\t<span class=\"icon-bar\"></span>\r\n\t\t\t\t<span class=\"icon-bar\"></span>\r\n\t\t\t</button>\r\n      <a asp-area=\"\" asp-controller=\"Home\" asp-action=\"Index\" class=\"navbar-brand\">Ng2Core.CorpPortal</a>\r\n    </div>\r\n    <div class=\"navbar-collapse collapse\">\r\n      <ul class=\"nav navbar-nav\">\r\n        <li>\r\n          <a [routerLink]=\"['welcome']\">Home</a>\r\n        </li>\r\n        <li>\r\n          <a [routerLink]=\"['role-list']\">Roles</a>\r\n        </li>\r\n        <li>\r\n          <a [routerLink]=\"['candidate-list']\">Candidates</a>\r\n        </li>\r\n        <li>\r\n          <a [routerLink]=\"['project-list']\">Projects</a>\r\n        </li>\r\n        <li>\r\n          <a [routerLink]=\"['skill-list']\">Projects</a>\r\n        </li>\r\n      </ul>\r\n      <login-info></login-info>\r\n    </div>\r\n  </div>\r\n</nav>\r\n<div class=\"container body-content\">\r\n  <div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <main class=\"col-sm-9 offset-sm-3 col-md-9 offset-md-3 pt-3\">\r\n        <router-outlet></router-outlet>\r\n        <router-outlet name=\"lastNews\"></router-outlet>\r\n      </main>\r\n\r\n    </div>\r\n  </div>\r\n  <hr />\r\n  <footer>\r\n    <p>&copy; 2017 - Ng2Core.CorpPortal</p>\r\n  </footer>\r\n</div>\r\n"
+module.exports = "<nav class=\"navbar navbar-default bg-primary\">\r\n  <div class=\"container\">\r\n    <div class=\"navbar-header\">\r\n      <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-collapse\">\r\n\t\t\t\t<span class=\"sr-only\">Toggle navigation</span>\r\n\t\t\t\t<span class=\"icon-bar\"></span>\r\n\t\t\t\t<span class=\"icon-bar\"></span>\r\n\t\t\t\t<span class=\"icon-bar\"></span>\r\n\t\t\t</button>\r\n      <a asp-area=\"\" asp-controller=\"Home\" asp-action=\"Index\" class=\"navbar-brand\">Ng2Core.CorpPortal</a>\r\n    </div>\r\n    <div class=\"navbar-collapse collapse\">\r\n      <ul class=\"nav navbar-nav\">\r\n        <li>\r\n          <a [routerLink]=\"['welcome']\">Home</a>\r\n        </li>\r\n\r\n         <li class=\"dropdown\">\r\n          <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Account Management <span class=\"caret\"></span></a>\r\n          <ul class=\"dropdown-menu\">\r\n        <li>\r\n          <a [routerLink]=\"['role-list']\">Roles</a>\r\n        </li>\r\n        </ul>\r\n\r\n        <li class=\"dropdown\">\r\n          <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">HR Management <span class=\"caret\"></span></a>\r\n          <ul class=\"dropdown-menu\">\r\n            <li>\r\n              <a [routerLink]=\"['candidate-list']\">Candidates</a>\r\n            </li>\r\n            <li>\r\n              <a [routerLink]=\"['project-list']\">Projects</a>\r\n            </li>\r\n            <li>\r\n              <a [routerLink]=\"['skill-list']\">Skills</a>\r\n            </li>\r\n          </ul>\r\n        </li>\r\n      </ul>\r\n      <login-info></login-info>\r\n    </div>\r\n  </div>\r\n</nav>\r\n<alert-helper></alert-helper>\r\n<div class=\"container body-content\">\r\n  <div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <main class=\"col-sm-9 offset-sm-3 col-md-9 offset-md-3 pt-3\">\r\n        <router-outlet></router-outlet>\r\n        <router-outlet name=\"lastNews\"></router-outlet>\r\n      </main>\r\n\r\n    </div>\r\n  </div>\r\n  <hr />\r\n  <footer>\r\n    <p>&copy; 2017 - Ng2Core.CorpPortal</p>\r\n  </footer>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -630,6 +619,7 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__hr_management_hr_management_module__ = __webpack_require__("./src/app/hr-management/hr-management.module.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__shared_alert_alert_service__ = __webpack_require__("./src/app/shared/alert/alert.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__shared_shared_module__ = __webpack_require__("./src/app/shared/shared.module.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -637,6 +627,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -663,6 +654,7 @@ var AppModule = (function () {
 AppModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["b" /* NgModule */])({
         imports: [
+            __WEBPACK_IMPORTED_MODULE_18__shared_shared_module__["a" /* SharedModule */],
             __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
             __WEBPACK_IMPORTED_MODULE_10__angular_http__["a" /* HttpModule */],
             __WEBPACK_IMPORTED_MODULE_3__account_management_account_management_module__["a" /* AccountManagementModule */],
@@ -780,7 +772,7 @@ module.exports = module.exports.toString();
 /***/ "./src/app/hr-management/candidate/candidate-edit-item/candidate-edit-item.html":
 /***/ (function(module, exports) {
 
-module.exports = "<alert-helper></alert-helper>\r\n<form class=\"form-horizontal\">\r\n  <h4>Create new candidate</h4>\r\n  <hr />\r\n  <div class=\"text-danger\"></div>\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label required-asterisk\">Name</label>\r\n    <div class=\"col-md-9\">\r\n      <input [(ngModel)]=\"model.FirstName\" required name=\"FirstName\" #firstName='ngModel' class=\"form-control\" />\r\n      <div *ngIf=\"firstName.errors && (firstName.dirty || firstName.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!firstName.errors.required\">First Name is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label required-asterisk\">Name</label>\r\n    <div class=\"col-md-9\">\r\n      <input [(ngModel)]=\"model.LastName\" required name=\"LastName\" #lastName='ngModel' class=\"form-control\" />\r\n      <div *ngIf=\"lastName.errors && (lastName.dirty || lastName.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!lastName.errors.required\">First Name is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label required-asterisk\">Name</label>\r\n    <div class=\"col-md-9\">\r\n      <select #countrySelect='ngModel' class=\"form-control\" id=\"country-selector\" name=\"countrySelect\" [(ngModel)]=\"award.Country.TermGuid\" required>\r\n                            <option *ngFor=\"let country of countryList\" [ngValue]=\"country.TermId\">\r\n                                {{country.TermLabel}}\r\n                            </option>\r\n                        </select>\r\n      <div *ngIf=\"firstName.errors && (firstName.dirty || firstName.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!firstName.errors.required\">First Name is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  \r\n  <div class=\"form-group\">\r\n    <div class=\"col-md-offset-3 col-md-9\">\r\n      <button type=\"submit\" (click)='save()' class=\"btn btn-default\">Save</button>\r\n    </div>\r\n  </div>\r\n</form>\r\n"
+module.exports = "<form #candidateForm=\"ngForm\" class=\"form-horizontal\">\r\n  <h4>Create new candidate</h4>\r\n  <hr />\r\n  <div class=\"text-danger\"></div>\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label required-asterisk\">First name</label>\r\n    <div class=\"col-md-9\">\r\n      <input [(ngModel)]=\"model.FirstName\" required name=\"FirstName\" #firstName='ngModel' class=\"form-control\" />\r\n      <div *ngIf=\"firstName.errors && (firstName.dirty || firstName.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!firstName.errors.required\">First name is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label required-asterisk\">Last name</label>\r\n    <div class=\"col-md-9\">\r\n      <input [(ngModel)]=\"model.LastName\" required name=\"LastName\" #lastName='ngModel' class=\"form-control\" />\r\n      <div *ngIf=\"lastName.errors && (lastName.dirty || lastName.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!lastName.errors.required\">Last name is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  \r\n  <div class=\"form-group\">\r\n    <div class=\"col-md-offset-3 col-md-9\">\r\n      <button type=\"submit\" (click)='save()' [disabled]=\"!candidateForm.form.valid\" class=\"btn btn-primary\">Save</button>\r\n      <button type=\"submit\" (click)='cancel()' class=\"btn btn-default\">Cancel</button>\r\n    </div>\r\n  </div>\r\n</form>\r\n"
 
 /***/ }),
 
@@ -791,6 +783,8 @@ module.exports = "<alert-helper></alert-helper>\r\n<form class=\"form-horizontal
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__hr_management_service__ = __webpack_require__("./src/app/hr-management/hr-management.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_candidate__ = __webpack_require__("./src/app/models/candidate.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_alert_alert_service__ = __webpack_require__("./src/app/shared/alert/alert.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CandidateEditItemComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -804,16 +798,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var CandidateEditItemComponent = (function () {
-    function CandidateEditItemComponent(service) {
+    function CandidateEditItemComponent(service, router, alertService) {
         this.service = service;
+        this.router = router;
+        this.alertService = alertService;
         this.model = new __WEBPACK_IMPORTED_MODULE_2__models_candidate__["a" /* Candidate */]();
     }
     CandidateEditItemComponent.prototype.save = function () {
+        var _this = this;
         this.service.createCandidate(this.model).subscribe(function (data) {
         }, function (error) {
-            console.log('Something went wrong! Get candidates failed!');
+            _this.alertService.addAlert({
+                id: 1,
+                type: 'danger',
+                message: error.text(),
+            });
         });
+    };
+    CandidateEditItemComponent.prototype.cancel = function () {
+        this.router.navigate(['/candidate-list']);
     };
     return CandidateEditItemComponent;
 }());
@@ -823,10 +829,10 @@ CandidateEditItemComponent = __decorate([
         template: __webpack_require__("./src/app/hr-management/candidate/candidate-edit-item/candidate-edit-item.html"),
         styles: [__webpack_require__("./src/app/hr-management/candidate/candidate-edit-item/candidate-edit-item.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__hr_management_service__["a" /* HrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__hr_management_service__["a" /* HrService */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__hr_management_service__["a" /* HrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__hr_management_service__["a" /* HrService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__shared_alert_alert_service__["a" /* AlertService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__shared_alert_alert_service__["a" /* AlertService */]) === "function" && _c || Object])
 ], CandidateEditItemComponent);
 
-var _a;
+var _a, _b, _c;
 //# sourceMappingURL=candidate-edit-item.js.map
 
 /***/ }),
@@ -839,7 +845,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "table {\r\n    border-collapse: collapse;\r\n    width: 100%;\r\n}\r\n\r\nth, td {\r\n    text-align: left;\r\n    padding: 8px;\r\n}\r\n\r\ntr:nth-child(even){background-color: #f2f2f2}\r\n\r\nth {\r\n    background-color: #4CAF50;\r\n    color: white;\r\n}", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -852,7 +858,7 @@ module.exports = module.exports.toString();
 /***/ "./src/app/hr-management/candidate/candidate-list/candidate-list.html":
 /***/ (function(module, exports) {
 
-module.exports = "  <h2>Candidate list</h2>\r\n   <button type=\"submit\" (click)='moveToCreateForm()' class=\"btn btn-default\">Add candidate</button>\r\n\r\n  <table>\r\n      <thead>\r\n        <tr>\r\n          <th>EmployeeId</th>\r\n          <th>FirstName</th>\r\n          <th>LastName</th>\r\n          <th>BirthDay</th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr *ngFor=\"let candidate of candidatesList\">\r\n          <td>{{candidate.firstName}}</td>\r\n        </tr>\r\n      </tbody>\r\n    </table>"
+module.exports = "<h2>Candidate list</h2>\r\n<div class=\"form-group\">\r\n  <button type=\"button\" (click)='moveToCreateForm()' class=\"btn btn-primary\">Add item</button>\r\n</div>\r\n<table>\r\n  <thead>\r\n    <tr>\r\n      <th>#</th>\r\n      <th>FirstName</th>\r\n      <th>LastName</th>\r\n      <th>BirthDay</th>\r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr *ngFor=\"let candidate of candidatesList\">\r\n      <td>{{candidate.firstName}}</td>\r\n    </tr>\r\n  </tbody>\r\n</table>\r\n"
 
 /***/ }),
 
@@ -901,7 +907,7 @@ CandidateListComponent = __decorate([
         template: __webpack_require__("./src/app/hr-management/candidate/candidate-list/candidate-list.html"),
         styles: [__webpack_require__("./src/app/hr-management/candidate/candidate-list/candidate-list.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__hr_management_service__["a" /* HrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__hr_management_service__["a" /* HrService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__hr_management_service__["a" /* HrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__hr_management_service__["a" /* HrService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* ActivatedRoute */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _c || Object])
 ], CandidateListComponent);
 
 var _a, _b, _c;
@@ -1114,7 +1120,7 @@ module.exports = module.exports.toString();
 /***/ "./src/app/hr-management/project/project-edit-item/project-edit-item.html":
 /***/ (function(module, exports) {
 
-module.exports = "<alert-helper></alert-helper>\r\n<form class=\"form-horizontal\">\r\n  <h4>Create new project</h4>\r\n  <hr />\r\n  <div class=\"text-danger\"></div>\r\n  <div class=\"form-group\">\t\r\n    <label class=\"col-md-3 control-label required-asterisk\">Title</label>\r\n    <div class=\"col-md-9\">\r\n      <input [(ngModel)]=\"model.Title\" required name=\"Title\" #title='ngModel' class=\"form-control\" />\r\n      <div *ngIf=\"title.errors && (title.dirty || title.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!title.errors.required\">Title is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label required-asterisk\">Content</label>\r\n    <div class=\"col-md-9\">\r\n      <input [(ngModel)]=\"model.Content\" required name=\"Content\" #content='ngModel' class=\"form-control\" />\r\n      <div *ngIf=\"content.errors && (content.dirty || content.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!content.errors.required\">Content is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n    <div class=\"col-md-offset-3 col-md-9\">\r\n      <button type=\"submit\" (click)='save()' class=\"btn btn-default\">Save</button>\r\n    </div>\r\n  </div>\r\n</form>\r\n"
+module.exports = "<form #projectForm=\"ngForm\" class=\"form-horizontal\">\r\n  <h4>Create new project</h4>\r\n  <hr />\r\n  <div class=\"text-danger\"></div>\r\n  <div class=\"form-group\">\t\r\n    <label class=\"col-md-3 control-label required-asterisk\">Title</label>\r\n    <div class=\"col-md-9\">\r\n      <input [(ngModel)]=\"model.Title\" required name=\"Title\" #title='ngModel' class=\"form-control\" />\r\n      <div *ngIf=\"title.errors && (title.dirty || title.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!title.errors.required\">Title is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label required-asterisk\">Content</label>\r\n    <div class=\"col-md-9\">\r\n      <input [(ngModel)]=\"model.Content\" required name=\"Content\" #content='ngModel' class=\"form-control\" />\r\n      <div *ngIf=\"content.errors && (content.dirty || content.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!content.errors.required\">Content is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n    <div class=\"col-md-offset-3 col-md-9\">\r\n      <button type=\"submit\" (click)='save()' [disabled]=\"!projectForm.form.valid\" class=\"btn btn-primary\">Save</button>\r\n      <button type=\"submit\" (click)='cancel()' class=\"btn btn-default\">Cancel</button>\r\n    </div>\r\n  </div>\r\n</form>\r\n"
 
 /***/ }),
 
@@ -1125,6 +1131,8 @@ module.exports = "<alert-helper></alert-helper>\r\n<form class=\"form-horizontal
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__hr_management_service__ = __webpack_require__("./src/app/hr-management/hr-management.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_project__ = __webpack_require__("./src/app/models/project.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_alert_alert_service__ = __webpack_require__("./src/app/shared/alert/alert.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProjectEditItemComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1138,16 +1146,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var ProjectEditItemComponent = (function () {
-    function ProjectEditItemComponent(service) {
+    function ProjectEditItemComponent(service, router, alertService) {
         this.service = service;
+        this.router = router;
+        this.alertService = alertService;
         this.model = new __WEBPACK_IMPORTED_MODULE_2__models_project__["a" /* Project */]();
     }
     ProjectEditItemComponent.prototype.save = function () {
+        var _this = this;
         this.service.createProject(this.model).subscribe(function (data) {
+            _this.router.navigate(['/project-list']);
         }, function (error) {
-            console.log('Something went wrong! Get projects failed!');
+            _this.alertService.addAlert({
+                id: 1,
+                type: 'danger',
+                message: error.text(),
+            });
         });
+    };
+    ProjectEditItemComponent.prototype.cancel = function () {
+        this.router.navigate(['/project-list']);
     };
     return ProjectEditItemComponent;
 }());
@@ -1157,10 +1178,10 @@ ProjectEditItemComponent = __decorate([
         template: __webpack_require__("./src/app/hr-management/project/project-edit-item/project-edit-item.html"),
         styles: [__webpack_require__("./src/app/hr-management/project/project-edit-item/project-edit-item.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__hr_management_service__["a" /* HrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__hr_management_service__["a" /* HrService */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__hr_management_service__["a" /* HrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__hr_management_service__["a" /* HrService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__shared_alert_alert_service__["a" /* AlertService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__shared_alert_alert_service__["a" /* AlertService */]) === "function" && _c || Object])
 ], ProjectEditItemComponent);
 
-var _a;
+var _a, _b, _c;
 //# sourceMappingURL=project-edit-item.js.map
 
 /***/ }),
@@ -1173,7 +1194,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "table {\r\n    border-collapse: collapse;\r\n    width: 100%;\r\n}\r\n\r\nth, td {\r\n    text-align: left;\r\n    padding: 8px;\r\n}\r\n\r\ntr:nth-child(even){background-color: #f2f2f2}\r\n\r\nth {\r\n    background-color: #4CAF50;\r\n    color: white;\r\n}", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -1186,7 +1207,7 @@ module.exports = module.exports.toString();
 /***/ "./src/app/hr-management/project/project-list/project-list.html":
 /***/ (function(module, exports) {
 
-module.exports = "  <h2>Project list</h2>\r\n   <button type=\"submit\" (click)='moveToCreateForm()' class=\"btn btn-default\">Add project</button>\r\n\r\n  <table>\r\n      <thead>\r\n        <tr>\r\n          <th>ProjectId</th>\r\n          <th>Title</th>\r\n          <th>Content</th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr *ngFor=\"let project of projectsList\">\r\n          <td>{{project.projectId}}</td>\r\n          <td>{{project.title}}</td>\r\n          <td>{{project.content}}</td>\r\n        </tr>\r\n      </tbody>\r\n    </table>"
+module.exports = "<h2>Project list</h2>\r\n<div class=\"form-group\">\r\n  <button type=\"button\" (click)='moveToCreateForm()' class=\"btn btn-primary\">Add item</button>\r\n</div>\r\n<table>\r\n  <thead>\r\n    <tr>\r\n      <th>#</th>\r\n      <th>Title</th>\r\n      <th>Content</th>\r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr *ngFor=\"let project of projectsList\">\r\n      <td>{{project.projectId}}</td>\r\n      <td>{{project.title}}</td>\r\n      <td>{{project.content}}</td>\r\n    </tr>\r\n  </tbody>\r\n</table>\r\n"
 
 /***/ }),
 
@@ -1235,7 +1256,7 @@ ProjectListComponent = __decorate([
         template: __webpack_require__("./src/app/hr-management/project/project-list/project-list.html"),
         styles: [__webpack_require__("./src/app/hr-management/project/project-list/project-list.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__hr_management_service__["a" /* HrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__hr_management_service__["a" /* HrService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__hr_management_service__["a" /* HrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__hr_management_service__["a" /* HrService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* ActivatedRoute */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _c || Object])
 ], ProjectListComponent);
 
 var _a, _b, _c;
@@ -1264,7 +1285,7 @@ module.exports = module.exports.toString();
 /***/ "./src/app/hr-management/skill/skill-edit-item/skill-edit-item.html":
 /***/ (function(module, exports) {
 
-module.exports = "<alert-helper></alert-helper>\r\n<form class=\"form-horizontal\">\r\n  <h4>Create new skill</h4>\r\n  <hr />\r\n  <div class=\"text-danger\"></div>\r\n  <div class=\"form-group\">\t\r\n    <label class=\"col-md-3 control-label required-asterisk\">Title</label>\r\n    <div class=\"col-md-9\">\r\n      <input [(ngModel)]=\"model.Title\" required name=\"Title\" #title='ngModel' class=\"form-control\" />\r\n      <div *ngIf=\"title.errors && (title.dirty || title.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!title.errors.required\">Title is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n    <div class=\"col-md-offset-3 col-md-9\">\r\n      <button type=\"submit\" (click)='save()' class=\"btn btn-default\">Save</button>\r\n    </div>\r\n  </div>\r\n</form>\r\n"
+module.exports = "<form #skillForm=\"ngForm\" class=\"form-horizontal\">\r\n  <h4>Create new skill</h4>\r\n  <hr />\r\n  <div class=\"text-danger\"></div>\r\n  <div class=\"form-group\">\t\r\n    <label class=\"col-md-3 control-label required-asterisk\">Title</label>\r\n    <div class=\"col-md-9\">\r\n      <input [(ngModel)]=\"model.Title\" required name=\"Title\" #title='ngModel' class=\"form-control\" />\r\n      <div *ngIf=\"title.errors && (title.dirty || title.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!title.errors.required\">Title is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n    <div class=\"col-md-offset-3 col-md-9\">\r\n      <button type=\"submit\" (click)='save()' [disabled]=\"!skillForm.form.valid\" class=\"btn btn-primary\">Save</button>\r\n      <button type=\"submit\" (click)='cancel()' class=\"btn btn-default\">Cancel</button>\r\n    </div>\r\n  </div>\r\n</form>\r\n"
 
 /***/ }),
 
@@ -1275,6 +1296,8 @@ module.exports = "<alert-helper></alert-helper>\r\n<form class=\"form-horizontal
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__hr_management_service__ = __webpack_require__("./src/app/hr-management/hr-management.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_skill__ = __webpack_require__("./src/app/models/skill.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_alert_alert_service__ = __webpack_require__("./src/app/shared/alert/alert.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SkillEditItemComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1288,16 +1311,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var SkillEditItemComponent = (function () {
-    function SkillEditItemComponent(service) {
+    function SkillEditItemComponent(service, router, alertService) {
         this.service = service;
+        this.router = router;
+        this.alertService = alertService;
         this.model = new __WEBPACK_IMPORTED_MODULE_2__models_skill__["a" /* Skill */]();
     }
     SkillEditItemComponent.prototype.save = function () {
+        var _this = this;
         this.service.createSkill(this.model).subscribe(function (data) {
+            _this.router.navigate(['/skill-list']);
         }, function (error) {
-            console.log('Something went wrong! Get skills failed!');
+            _this.alertService.addAlert({
+                id: 1,
+                type: 'danger',
+                message: error.text(),
+            });
         });
+    };
+    SkillEditItemComponent.prototype.cancel = function () {
+        this.router.navigate(['/skill-list']);
     };
     return SkillEditItemComponent;
 }());
@@ -1307,10 +1343,10 @@ SkillEditItemComponent = __decorate([
         template: __webpack_require__("./src/app/hr-management/skill/skill-edit-item/skill-edit-item.html"),
         styles: [__webpack_require__("./src/app/hr-management/skill/skill-edit-item/skill-edit-item.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__hr_management_service__["a" /* HrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__hr_management_service__["a" /* HrService */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__hr_management_service__["a" /* HrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__hr_management_service__["a" /* HrService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__shared_alert_alert_service__["a" /* AlertService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__shared_alert_alert_service__["a" /* AlertService */]) === "function" && _c || Object])
 ], SkillEditItemComponent);
 
-var _a;
+var _a, _b, _c;
 //# sourceMappingURL=skill-edit-item.js.map
 
 /***/ }),
@@ -1323,7 +1359,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, "table {\r\n    border-collapse: collapse;\r\n    width: 100%;\r\n}\r\n\r\nth, td {\r\n    text-align: left;\r\n    padding: 8px;\r\n}\r\n\r\ntr:nth-child(even){background-color: #f2f2f2}\r\n\r\nth {\r\n    background-color: #4CAF50;\r\n    color: white;\r\n}", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -1336,7 +1372,7 @@ module.exports = module.exports.toString();
 /***/ "./src/app/hr-management/skill/skill-list/skill-list.html":
 /***/ (function(module, exports) {
 
-module.exports = "  <h2>Skill list</h2>\r\n   <button type=\"submit\" (click)='moveToCreateForm()' class=\"btn btn-default\">Add skill</button>\r\n\r\n  <table>\r\n      <thead>\r\n        <tr>\r\n          <th>SkillId</th>\r\n          <th>Title</th>\r\n          <th>Content</th>\r\n        </tr>\r\n      </thead>\r\n      <tbody>\r\n        <tr *ngFor=\"let skill of skillsList\">\r\n          <td>{{skill.skillId}}</td>\r\n          <td>{{skill.title}}</td>\r\n          <td>{{skill.content}}</td>\r\n        </tr>\r\n      </tbody>\r\n    </table>"
+module.exports = "<h2>Skill list</h2>\r\n<div class=\"form-group\">\r\n  <button type=\"button\" (click)='moveToCreateForm()' class=\"btn btn-primary\">Add item</button>\r\n</div>\r\n<table>\r\n  <thead>\r\n    <tr>\r\n      <th>#</th>\r\n      <th>Title</th>\r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr *ngFor=\"let skill of skillsList\">\r\n      <td>{{skill.skillId}}</td>\r\n      <td>{{skill.title}}</td>\r\n    </tr>\r\n  </tbody>\r\n</table>\r\n"
 
 /***/ }),
 
@@ -1385,7 +1421,7 @@ SkillListComponent = __decorate([
         template: __webpack_require__("./src/app/hr-management/skill/skill-list/skill-list.html"),
         styles: [__webpack_require__("./src/app/hr-management/skill/skill-list/skill-list.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__hr_management_service__["a" /* HrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__hr_management_service__["a" /* HrService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__hr_management_service__["a" /* HrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__hr_management_service__["a" /* HrService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* ActivatedRoute */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _c || Object])
 ], SkillListComponent);
 
 var _a, _b, _c;

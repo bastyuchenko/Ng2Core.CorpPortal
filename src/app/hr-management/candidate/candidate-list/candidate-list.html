@@ -1,18 +1,19 @@
-  <h2>Candidate list</h2>
-   <button type="submit" (click)='moveToCreateForm()' class="btn btn-default">Add candidate</button>
-
-  <table>
-      <thead>
-        <tr>
-          <th>EmployeeId</th>
-          <th>FirstName</th>
-          <th>LastName</th>
-          <th>BirthDay</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let candidate of candidatesList">
-          <td>{{candidate.firstName}}</td>
-        </tr>
-      </tbody>
-    </table>
+<h2>Candidate list</h2>
+<div class="form-group">
+  <button type="button" (click)='moveToCreateForm()' class="btn btn-primary">Add item</button>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>FirstName</th>
+      <th>LastName</th>
+      <th>BirthDay</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let candidate of candidatesList">
+      <td>{{candidate.firstName}}</td>
+    </tr>
+  </tbody>
+</table>

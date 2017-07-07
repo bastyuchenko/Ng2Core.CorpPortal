@@ -4,6 +4,7 @@ import { NgForm, AbstractControl } from '@angular/forms';
 import { ApplicationUser } from "./../../models/application-user"
 import { RegisterModel } from "./../register-model"
 import { AccountManagementService } from "./../account-management.service"
+import { AlertService } from './../../shared/alert/alert.service'
 
 @Component({
     selector: "register-account",
@@ -14,26 +15,15 @@ import { AccountManagementService } from "./../account-management.service"
 export class RegisterAccountComponent implements OnInit {
 
     private model: RegisterModel = new RegisterModel();
-    private alerts: any = [];
-
-    private updating = {
-        country: false,
-        links: false,
-    }
-
-    private patterns = {
-        Url: /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/,
-        Img: /.*\.png/,
-        Text: /^[a-zA-Z ]*$/
-    }
 
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private accountService: AccountManagementService
+        private accountService: AccountManagementService,
+        private alertService: AlertService
     ) { }
 
-    ngOnInit(){
+    ngOnInit() {
 
     }
 
@@ -41,21 +31,18 @@ export class RegisterAccountComponent implements OnInit {
 
         this.accountService.registerAccount(this.model).subscribe(
             (data): void => {
-                this.updating.country = false;
-                this.alerts.push({
+                this.alertService.addAlert({
+                    id: 1,
                     type: 'success',
-                    msg: `Country Item has been updated successfully.`,
+                    message: 'User has been registered successfully',
                 });
             },
             (error): void => {
-                this.alerts.push({
+                this.alertService.addAlert({
+                    id: 1,
                     type: 'danger',
-                    msg: error,
+                    message: error.text(),
                 });
-            },
-            () => {
-                window.scrollTo(0, 0);
-                this.updating.country = false;
             }
         );
     }

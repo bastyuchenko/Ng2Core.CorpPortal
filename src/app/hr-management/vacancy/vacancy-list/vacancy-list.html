@@ -1,4 +1,4 @@
-<h2>Skill list</h2>
+<h2>Vacancy list</h2>
 <div class="form-group">
   <button type="button" (click)='moveToCreateForm()' class="btn btn-primary">Add item</button>
 </div>
@@ -6,13 +6,14 @@
   <thead>
     <tr>
       <th>#</th>
-      <th>Title</th>
+      <th>FirstName</th>
+      <th>LastName</th>
+      <th>BirthDay</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let skill of skillsList">
-      <td>{{skill.skillId}}</td>
-      <td>{{skill.title}}</td>
+    <tr *ngFor="let vacancy of vacanciesList">
+      <td>{{vacancy.firstName}}</td>
     </tr>
   </tbody>
 </table>

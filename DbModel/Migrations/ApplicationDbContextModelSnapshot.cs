@@ -130,7 +130,7 @@ namespace Ng2Core.CorpPortal.dbmodel.migrations
 
                     b.Property<int>("AccessFailedCount");
 
-                    b.Property<DateTime>("BirthDay")
+                    b.Property<DateTime?>("BirthDay")
                         .HasColumnType("date");
 
                     b.Property<string>("ConcurrencyStamp")

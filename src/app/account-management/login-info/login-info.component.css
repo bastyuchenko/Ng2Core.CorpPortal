@@ -1,17 +1,1 @@
-﻿.validationMessage{
-    color:red;
-    font-style: italic;
-}
-
-.required-asterisk:after {
-    content: " *";
-    color: red;
-}
-
-.popover-content {
-    width:1000px;
-}
-
-.popover{
-    max-width: 100%; /* Max Width of the popover (depending on the container!) */
-}
+﻿

@@ -1,5 +1,5 @@
-<form #candidateForm="ngForm" class="form-horizontal">
-  <h4>Create new candidate</h4>
+<form #vacancyForm="ngForm" class="form-horizontal">
+  <h4>Create new vacancy</h4>
   <hr />
   <div class="text-danger"></div>
   <div class="form-group">
@@ -24,7 +24,7 @@
   
   <div class="form-group">
     <div class="col-md-offset-3 col-md-9">
-      <button type="submit" (click)='save()' [disabled]="!candidateForm.form.valid" class="btn btn-primary">Save</button>
+      <button type="submit" (click)='save()' [disabled]="!vacancyForm.form.valid" class="btn btn-primary">Save</button>
       <button type="submit" (click)='cancel()' class="btn btn-default">Cancel</button>
     </div>
   </div>

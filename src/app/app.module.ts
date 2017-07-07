@@ -22,9 +22,11 @@ import { HrManagementModule } from './hr-management/hr-management.module'
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { AlertService } from './shared/alert/alert.service'
+import { SharedModule } from './shared/shared.module'
 
 @NgModule({
     imports: [
+        SharedModule,
         BrowserModule,
         HttpModule,
         AccountManagementModule,
@@ -41,7 +43,6 @@ import { AlertService } from './shared/alert/alert.service'
         ], { useHash: true })
     ],
     declarations: [
-
         AppComponent,
         AboutComponent,
         WelcomeComponent,

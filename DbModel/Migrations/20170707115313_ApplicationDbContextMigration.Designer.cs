@@ -8,7 +8,7 @@ using Ng2Core.CorpPortal.Models;
 namespace Ng2Core.CorpPortal.dbmodel.migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170705153322_ApplicationDbContextMigration")]
+    [Migration("20170707115313_ApplicationDbContextMigration")]
     partial class ApplicationDbContextMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -131,7 +131,7 @@ namespace Ng2Core.CorpPortal.dbmodel.migrations
 
                     b.Property<int>("AccessFailedCount");
 
-                    b.Property<DateTime>("BirthDay")
+                    b.Property<DateTime?>("BirthDay")
                         .HasColumnType("date");
 
                     b.Property<string>("ConcurrencyStamp")

@@ -43,7 +43,7 @@ namespace Ng2Core.CorpPortal.dbmodel.migrations
                 {
                     Id = table.Column<string>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
-                    BirthDay = table.Column<DateTime>(type: "date", nullable: false),
+                    BirthDay = table.Column<DateTime>(type: "date", nullable: true),
                     ConcurrencyStamp = table.Column<string>(nullable: true),
                     Email = table.Column<string>(maxLength: 256, nullable: true),
                     EmailConfirmed = table.Column<bool>(nullable: false),

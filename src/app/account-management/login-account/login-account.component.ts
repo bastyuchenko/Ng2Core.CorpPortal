@@ -20,17 +20,12 @@ export class LoginAccountComponent {
         private route: ActivatedRoute,
         private router: Router,
         private accountService: AccountManagementService,
-        private alertService: AlertService
+         private alertService: AlertService
     ) { }
 
     login(): void {
         this.accountService.loginAccount(this.model).subscribe(
             (data): void => {
-                // this.alertService.addAlert({
-                //     id: 1,
-                //     type: 'success',
-                //     message: 'You have been successfully signed in.',
-                // });
                 this.router.navigate(['/welcome']);
             });
     }
