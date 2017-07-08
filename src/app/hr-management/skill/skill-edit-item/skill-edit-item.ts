@@ -12,8 +12,9 @@ import { AlertService } from './../../../shared/alert/alert.service'
     styleUrls: ["skill-edit-item.css"]
 })
 
-export class SkillEditItemComponent {
+export class SkillEditItemComponent implements OnInit {
     constructor(
+        private route: ActivatedRoute,
         private service: HrService,
         private router: Router,
         private alertService: AlertService) {
@@ -21,6 +22,9 @@ export class SkillEditItemComponent {
 
     private model: Skill = new Skill();
 
+    ngOnInit() {
+        console.log(this.route.snapshot.params['id']);
+    }
 
     save(): void {
         this.service.createSkill(this.model).subscribe(

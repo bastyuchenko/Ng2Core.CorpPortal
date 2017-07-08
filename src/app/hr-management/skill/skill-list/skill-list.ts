@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core"
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { HrService } from "./../../hr-management.service"
 import { Skill } from "./../../../models/skill"
+import { AlertService } from './../../../shared/alert/alert.service'
 
 @Component({
     selector: "proejct-list",
@@ -12,7 +13,8 @@ import { Skill } from "./../../../models/skill"
 export class SkillListComponent implements OnInit {
     constructor(private service: HrService,
         private route: ActivatedRoute,
-        private router: Router, ) {
+        private router: Router,
+        private alertService: AlertService) {
     }
     private skillsList: Skill[];
 
@@ -28,6 +30,24 @@ export class SkillListComponent implements OnInit {
 
     moveToCreateForm(): void {
         this.router.navigate(['/skill-edit-item']);
+    }
+
+    deleteItem(item): void {
+        this.service.deleteSkill(item.skillId).subscribe(
+            (data) => {
+                // this.router.navigate(['/skill-list']);
+                var index: number = this.skillsList.indexOf(item);
+                if (index !== -1) {
+                    this.skillsList.splice(index, 1);
+                }
+            },
+            (error): void => {
+                this.alertService.addAlert({
+                    id: 1,
+                    type: 'danger',
+                    message: error.text(),
+                });
+            });
     }
 
 }

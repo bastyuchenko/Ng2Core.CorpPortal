@@ -8,7 +8,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, ".validationMessage{\n    color:red;\n    font-style: italic;\n}\n\n.required-asterisk:after {\n    content: \" *\";\n    color: red;\n}\n\ntable {\n    border-collapse: collapse;\n    width: 100%;\n}\n\nth, td {\n    text-align: left;\n    padding: 8px;\n}\n\ntr:nth-child(even){background-color: #f2f2f2}\n\nth {\n    background-color: #337ab7;\n    color: white;\n}", ""]);
+exports.push([module.i, ".validationMessage {\n  color: red;\n  font-style: italic;\n}\n\n.required-asterisk:after {\n  content: \" *\";\n  color: red;\n}\n\ntable {\n  border-collapse: collapse;\n  width: 100%;\n}\n\nth,\ntd {\n  text-align: left;\n  padding: 8px;\n}\n\ntr:nth-child(even) {\n  background-color: #f2f2f2\n}\n\nth {\n  background-color: #337ab7;\n  color: white;\n}\n\ntd.align-right {\n  text-align: right\n}\n", ""]);
 
 // exports
 

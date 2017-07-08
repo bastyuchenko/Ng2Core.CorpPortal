@@ -30,7 +30,7 @@ import { AlertService } from './../shared/alert/alert.service'
             { path: 'project-list', component: ProjectListComponent },
             { path: 'project-edit-item', component: ProjectEditItemComponent },
             { path: 'skill-list', component: SkillListComponent },
-            { path: 'skill-edit-item', component: SkillEditItemComponent },
+            { path: 'skill-edit-item/:id', component: SkillEditItemComponent },
             { path: 'vacancy-list', component: SkillListComponent },
             { path: 'vacancy-edit-item', component: SkillEditItemComponent },
         ])

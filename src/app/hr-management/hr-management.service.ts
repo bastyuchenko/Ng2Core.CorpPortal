@@ -86,6 +86,30 @@ export class HrService {
             .do((): void => { })
             .catch(this.errorHandler)
     }
+
+    deleteSkill(id: number): Observable<Response> {
+        return this.http.delete(`/api/skills/skill/${id}`)
+            .do((): void => { })
+            .catch(this.errorHandler)
+    }
+
+    deleteVacancy(id: number): Observable<Response> {
+        return this.http.delete(`/api/vacancies/vacancy/${id}`)
+            .do((): void => { })
+            .catch(this.errorHandler)
+    }
+
+    deleteProject(id: number): Observable<Response> {
+        return this.http.delete(`/api/projects/project/${id}`)
+            .do((): void => { })
+            .catch(this.errorHandler)
+    }
+
+    deleteCandidate(id: number): Observable<Response> {
+        return this.http.delete(`/api/candidates/candidate/${id}`)
+            .do((): void => { })
+            .catch(this.errorHandler)
+    }
     
     errorHandler(err: Response) {
         return Observable.throw(err);

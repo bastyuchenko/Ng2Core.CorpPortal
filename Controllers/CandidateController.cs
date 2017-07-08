@@ -58,5 +58,43 @@ namespace Ng2Core.CorpPortal.Controllers
                 throw new Exception("Unfortunatelly the candidate wasn't saved. Try again later.");
             }
         }
+
+        
+        // PUT api/values/5
+        [HttpPut("project")]
+        public IActionResult UpdateCandidate([FromBody]CandidateDto cDto)
+        {
+            if (cDto == null)
+            {
+                return BadRequest("Object is null or request body is corrupted.");
+            }
+
+            var cand = Mapper.Map<Candidate>(cDto);
+
+            candidateRepository.UpdateCandidate(cand);
+            if (candidateRepository.Save())
+            {
+                return CreatedAtRoute("GetCandidate", new { id = cand.CandidatId }, null);
+            }
+            else
+            {
+                throw new Exception("Unfortunatelly the candidate wasn't saved. Try again later.");
+            }
+        }
+
+        // DELETE api/values/5
+        [HttpDelete("candidate/{id}")]
+        public IActionResult DeleteCandidate(int id)
+        {
+            candidateRepository.DeleteCandidate(id);
+            if (candidateRepository.Save())
+            {
+                return Accepted();
+            }
+            else
+            {
+                return BadRequest("Unfortunatelly the candidate wasn't deleted. Try again later.");
+            }
+        }
     }
 }

@@ -62,21 +62,28 @@ namespace Ng2Core.CorpPortal.Controllers
 
         // PUT api/values/5
         [HttpPut("skill")]
-        public IActionResult UpdateSkill([FromBody]Skill skill)
+        public IActionResult UpdateSkill([FromBody]SkillDto SkillDto)
         {
+            if (SkillDto == null)
+            {
+                return BadRequest("Object is null or request body is corrupted.");
+            }
+
+            var skill = Mapper.Map<Skill>(SkillDto);
+
             skillRepository.UpdateSkill(skill);
             if (skillRepository.Save())
             {
-                return NoContent();
+                return CreatedAtRoute("GetSkill", new { id = skill.SkillId }, null);
             }
             else
             {
-                return BadRequest("Unfortunatelly the skill wasn't saved. Try again later.");
+                throw new Exception("Unfortunatelly the skill wasn't saved. Try again later.");
             }
         }
 
         // DELETE api/values/5
-        [HttpDelete("skills/skill/{id}")]
+        [HttpDelete("skill/{id}")]
         public IActionResult DeleteSkill(int id)
         {
             skillRepository.DeleteSkill(id);

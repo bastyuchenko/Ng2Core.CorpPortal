@@ -62,21 +62,28 @@ namespace Ng2Core.CorpPortal.Controllers
 
         // PUT api/values/5
         [HttpPut("project")]
-        public IActionResult UpdateProject([FromBody]Project project)
+        public IActionResult UpdateProject([FromBody]ProjectDto ProjectDto)
         {
+            if (ProjectDto == null)
+            {
+                return BadRequest("Object is null or request body is corrupted.");
+            }
+
+            var project = Mapper.Map<Project>(ProjectDto);
+
             projectRepository.UpdateProject(project);
             if (projectRepository.Save())
             {
-                return NoContent();
+                return CreatedAtRoute("GetProject", new { id = project.ProjectId }, null);
             }
             else
             {
-                return BadRequest("Unfortunatelly the project wasn't saved. Try again later.");
+                throw new Exception("Unfortunatelly the project wasn't saved. Try again later.");
             }
         }
 
         // DELETE api/values/5
-        [HttpDelete("projects/project/{id}")]
+        [HttpDelete("project/{id}")]
         public IActionResult DeleteProject(int id)
         {
             projectRepository.DeleteProject(id);

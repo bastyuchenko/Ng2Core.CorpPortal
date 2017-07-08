@@ -559,7 +559,7 @@ module.exports = module.exports.toString();
 /***/ "./src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default bg-primary\">\r\n  <div class=\"container\">\r\n    <div class=\"navbar-header\">\r\n      <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-collapse\">\r\n\t\t\t\t<span class=\"sr-only\">Toggle navigation</span>\r\n\t\t\t\t<span class=\"icon-bar\"></span>\r\n\t\t\t\t<span class=\"icon-bar\"></span>\r\n\t\t\t\t<span class=\"icon-bar\"></span>\r\n\t\t\t</button>\r\n      <a asp-area=\"\" asp-controller=\"Home\" asp-action=\"Index\" class=\"navbar-brand\">Ng2Core.CorpPortal</a>\r\n    </div>\r\n    <div class=\"navbar-collapse collapse\">\r\n      <ul class=\"nav navbar-nav\">\r\n        <li>\r\n          <a [routerLink]=\"['welcome']\">Home</a>\r\n        </li>\r\n\r\n         <li class=\"dropdown\">\r\n          <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Account Management <span class=\"caret\"></span></a>\r\n          <ul class=\"dropdown-menu\">\r\n        <li>\r\n          <a [routerLink]=\"['role-list']\">Roles</a>\r\n        </li>\r\n        </ul>\r\n\r\n        <li class=\"dropdown\">\r\n          <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">HR Management <span class=\"caret\"></span></a>\r\n          <ul class=\"dropdown-menu\">\r\n            <li>\r\n              <a [routerLink]=\"['candidate-list']\">Candidates</a>\r\n            </li>\r\n            <li>\r\n              <a [routerLink]=\"['project-list']\">Projects</a>\r\n            </li>\r\n            <li>\r\n              <a [routerLink]=\"['skill-list']\">Skills</a>\r\n            </li>\r\n          </ul>\r\n        </li>\r\n      </ul>\r\n      <login-info></login-info>\r\n    </div>\r\n  </div>\r\n</nav>\r\n<alert-helper></alert-helper>\r\n<div class=\"container body-content\">\r\n  <div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <main class=\"col-sm-9 offset-sm-3 col-md-9 offset-md-3 pt-3\">\r\n        <router-outlet></router-outlet>\r\n        <router-outlet name=\"lastNews\"></router-outlet>\r\n      </main>\r\n\r\n    </div>\r\n  </div>\r\n  <hr />\r\n  <footer>\r\n    <p>&copy; 2017 - Ng2Core.CorpPortal</p>\r\n  </footer>\r\n</div>\r\n"
+module.exports = "<nav class=\"navbar navbar-default bg-primary\">\r\n  <div class=\"container\">\r\n    <div class=\"navbar-header\">\r\n      <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\".navbar-collapse\">\r\n\t\t\t\t<span class=\"sr-only\">Toggle navigation</span>\r\n\t\t\t\t<span class=\"icon-bar\"></span>\r\n\t\t\t\t<span class=\"icon-bar\"></span>\r\n\t\t\t\t<span class=\"icon-bar\"></span>\r\n\t\t\t</button>\r\n      <a asp-area=\"\" asp-controller=\"Home\" asp-action=\"Index\" class=\"navbar-brand\">Ng2Core.CorpPortal</a>\r\n    </div>\r\n    <div class=\"navbar-collapse collapse\">\r\n      <ul class=\"nav navbar-nav\">\r\n        <li>\r\n          <a [routerLink]=\"['welcome']\">Home</a>\r\n        </li>\r\n\r\n         <li class=\"dropdown\">\r\n          <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Account Management <span class=\"caret\"></span></a>\r\n          <ul class=\"dropdown-menu\">\r\n        <li>\r\n          <a [routerLink]=\"['role-list']\">Roles</a>\r\n        </li>\r\n        </ul>\r\n\r\n        <li class=\"dropdown\">\r\n          <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">HR Management <span class=\"caret\"></span></a>\r\n          <ul class=\"dropdown-menu\">\r\n            <li>\r\n              <a [routerLink]=\"['candidate-list']\">Candidates</a>\r\n            </li>\r\n            <li>\r\n              <a [routerLink]=\"['project-list']\">Projects</a>\r\n            </li>\r\n            <li>\r\n              <a [routerLink]=\"['skill-list']\">Skills</a>\r\n            </li>\r\n            <li>\r\n              <a [routerLink]=\"['vacancy-list']\">Vacancies</a>\r\n            </li>\r\n          </ul>\r\n        </li>\r\n      </ul>\r\n      <login-info></login-info>\r\n    </div>\r\n  </div>\r\n</nav>\r\n<alert-helper></alert-helper>\r\n<div class=\"container body-content\">\r\n  <div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <main class=\"col-sm-9 offset-sm-3 col-md-9 offset-md-3 pt-3\">\r\n        <router-outlet></router-outlet>\r\n        <router-outlet name=\"lastNews\"></router-outlet>\r\n      </main>\r\n\r\n    </div>\r\n  </div>\r\n  <hr />\r\n  <footer>\r\n    <p>&copy; 2017 - Ng2Core.CorpPortal</p>\r\n  </footer>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -931,9 +931,11 @@ var _a, _b, _c;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__project_project_edit_item_project_edit_item__ = __webpack_require__("./src/app/hr-management/project/project-edit-item/project-edit-item.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__skill_skill_list_skill_list__ = __webpack_require__("./src/app/hr-management/skill/skill-list/skill-list.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__skill_skill_edit_item_skill_edit_item__ = __webpack_require__("./src/app/hr-management/skill/skill-edit-item/skill-edit-item.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__hr_management_service__ = __webpack_require__("./src/app/hr-management/hr-management.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__shared_alert_alert_service__ = __webpack_require__("./src/app/shared/alert/alert.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__vacancy_vacancy_list_vacancy_list__ = __webpack_require__("./src/app/hr-management/vacancy/vacancy-list/vacancy-list.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__vacancy_vacancy_edit_item_vacancy_edit_item__ = __webpack_require__("./src/app/hr-management/vacancy/vacancy-edit-item/vacancy-edit-item.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__hr_management_service__ = __webpack_require__("./src/app/hr-management/hr-management.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__ng_bootstrap_ng_bootstrap__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__shared_alert_alert_service__ = __webpack_require__("./src/app/shared/alert/alert.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HrManagementModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -941,6 +943,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -968,14 +972,16 @@ HrManagementModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormsModule */],
             __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* HttpModule */],
             __WEBPACK_IMPORTED_MODULE_5__shared_shared_module__["a" /* SharedModule */],
-            __WEBPACK_IMPORTED_MODULE_13__ng_bootstrap_ng_bootstrap__["a" /* NgbModule */],
+            __WEBPACK_IMPORTED_MODULE_15__ng_bootstrap_ng_bootstrap__["a" /* NgbModule */],
             __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* RouterModule */].forChild([
                 { path: 'candidate-list', component: __WEBPACK_IMPORTED_MODULE_6__candidate_candidate_list_candidate_list__["a" /* CandidateListComponent */] },
                 { path: 'candidate-edit-item', component: __WEBPACK_IMPORTED_MODULE_7__candidate_candidate_edit_item_candidate_edit_item__["a" /* CandidateEditItemComponent */] },
                 { path: 'project-list', component: __WEBPACK_IMPORTED_MODULE_8__project_project_list_project_list__["a" /* ProjectListComponent */] },
                 { path: 'project-edit-item', component: __WEBPACK_IMPORTED_MODULE_9__project_project_edit_item_project_edit_item__["a" /* ProjectEditItemComponent */] },
                 { path: 'skill-list', component: __WEBPACK_IMPORTED_MODULE_10__skill_skill_list_skill_list__["a" /* SkillListComponent */] },
-                { path: 'skill-edit-item', component: __WEBPACK_IMPORTED_MODULE_11__skill_skill_edit_item_skill_edit_item__["a" /* SkillEditItemComponent */] },
+                { path: 'skill-edit-item/:id', component: __WEBPACK_IMPORTED_MODULE_11__skill_skill_edit_item_skill_edit_item__["a" /* SkillEditItemComponent */] },
+                { path: 'vacancy-list', component: __WEBPACK_IMPORTED_MODULE_10__skill_skill_list_skill_list__["a" /* SkillListComponent */] },
+                { path: 'vacancy-edit-item', component: __WEBPACK_IMPORTED_MODULE_11__skill_skill_edit_item_skill_edit_item__["a" /* SkillEditItemComponent */] },
             ])
         ],
         declarations: [
@@ -984,7 +990,9 @@ HrManagementModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_8__project_project_list_project_list__["a" /* ProjectListComponent */],
             __WEBPACK_IMPORTED_MODULE_9__project_project_edit_item_project_edit_item__["a" /* ProjectEditItemComponent */],
             __WEBPACK_IMPORTED_MODULE_10__skill_skill_list_skill_list__["a" /* SkillListComponent */],
-            __WEBPACK_IMPORTED_MODULE_11__skill_skill_edit_item_skill_edit_item__["a" /* SkillEditItemComponent */]
+            __WEBPACK_IMPORTED_MODULE_11__skill_skill_edit_item_skill_edit_item__["a" /* SkillEditItemComponent */],
+            __WEBPACK_IMPORTED_MODULE_12__vacancy_vacancy_list_vacancy_list__["a" /* VacancyListComponent */],
+            __WEBPACK_IMPORTED_MODULE_13__vacancy_vacancy_edit_item_vacancy_edit_item__["a" /* VacancyEditItemComponent */]
         ],
         exports: [
             __WEBPACK_IMPORTED_MODULE_6__candidate_candidate_list_candidate_list__["a" /* CandidateListComponent */],
@@ -992,11 +1000,13 @@ HrManagementModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_8__project_project_list_project_list__["a" /* ProjectListComponent */],
             __WEBPACK_IMPORTED_MODULE_9__project_project_edit_item_project_edit_item__["a" /* ProjectEditItemComponent */],
             __WEBPACK_IMPORTED_MODULE_10__skill_skill_list_skill_list__["a" /* SkillListComponent */],
-            __WEBPACK_IMPORTED_MODULE_11__skill_skill_edit_item_skill_edit_item__["a" /* SkillEditItemComponent */]
+            __WEBPACK_IMPORTED_MODULE_11__skill_skill_edit_item_skill_edit_item__["a" /* SkillEditItemComponent */],
+            __WEBPACK_IMPORTED_MODULE_12__vacancy_vacancy_list_vacancy_list__["a" /* VacancyListComponent */],
+            __WEBPACK_IMPORTED_MODULE_13__vacancy_vacancy_edit_item_vacancy_edit_item__["a" /* VacancyEditItemComponent */]
         ],
         providers: [
-            __WEBPACK_IMPORTED_MODULE_12__hr_management_service__["a" /* HrService */],
-            __WEBPACK_IMPORTED_MODULE_14__shared_alert_alert_service__["a" /* AlertService */]
+            __WEBPACK_IMPORTED_MODULE_14__hr_management_service__["a" /* HrService */],
+            __WEBPACK_IMPORTED_MODULE_16__shared_alert_alert_service__["a" /* AlertService */]
         ]
     })
 ], HrManagementModule);
@@ -1069,6 +1079,15 @@ var HrService = (function () {
             .do(function () { })
             .catch(this.errorHandler);
     };
+    HrService.prototype.getVacancies = function () {
+        return this.http.get('/api/vacancies')
+            .map(function (response) {
+            var tempResult = response.json();
+            return tempResult;
+        })
+            .do(function () { })
+            .catch(this.errorHandler);
+    };
     HrService.prototype.createCandidate = function (model) {
         return this.http.post("/api/candidates/candidate", model)
             .do(function () { })
@@ -1081,6 +1100,31 @@ var HrService = (function () {
     };
     HrService.prototype.createSkill = function (model) {
         return this.http.post("/api/skills/skill", model)
+            .do(function () { })
+            .catch(this.errorHandler);
+    };
+    HrService.prototype.createVacancy = function (model) {
+        return this.http.post("/api/vacancies/vacancy", model)
+            .do(function () { })
+            .catch(this.errorHandler);
+    };
+    HrService.prototype.deleteSkill = function (id) {
+        return this.http.delete("/api/skills/skill/" + id)
+            .do(function () { })
+            .catch(this.errorHandler);
+    };
+    HrService.prototype.deleteVacancy = function (id) {
+        return this.http.delete("/api/vacancies/vacancy/" + id)
+            .do(function () { })
+            .catch(this.errorHandler);
+    };
+    HrService.prototype.deleteProject = function (id) {
+        return this.http.delete("/api/projects/project/" + id)
+            .do(function () { })
+            .catch(this.errorHandler);
+    };
+    HrService.prototype.deleteCandidate = function (id) {
+        return this.http.delete("/api/candidates/candidate/" + id)
             .do(function () { })
             .catch(this.errorHandler);
     };
@@ -1314,12 +1358,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var SkillEditItemComponent = (function () {
-    function SkillEditItemComponent(service, router, alertService) {
+    function SkillEditItemComponent(route, service, router, alertService) {
+        this.route = route;
         this.service = service;
         this.router = router;
         this.alertService = alertService;
         this.model = new __WEBPACK_IMPORTED_MODULE_2__models_skill__["a" /* Skill */]();
     }
+    SkillEditItemComponent.prototype.ngOnInit = function () {
+        console.log(this.route.snapshot.params['id']);
+    };
     SkillEditItemComponent.prototype.save = function () {
         var _this = this;
         this.service.createSkill(this.model).subscribe(function (data) {
@@ -1343,10 +1391,10 @@ SkillEditItemComponent = __decorate([
         template: __webpack_require__("./src/app/hr-management/skill/skill-edit-item/skill-edit-item.html"),
         styles: [__webpack_require__("./src/app/hr-management/skill/skill-edit-item/skill-edit-item.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__hr_management_service__["a" /* HrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__hr_management_service__["a" /* HrService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__shared_alert_alert_service__["a" /* AlertService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__shared_alert_alert_service__["a" /* AlertService */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* ActivatedRoute */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__hr_management_service__["a" /* HrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__hr_management_service__["a" /* HrService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__shared_alert_alert_service__["a" /* AlertService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__shared_alert_alert_service__["a" /* AlertService */]) === "function" && _d || Object])
 ], SkillEditItemComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d;
 //# sourceMappingURL=skill-edit-item.js.map
 
 /***/ }),
@@ -1372,7 +1420,7 @@ module.exports = module.exports.toString();
 /***/ "./src/app/hr-management/skill/skill-list/skill-list.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Skill list</h2>\r\n<div class=\"form-group\">\r\n  <button type=\"button\" (click)='moveToCreateForm()' class=\"btn btn-primary\">Add item</button>\r\n</div>\r\n<table>\r\n  <thead>\r\n    <tr>\r\n      <th>#</th>\r\n      <th>Title</th>\r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr *ngFor=\"let skill of skillsList\">\r\n      <td>{{skill.skillId}}</td>\r\n      <td>{{skill.title}}</td>\r\n    </tr>\r\n  </tbody>\r\n</table>\r\n"
+module.exports = "<h2>Skill list</h2>\r\n<div class=\"form-group\">\r\n  <button type=\"button\" (click)='moveToCreateForm()' class=\"btn btn-primary\">Add item</button>\r\n</div>\r\n<table>\r\n  <thead>\r\n    <tr>\r\n      <th>#</th>\r\n      <th>Title</th>\r\n      <th></th>\r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr *ngFor=\"let skill of skillsList\">\r\n      <td>\r\n        <a [routerLink]=\"['/skill-edit-item', skill.skillId]\"> {{skill.skillId}}</a></td>\r\n      <td>{{skill.title}}</td>\r\n      <td class=\"align-right\">\r\n        <button type=\"button\" class=\"btn btn-default btn-xs\" (click)=deleteItem(skill)>\r\n          <i class=\"glyphicon glyphicon-trash\"></i>\r\n        </button>\r\n      </td>\r\n    </tr>\r\n  </tbody>\r\n</table>\r\n"
 
 /***/ }),
 
@@ -1383,6 +1431,7 @@ module.exports = "<h2>Skill list</h2>\r\n<div class=\"form-group\">\r\n  <button
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__hr_management_service__ = __webpack_require__("./src/app/hr-management/hr-management.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_alert_alert_service__ = __webpack_require__("./src/app/shared/alert/alert.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SkillListComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1396,11 +1445,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var SkillListComponent = (function () {
-    function SkillListComponent(service, route, router) {
+    function SkillListComponent(service, route, router, alertService) {
         this.service = service;
         this.route = route;
         this.router = router;
+        this.alertService = alertService;
     }
     SkillListComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -1413,6 +1464,22 @@ var SkillListComponent = (function () {
     SkillListComponent.prototype.moveToCreateForm = function () {
         this.router.navigate(['/skill-edit-item']);
     };
+    SkillListComponent.prototype.deleteItem = function (item) {
+        var _this = this;
+        this.service.deleteSkill(item.skillId).subscribe(function (data) {
+            // this.router.navigate(['/skill-list']);
+            var index = _this.skillsList.indexOf(item);
+            if (index !== -1) {
+                _this.skillsList.splice(index, 1);
+            }
+        }, function (error) {
+            _this.alertService.addAlert({
+                id: 1,
+                type: 'danger',
+                message: error.text(),
+            });
+        });
+    };
     return SkillListComponent;
 }());
 SkillListComponent = __decorate([
@@ -1421,11 +1488,175 @@ SkillListComponent = __decorate([
         template: __webpack_require__("./src/app/hr-management/skill/skill-list/skill-list.html"),
         styles: [__webpack_require__("./src/app/hr-management/skill/skill-list/skill-list.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__hr_management_service__["a" /* HrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__hr_management_service__["a" /* HrService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* ActivatedRoute */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__hr_management_service__["a" /* HrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__hr_management_service__["a" /* HrService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* ActivatedRoute */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__shared_alert_alert_service__["a" /* AlertService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__shared_alert_alert_service__["a" /* AlertService */]) === "function" && _d || Object])
 ], SkillListComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d;
 //# sourceMappingURL=skill-list.js.map
+
+/***/ }),
+
+/***/ "./src/app/hr-management/vacancy/vacancy-edit-item/vacancy-edit-item.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "./src/app/hr-management/vacancy/vacancy-edit-item/vacancy-edit-item.html":
+/***/ (function(module, exports) {
+
+module.exports = "<form #vacancyForm=\"ngForm\" class=\"form-horizontal\">\r\n  <h4>Create new vacancy</h4>\r\n  <hr />\r\n  <div class=\"text-danger\"></div>\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label required-asterisk\">First name</label>\r\n    <div class=\"col-md-9\">\r\n      <input [(ngModel)]=\"model.FirstName\" required name=\"FirstName\" #firstName='ngModel' class=\"form-control\" />\r\n      <div *ngIf=\"firstName.errors && (firstName.dirty || firstName.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!firstName.errors.required\">First name is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label required-asterisk\">Last name</label>\r\n    <div class=\"col-md-9\">\r\n      <input [(ngModel)]=\"model.LastName\" required name=\"LastName\" #lastName='ngModel' class=\"form-control\" />\r\n      <div *ngIf=\"lastName.errors && (lastName.dirty || lastName.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!lastName.errors.required\">Last name is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  \r\n  <div class=\"form-group\">\r\n    <div class=\"col-md-offset-3 col-md-9\">\r\n      <button type=\"submit\" (click)='save()' [disabled]=\"!vacancyForm.form.valid\" class=\"btn btn-primary\">Save</button>\r\n      <button type=\"submit\" (click)='cancel()' class=\"btn btn-default\">Cancel</button>\r\n    </div>\r\n  </div>\r\n</form>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/hr-management/vacancy/vacancy-edit-item/vacancy-edit-item.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__hr_management_service__ = __webpack_require__("./src/app/hr-management/hr-management.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_vacancy__ = __webpack_require__("./src/app/models/vacancy.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shared_alert_alert_service__ = __webpack_require__("./src/app/shared/alert/alert.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VacancyEditItemComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var VacancyEditItemComponent = (function () {
+    function VacancyEditItemComponent(service, router, alertService) {
+        this.service = service;
+        this.router = router;
+        this.alertService = alertService;
+        this.model = new __WEBPACK_IMPORTED_MODULE_2__models_vacancy__["a" /* Vacancy */]();
+    }
+    VacancyEditItemComponent.prototype.save = function () {
+        var _this = this;
+        this.service.createVacancy(this.model).subscribe(function (data) {
+        }, function (error) {
+            _this.alertService.addAlert({
+                id: 1,
+                type: 'danger',
+                message: error.text(),
+            });
+        });
+    };
+    VacancyEditItemComponent.prototype.cancel = function () {
+        this.router.navigate(['/vacancy-list']);
+    };
+    return VacancyEditItemComponent;
+}());
+VacancyEditItemComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_0" /* Component */])({
+        selector: "vacancy-edit",
+        template: __webpack_require__("./src/app/hr-management/vacancy/vacancy-edit-item/vacancy-edit-item.html"),
+        styles: [__webpack_require__("./src/app/hr-management/vacancy/vacancy-edit-item/vacancy-edit-item.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__hr_management_service__["a" /* HrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__hr_management_service__["a" /* HrService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__shared_alert_alert_service__["a" /* AlertService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__shared_alert_alert_service__["a" /* AlertService */]) === "function" && _c || Object])
+], VacancyEditItemComponent);
+
+var _a, _b, _c;
+//# sourceMappingURL=vacancy-edit-item.js.map
+
+/***/ }),
+
+/***/ "./src/app/hr-management/vacancy/vacancy-list/vacancy-list.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "./src/app/hr-management/vacancy/vacancy-list/vacancy-list.html":
+/***/ (function(module, exports) {
+
+module.exports = "<h2>Vacancy list</h2>\r\n<div class=\"form-group\">\r\n  <button type=\"button\" (click)='moveToCreateForm()' class=\"btn btn-primary\">Add item</button>\r\n</div>\r\n<table>\r\n  <thead>\r\n    <tr>\r\n      <th>#</th>\r\n      <th>FirstName</th>\r\n      <th>LastName</th>\r\n      <th>BirthDay</th>\r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr *ngFor=\"let vacancy of vacanciesList\">\r\n      <td>{{vacancy.firstName}}</td>\r\n    </tr>\r\n  </tbody>\r\n</table>\r\n"
+
+/***/ }),
+
+/***/ "./src/app/hr-management/vacancy/vacancy-list/vacancy-list.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__hr_management_service__ = __webpack_require__("./src/app/hr-management/hr-management.service.ts");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VacancyListComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var VacancyListComponent = (function () {
+    function VacancyListComponent(service, route, router) {
+        this.service = service;
+        this.route = route;
+        this.router = router;
+    }
+    VacancyListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.service.getVacancies().subscribe(function (data) {
+            _this.vacanciesList = data;
+        }, function (error) {
+            console.log('Something went wrong! Get vacancies failed!');
+        });
+    };
+    VacancyListComponent.prototype.moveToCreateForm = function () {
+        this.router.navigate(['/vacancy-edit-item']);
+    };
+    return VacancyListComponent;
+}());
+VacancyListComponent = __decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_0" /* Component */])({
+        selector: "vacancy-list",
+        template: __webpack_require__("./src/app/hr-management/vacancy/vacancy-list/vacancy-list.html"),
+        styles: [__webpack_require__("./src/app/hr-management/vacancy/vacancy-list/vacancy-list.css")]
+    }),
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__hr_management_service__["a" /* HrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__hr_management_service__["a" /* HrService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* ActivatedRoute */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _c || Object])
+], VacancyListComponent);
+
+var _a, _b, _c;
+//# sourceMappingURL=vacancy-list.js.map
 
 /***/ }),
 
@@ -1486,6 +1717,21 @@ var Skill = (function () {
 }());
 
 //# sourceMappingURL=skill.js.map
+
+/***/ }),
+
+/***/ "./src/app/models/vacancy.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Vacancy; });
+var Vacancy = (function () {
+    function Vacancy() {
+    }
+    return Vacancy;
+}());
+
+//# sourceMappingURL=vacancy.js.map
 
 /***/ }),
 
