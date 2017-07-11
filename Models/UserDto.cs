@@ -1,7 +1,7 @@
 using System;
 using Ng2Core.CorpPortal.Models;
 
-namespace Ng2Core.CorpPortal.Model
+namespace Ng2Core.CorpPortal.Models
 {
     public class UserDto
     {
@@ -10,8 +10,8 @@ namespace Ng2Core.CorpPortal.Model
         public string LastName { get; set; }
         public string Email { get; set; }
         public DateTime BirthDay { get; set; }
-        public Employee Employee { get; set; }
-        public Candidate Candidate { get; set; }
+        public EmployeeDto Employee { get; set; }
+        public CandidateDto Candidate { get; set; }
         public byte[] TimeStamp { get; set; }
     }
 }

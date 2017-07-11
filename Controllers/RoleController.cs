@@ -12,7 +12,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Ng2Core.CorpPortal.Models;
-using Ng2Core.CorpPortal.Models.AccountViewModels;
 
 namespace Ng2Core.CorpPortal.Controllers
 {

@@ -16,14 +16,34 @@ namespace Ng2Core.CorpPortal.Repository
            this.context = context;
         }
 
-        public List<Candidate> GetAllCandidates()
+        public List<CandidateDto> GetAllCandidates()
         {
-            return context.Candidates.ToList();
+            return (from c in context.Candidates
+                    join v in context.Vacancies on c.VacancyKey equals v.VacancyId
+                    select new CandidateDto()
+                    {
+                        CandidatId = c.CandidatId,
+                        FirstName = c.FirstName,
+                        LastName = c.LastName,
+                        VacancyKey = c.VacancyKey,
+                        Vacancy = new VacancyDto(){
+                            VacancyTitle = v.VacancyTitle
+                        }
+                    }).ToList();
         }
 
-        public Candidate GetCandidate(int id)
+        public CandidateDto GetCandidate(int id)
         {
-            return context.Candidates.Find(id);
+            return (from c in context.Candidates
+                    join v in context.Vacancies on c.VacancyKey equals v.VacancyId
+                    where c.CandidatId == id
+                    select new CandidateDto()
+                    {
+                        CandidatId = c.CandidatId,
+                        FirstName = c.FirstName,
+                        LastName = c.LastName,
+                        VacancyKey = c.VacancyKey
+                    }).FirstOrDefault();
         }
 
         public void AddCandidate(Candidate user)
@@ -38,7 +58,7 @@ namespace Ng2Core.CorpPortal.Repository
 
         public void DeleteCandidate(int id)
         {
-            context.Users.Remove(context.Users.Find(id));
+            context.Candidates.Remove(context.Candidates.Find(id));
         }
 
         public bool Save()

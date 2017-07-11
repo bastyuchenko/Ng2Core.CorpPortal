@@ -5,7 +5,7 @@
   <div class="form-group">
     <label class="col-md-3 control-label required-asterisk">First name</label>
     <div class="col-md-9">
-      <input [(ngModel)]="model.FirstName" required name="FirstName" #firstName='ngModel' class="form-control" />
+      <input [(ngModel)]="model.firstName" required name="FirstName" #firstName='ngModel' class="form-control" />
       <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
         <span class="validationMessage" [hidden]="!firstName.errors.required">First name is required</span>
       </div>
@@ -15,13 +15,25 @@
   <div class="form-group">
     <label class="col-md-3 control-label required-asterisk">Last name</label>
     <div class="col-md-9">
-      <input [(ngModel)]="model.LastName" required name="LastName" #lastName='ngModel' class="form-control" />
+      <input [(ngModel)]="model.lastName" required name="LastName" #lastName='ngModel' class="form-control" />
       <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)">
         <span class="validationMessage" [hidden]="!lastName.errors.required">Last name is required</span>
       </div>
     </div>
   </div>
-  
+
+  <div class="form-group">
+    <label class="col-md-3 control-label required-asterisk">Vacancy</label>
+    <div class="col-md-9">
+      <select [(ngModel)]="model.vacancyKey" required name="Vacancy" #vacancy='ngModel' class="form-control">
+        <option *ngFor="let vac of vacanciesOptions" [ngValue]="vac.vacancyId">{{vac.vacancyTitle}}</option>
+      </select>
+      <div *ngIf="vacancy.errors && (vacancy.dirty || vacancy.touched)">
+        <span class="validationMessage" [hidden]="!vacancy.errors.required">Vacancy is required</span>
+      </div>
+    </div>
+  </div>
+
   <div class="form-group">
     <div class="col-md-offset-3 col-md-9">
       <button type="submit" (click)='save()' [disabled]="!candidateForm.form.valid" class="btn btn-primary">Save</button>

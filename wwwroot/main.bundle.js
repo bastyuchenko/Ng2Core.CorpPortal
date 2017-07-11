@@ -772,7 +772,7 @@ module.exports = module.exports.toString();
 /***/ "./src/app/hr-management/candidate/candidate-edit-item/candidate-edit-item.html":
 /***/ (function(module, exports) {
 
-module.exports = "<form #candidateForm=\"ngForm\" class=\"form-horizontal\">\r\n  <h4>Create new candidate</h4>\r\n  <hr />\r\n  <div class=\"text-danger\"></div>\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label required-asterisk\">First name</label>\r\n    <div class=\"col-md-9\">\r\n      <input [(ngModel)]=\"model.FirstName\" required name=\"FirstName\" #firstName='ngModel' class=\"form-control\" />\r\n      <div *ngIf=\"firstName.errors && (firstName.dirty || firstName.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!firstName.errors.required\">First name is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label required-asterisk\">Last name</label>\r\n    <div class=\"col-md-9\">\r\n      <input [(ngModel)]=\"model.LastName\" required name=\"LastName\" #lastName='ngModel' class=\"form-control\" />\r\n      <div *ngIf=\"lastName.errors && (lastName.dirty || lastName.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!lastName.errors.required\">Last name is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  \r\n  <div class=\"form-group\">\r\n    <div class=\"col-md-offset-3 col-md-9\">\r\n      <button type=\"submit\" (click)='save()' [disabled]=\"!candidateForm.form.valid\" class=\"btn btn-primary\">Save</button>\r\n      <button type=\"submit\" (click)='cancel()' class=\"btn btn-default\">Cancel</button>\r\n    </div>\r\n  </div>\r\n</form>\r\n"
+module.exports = "<form #candidateForm=\"ngForm\" class=\"form-horizontal\">\r\n  <h4>Create new candidate</h4>\r\n  <hr />\r\n  <div class=\"text-danger\"></div>\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label required-asterisk\">First name</label>\r\n    <div class=\"col-md-9\">\r\n      <input [(ngModel)]=\"model.firstName\" required name=\"FirstName\" #firstName='ngModel' class=\"form-control\" />\r\n      <div *ngIf=\"firstName.errors && (firstName.dirty || firstName.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!firstName.errors.required\">First name is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label required-asterisk\">Last name</label>\r\n    <div class=\"col-md-9\">\r\n      <input [(ngModel)]=\"model.lastName\" required name=\"LastName\" #lastName='ngModel' class=\"form-control\" />\r\n      <div *ngIf=\"lastName.errors && (lastName.dirty || lastName.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!lastName.errors.required\">Last name is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label required-asterisk\">Vacancy</label>\r\n    <div class=\"col-md-9\">\r\n      <select [(ngModel)]=\"model.vacancyKey\" required name=\"Vacancy\" #vacancy='ngModel' class=\"form-control\">\r\n        <option *ngFor=\"let vac of vacanciesOptions\" [ngValue]=\"vac.vacancyId\">{{vac.vacancyTitle}}</option>\r\n      </select>\r\n      <div *ngIf=\"vacancy.errors && (vacancy.dirty || vacancy.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!vacancy.errors.required\">Vacancy is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n    <div class=\"col-md-offset-3 col-md-9\">\r\n      <button type=\"submit\" (click)='save()' [disabled]=\"!candidateForm.form.valid\" class=\"btn btn-primary\">Save</button>\r\n      <button type=\"submit\" (click)='cancel()' class=\"btn btn-default\">Cancel</button>\r\n    </div>\r\n  </div>\r\n</form>\r\n"
 
 /***/ }),
 
@@ -801,22 +801,55 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var CandidateEditItemComponent = (function () {
-    function CandidateEditItemComponent(service, router, alertService) {
+    function CandidateEditItemComponent(service, router, route, alertService) {
+        var _this = this;
         this.service = service;
         this.router = router;
+        this.route = route;
         this.alertService = alertService;
         this.model = new __WEBPACK_IMPORTED_MODULE_2__models_candidate__["a" /* Candidate */]();
+        this.vacanciesOptions = new Array();
+        this.sub = this.route.params.subscribe(function (params) {
+            _this.id = +params['id'];
+        });
     }
+    CandidateEditItemComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.service.getVacancies().subscribe(function (data) {
+            _this.vacanciesOptions = data;
+            if (_this.id > 0) {
+                _this.service.getCandidate(_this.id).subscribe(function (data) {
+                    _this.model = data;
+                }, function (error) {
+                    console.log('Something went wrong! Get skills failed!');
+                });
+            }
+        }, function (error) {
+            console.log('Something went wrong! Get vacancies failed!');
+        });
+    };
     CandidateEditItemComponent.prototype.save = function () {
         var _this = this;
-        this.service.createCandidate(this.model).subscribe(function (data) {
-        }, function (error) {
-            _this.alertService.addAlert({
-                id: 1,
-                type: 'danger',
-                message: error.text(),
+        if (this.model.candidatId > 0) {
+            this.service.updateCandidate(this.model).subscribe(function (data) {
+            }, function (error) {
+                _this.alertService.addAlert({
+                    id: 1,
+                    type: 'danger',
+                    message: error.text(),
+                });
             });
-        });
+        }
+        else {
+            this.service.createCandidate(this.model).subscribe(function (data) {
+            }, function (error) {
+                _this.alertService.addAlert({
+                    id: 1,
+                    type: 'danger',
+                    message: error.text(),
+                });
+            });
+        }
     };
     CandidateEditItemComponent.prototype.cancel = function () {
         this.router.navigate(['/candidate-list']);
@@ -829,10 +862,10 @@ CandidateEditItemComponent = __decorate([
         template: __webpack_require__("./src/app/hr-management/candidate/candidate-edit-item/candidate-edit-item.html"),
         styles: [__webpack_require__("./src/app/hr-management/candidate/candidate-edit-item/candidate-edit-item.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__hr_management_service__["a" /* HrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__hr_management_service__["a" /* HrService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_4__shared_alert_alert_service__["a" /* AlertService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__shared_alert_alert_service__["a" /* AlertService */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__hr_management_service__["a" /* HrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__hr_management_service__["a" /* HrService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__angular_router__["c" /* ActivatedRoute */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__shared_alert_alert_service__["a" /* AlertService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__shared_alert_alert_service__["a" /* AlertService */]) === "function" && _d || Object])
 ], CandidateEditItemComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d;
 //# sourceMappingURL=candidate-edit-item.js.map
 
 /***/ }),
@@ -858,7 +891,7 @@ module.exports = module.exports.toString();
 /***/ "./src/app/hr-management/candidate/candidate-list/candidate-list.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Candidate list</h2>\r\n<div class=\"form-group\">\r\n  <button type=\"button\" (click)='moveToCreateForm()' class=\"btn btn-primary\">Add item</button>\r\n</div>\r\n<table>\r\n  <thead>\r\n    <tr>\r\n      <th>#</th>\r\n      <th>FirstName</th>\r\n      <th>LastName</th>\r\n      <th>BirthDay</th>\r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr *ngFor=\"let candidate of candidatesList\">\r\n      <td>{{candidate.firstName}}</td>\r\n    </tr>\r\n  </tbody>\r\n</table>\r\n"
+module.exports = "<h2>Candidate list</h2>\r\n<div class=\"form-group\">\r\n  <button type=\"button\" (click)='moveToCreateForm()' class=\"btn btn-primary\">Add item</button>\r\n</div>\r\n<table>\r\n  <thead>\r\n    <tr>\r\n      <th>#</th>\r\n      <th>FirstName</th>\r\n      <th>LastName</th>\r\n      <th>Vacancy</th>\r\n      <th></th>\r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr *ngFor=\"let candidate of candidatesList\">\r\n      <td>{{candidate.candidatId}}</td>\r\n      <td>\r\n        <a [routerLink]=\"['/candidate-edit-item', candidate.candidatId]\"> {{candidate.firstName}}</a>\r\n        </td>\r\n      <td>{{candidate.lastName}}</td>\r\n      <td>{{candidate.vacancy.vacancyTitle}}</td>\r\n        \r\n      <td class=\"align-right\">\r\n        <button type=\"button\" class=\"btn btn-default btn-xs\" (click)=deleteItem(candidate)>\r\n          <i class=\"glyphicon glyphicon-trash\"></i>\r\n        </button>\r\n      </td>\r\n    </tr>\r\n  </tbody>\r\n</table>\r\n"
 
 /***/ }),
 
@@ -869,6 +902,7 @@ module.exports = "<h2>Candidate list</h2>\r\n<div class=\"form-group\">\r\n  <bu
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/@angular/router.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__hr_management_service__ = __webpack_require__("./src/app/hr-management/hr-management.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__shared_alert_alert_service__ = __webpack_require__("./src/app/shared/alert/alert.service.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CandidateListComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -882,11 +916,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var CandidateListComponent = (function () {
-    function CandidateListComponent(service, route, router) {
+    function CandidateListComponent(service, route, router, alertService) {
         this.service = service;
         this.route = route;
         this.router = router;
+        this.alertService = alertService;
     }
     CandidateListComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -894,6 +930,22 @@ var CandidateListComponent = (function () {
             _this.candidatesList = data;
         }, function (error) {
             console.log('Something went wrong! Get candidates failed!');
+        });
+    };
+    CandidateListComponent.prototype.deleteItem = function (item) {
+        var _this = this;
+        this.service.deleteCandidate(item.candidatId).subscribe(function (data) {
+            // this.router.navigate(['/skill-list']);
+            var index = _this.candidatesList.indexOf(item);
+            if (index !== -1) {
+                _this.candidatesList.splice(index, 1);
+            }
+        }, function (error) {
+            _this.alertService.addAlert({
+                id: 1,
+                type: 'danger',
+                message: error.text(),
+            });
         });
     };
     CandidateListComponent.prototype.moveToCreateForm = function () {
@@ -907,10 +959,10 @@ CandidateListComponent = __decorate([
         template: __webpack_require__("./src/app/hr-management/candidate/candidate-list/candidate-list.html"),
         styles: [__webpack_require__("./src/app/hr-management/candidate/candidate-list/candidate-list.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__hr_management_service__["a" /* HrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__hr_management_service__["a" /* HrService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* ActivatedRoute */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__hr_management_service__["a" /* HrService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__hr_management_service__["a" /* HrService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* ActivatedRoute */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__shared_alert_alert_service__["a" /* AlertService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__shared_alert_alert_service__["a" /* AlertService */]) === "function" && _d || Object])
 ], CandidateListComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d;
 //# sourceMappingURL=candidate-list.js.map
 
 /***/ }),
@@ -975,12 +1027,16 @@ HrManagementModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_15__ng_bootstrap_ng_bootstrap__["a" /* NgbModule */],
             __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* RouterModule */].forChild([
                 { path: 'candidate-list', component: __WEBPACK_IMPORTED_MODULE_6__candidate_candidate_list_candidate_list__["a" /* CandidateListComponent */] },
+                { path: 'candidate-edit-item/:id', component: __WEBPACK_IMPORTED_MODULE_7__candidate_candidate_edit_item_candidate_edit_item__["a" /* CandidateEditItemComponent */] },
                 { path: 'candidate-edit-item', component: __WEBPACK_IMPORTED_MODULE_7__candidate_candidate_edit_item_candidate_edit_item__["a" /* CandidateEditItemComponent */] },
                 { path: 'project-list', component: __WEBPACK_IMPORTED_MODULE_8__project_project_list_project_list__["a" /* ProjectListComponent */] },
+                { path: 'project-edit-item/:id', component: __WEBPACK_IMPORTED_MODULE_9__project_project_edit_item_project_edit_item__["a" /* ProjectEditItemComponent */] },
                 { path: 'project-edit-item', component: __WEBPACK_IMPORTED_MODULE_9__project_project_edit_item_project_edit_item__["a" /* ProjectEditItemComponent */] },
                 { path: 'skill-list', component: __WEBPACK_IMPORTED_MODULE_10__skill_skill_list_skill_list__["a" /* SkillListComponent */] },
                 { path: 'skill-edit-item/:id', component: __WEBPACK_IMPORTED_MODULE_11__skill_skill_edit_item_skill_edit_item__["a" /* SkillEditItemComponent */] },
+                { path: 'skill-edit-item', component: __WEBPACK_IMPORTED_MODULE_11__skill_skill_edit_item_skill_edit_item__["a" /* SkillEditItemComponent */] },
                 { path: 'vacancy-list', component: __WEBPACK_IMPORTED_MODULE_10__skill_skill_list_skill_list__["a" /* SkillListComponent */] },
+                { path: 'vacancy-edit-item/:id', component: __WEBPACK_IMPORTED_MODULE_11__skill_skill_edit_item_skill_edit_item__["a" /* SkillEditItemComponent */] },
                 { path: 'vacancy-edit-item', component: __WEBPACK_IMPORTED_MODULE_11__skill_skill_edit_item_skill_edit_item__["a" /* SkillEditItemComponent */] },
             ])
         ],
@@ -1088,6 +1144,42 @@ var HrService = (function () {
             .do(function () { })
             .catch(this.errorHandler);
     };
+    HrService.prototype.getCandidate = function (id) {
+        return this.http.get("/api/candidates/candidate/" + id)
+            .map(function (response) {
+            var tempResult = response.json();
+            return tempResult;
+        })
+            .do(function () { })
+            .catch(this.errorHandler);
+    };
+    HrService.prototype.getProject = function (id) {
+        return this.http.get("/api/projects/project/" + id)
+            .map(function (response) {
+            var tempResult = response.json();
+            return tempResult;
+        })
+            .do(function () { })
+            .catch(this.errorHandler);
+    };
+    HrService.prototype.getSkill = function (id) {
+        return this.http.get("/api/skills/skill/" + id)
+            .map(function (response) {
+            var tempResult = response.json();
+            return tempResult;
+        })
+            .do(function () { })
+            .catch(this.errorHandler);
+    };
+    HrService.prototype.getVacancy = function (id) {
+        return this.http.get("/api/vacancies/vacancy/" + id)
+            .map(function (response) {
+            var tempResult = response.json();
+            return tempResult;
+        })
+            .do(function () { })
+            .catch(this.errorHandler);
+    };
     HrService.prototype.createCandidate = function (model) {
         return this.http.post("/api/candidates/candidate", model)
             .do(function () { })
@@ -1105,6 +1197,26 @@ var HrService = (function () {
     };
     HrService.prototype.createVacancy = function (model) {
         return this.http.post("/api/vacancies/vacancy", model)
+            .do(function () { })
+            .catch(this.errorHandler);
+    };
+    HrService.prototype.updateCandidate = function (model) {
+        return this.http.put("/api/candidates/candidate", model)
+            .do(function () { })
+            .catch(this.errorHandler);
+    };
+    HrService.prototype.updateProject = function (model) {
+        return this.http.put("/api/projects/project", model)
+            .do(function () { })
+            .catch(this.errorHandler);
+    };
+    HrService.prototype.updateSkill = function (model) {
+        return this.http.put("/api/skills/skill", model)
+            .do(function () { })
+            .catch(this.errorHandler);
+    };
+    HrService.prototype.updateVacancy = function (model) {
+        return this.http.put("/api/vacancies/vacancy", model)
             .do(function () { })
             .catch(this.errorHandler);
     };
@@ -1420,7 +1532,7 @@ module.exports = module.exports.toString();
 /***/ "./src/app/hr-management/skill/skill-list/skill-list.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Skill list</h2>\r\n<div class=\"form-group\">\r\n  <button type=\"button\" (click)='moveToCreateForm()' class=\"btn btn-primary\">Add item</button>\r\n</div>\r\n<table>\r\n  <thead>\r\n    <tr>\r\n      <th>#</th>\r\n      <th>Title</th>\r\n      <th></th>\r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr *ngFor=\"let skill of skillsList\">\r\n      <td>\r\n        <a [routerLink]=\"['/skill-edit-item', skill.skillId]\"> {{skill.skillId}}</a></td>\r\n      <td>{{skill.title}}</td>\r\n      <td class=\"align-right\">\r\n        <button type=\"button\" class=\"btn btn-default btn-xs\" (click)=deleteItem(skill)>\r\n          <i class=\"glyphicon glyphicon-trash\"></i>\r\n        </button>\r\n      </td>\r\n    </tr>\r\n  </tbody>\r\n</table>\r\n"
+module.exports = "<h2>Skill list</h2>\r\n<div class=\"form-group\">\r\n  <button type=\"button\" (click)='moveToCreateForm()' class=\"btn btn-primary\">Add item</button>\r\n</div>\r\n<table>\r\n  <thead>\r\n    <tr>\r\n      <th>#</th>\r\n      <th>Title</th>\r\n      <th></th>\r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr *ngFor=\"let skill of skillsList\">\r\n      <td>{{skill.skillId}}</td>\r\n      <td>\r\n        <a [routerLink]=\"['/skill-edit-item', skill.skillId]\"> {{skill.title}}</a>\r\n        </td>\r\n      <td class=\"align-right\">\r\n        <button type=\"button\" class=\"btn btn-default btn-xs\" (click)=deleteItem(skill)>\r\n          <i class=\"glyphicon glyphicon-trash\"></i>\r\n        </button>\r\n      </td>\r\n    </tr>\r\n  </tbody>\r\n</table>\r\n"
 
 /***/ }),
 

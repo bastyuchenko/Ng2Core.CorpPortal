@@ -13,10 +13,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Ng2Core.CorpPortal.Models;
 using Ng2Core.CorpPortal.IRepository;
-using Ng2Core.CorpPortal.Model;
 using Ng2Core.CorpPortal.Repository;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Ng2Core.CorpPortal.Models.AccountViewModels;
 using System.Security.Claims;
 using System.Security.Principal;
 
@@ -87,15 +85,18 @@ namespace WebApplication
                 cfg.CreateMap<SkillDto, Skill>();
                 cfg.CreateMap<Skill, SkillDto>();
 
+                cfg.CreateMap<VacancyDto, Vacancy>();
+                cfg.CreateMap<Vacancy, VacancyDto>();
+
                 cfg.CreateMap<RegisterModel, ApplicationUser>()
-                .ForMember(dest=>dest.UserName,
-                source=>source.MapFrom(x=>x.Email));
+                .ForMember(dest => dest.UserName,
+                source => source.MapFrom(x => x.Email));
 
                 cfg.CreateMap<IIdentity, ApplicationUser>()
-                .ForMember(dest=>dest.IsAuthenticated,
-                source=>source.MapFrom(x=>x.IsAuthenticated))
-                .ForMember(dest=>dest.UserName,
-                source=>source.MapFrom(x=>x.Name));
+                .ForMember(dest => dest.IsAuthenticated,
+                source => source.MapFrom(x => x.IsAuthenticated))
+                .ForMember(dest => dest.UserName,
+                source => source.MapFrom(x => x.Name));
             });
         }
     }

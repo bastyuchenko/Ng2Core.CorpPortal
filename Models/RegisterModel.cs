@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Ng2Core.CorpPortal.Models.AccountViewModels
+namespace Ng2Core.CorpPortal.Models
 {
     public class RegisterModel
     {

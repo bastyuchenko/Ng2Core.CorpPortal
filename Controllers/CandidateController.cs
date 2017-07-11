@@ -6,7 +6,6 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Ng2Core.CorpPortal.Models;
 using Ng2Core.CorpPortal.IRepository;
-using Ng2Core.CorpPortal.Model;
 using Ng2Core.CorpPortal.Repository;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -61,7 +60,7 @@ namespace Ng2Core.CorpPortal.Controllers
 
         
         // PUT api/values/5
-        [HttpPut("project")]
+        [HttpPut("candidate")]
         public IActionResult UpdateCandidate([FromBody]CandidateDto cDto)
         {
             if (cDto == null)

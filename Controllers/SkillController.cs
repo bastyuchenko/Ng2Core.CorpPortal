@@ -6,7 +6,6 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Ng2Core.CorpPortal.Models;
 using Ng2Core.CorpPortal.IRepository;
-using Ng2Core.CorpPortal.Model;
 using Ng2Core.CorpPortal.Repository;
 
 // For more information on enabling Web API for empty skills, visit https://go.microsoft.com/fwlink/?LinkID=397860

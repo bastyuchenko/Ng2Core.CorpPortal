@@ -5,9 +5,9 @@ namespace Ng2Core.CorpPortal.IRepository
 {
     public interface ICandidateRepository
     {
-        List<Candidate> GetAllCandidates();
+        List<CandidateDto> GetAllCandidates();
 
-        Candidate GetCandidate(int id);
+        CandidateDto GetCandidate(int id);
 
         void AddCandidate(Candidate user);
 

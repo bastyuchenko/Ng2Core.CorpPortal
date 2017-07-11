@@ -8,12 +8,24 @@
       <th>#</th>
       <th>FirstName</th>
       <th>LastName</th>
-      <th>BirthDay</th>
+      <th>Vacancy</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let candidate of candidatesList">
-      <td>{{candidate.firstName}}</td>
+      <td>{{candidate.candidatId}}</td>
+      <td>
+        <a [routerLink]="['/candidate-edit-item', candidate.candidatId]"> {{candidate.firstName}}</a>
+        </td>
+      <td>{{candidate.lastName}}</td>
+      <td>{{candidate.vacancy.vacancyTitle}}</td>
+        
+      <td class="align-right">
+        <button type="button" class="btn btn-default btn-xs" (click)=deleteItem(candidate)>
+          <i class="glyphicon glyphicon-trash"></i>
+        </button>
+      </td>
     </tr>
   </tbody>
 </table>

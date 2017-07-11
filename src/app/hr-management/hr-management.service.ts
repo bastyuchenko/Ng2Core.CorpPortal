@@ -63,6 +63,46 @@ export class HrService {
             .catch(this.errorHandler);
     }
 
+    getCandidate(id:number): Observable<Candidate> {
+        return this.http.get(`/api/candidates/candidate/${id}`)
+            .map((response: Response) => {
+                var tempResult = response.json();
+                return <Candidate>tempResult;
+            })
+            .do((): void => { })
+            .catch(this.errorHandler);
+    }
+
+    getProject(id:number): Observable<Project> {
+        return this.http.get(`/api/projects/project/${id}`)
+            .map((response: Response) => {
+                var tempResult = response.json();
+                return <Project>tempResult;
+            })
+            .do((): void => { })
+            .catch(this.errorHandler);
+    }
+
+    getSkill(id:number): Observable<Skill> {
+        return this.http.get(`/api/skills/skill/${id}`)
+            .map((response: Response) => {
+                var tempResult = response.json();
+                return <Skill>tempResult;
+            })
+            .do((): void => { })
+            .catch(this.errorHandler);
+    }
+
+     getVacancy(id:number): Observable<Vacancy> {
+        return this.http.get(`/api/vacancies/vacancy/${id}`)
+            .map((response: Response) => {
+                var tempResult = response.json();
+                return <Vacancy>tempResult;
+            })
+            .do((): void => { })
+            .catch(this.errorHandler);
+    }
+
     createCandidate(model: Candidate): Observable<Response> {
         return this.http.post("/api/candidates/candidate", model)
             .do((): void => { })
@@ -83,6 +123,30 @@ export class HrService {
 
     createVacancy(model: Vacancy): Observable<Response> {
         return this.http.post("/api/vacancies/vacancy", model)
+            .do((): void => { })
+            .catch(this.errorHandler)
+    }
+
+    updateCandidate(model: Candidate): Observable<Response> {
+        return this.http.put("/api/candidates/candidate", model)
+            .do((): void => { })
+            .catch(this.errorHandler)
+    }
+
+    updateProject(model: Project): Observable<Response> {
+        return this.http.put("/api/projects/project", model)
+            .do((): void => { })
+            .catch(this.errorHandler)
+    }
+
+    updateSkill(model: Skill): Observable<Response> {
+        return this.http.put("/api/skills/skill", model)
+            .do((): void => { })
+            .catch(this.errorHandler)
+    }
+
+    updateVacancy(model: Vacancy): Observable<Response> {
+        return this.http.put("/api/vacancies/vacancy", model)
             .do((): void => { })
             .catch(this.errorHandler)
     }

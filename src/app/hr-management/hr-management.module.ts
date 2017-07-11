@@ -26,12 +26,19 @@ import { AlertService } from './../shared/alert/alert.service'
         NgbModule,
         RouterModule.forChild([
             { path: 'candidate-list', component: CandidateListComponent },
+            { path: 'candidate-edit-item/:id', component: CandidateEditItemComponent },
             { path: 'candidate-edit-item', component: CandidateEditItemComponent },
+
             { path: 'project-list', component: ProjectListComponent },
+            { path: 'project-edit-item/:id', component: ProjectEditItemComponent },
             { path: 'project-edit-item', component: ProjectEditItemComponent },
+            
             { path: 'skill-list', component: SkillListComponent },
             { path: 'skill-edit-item/:id', component: SkillEditItemComponent },
+            { path: 'skill-edit-item', component: SkillEditItemComponent },
+            
             { path: 'vacancy-list', component: SkillListComponent },
+            { path: 'vacancy-edit-item/:id', component: SkillEditItemComponent },
             { path: 'vacancy-edit-item', component: SkillEditItemComponent },
         ])
     ],

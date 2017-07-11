@@ -7,13 +7,14 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Ng2Core.CorpPortal.Models
 {
-    public class CandidateDto
+    public class SkillVacancyDto
     {
-        public int CandidatId { get; set; }
+        public int SkillVacancyId { get; set; }
 
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public int VacancyKey { get; set; }
+        public int SkillKey { get; set; }
+        public SkillDto Skill { get; set; }
+
+        public int VacancyId { get; set; }
         public VacancyDto Vacancy { get; set; }
     }
 }

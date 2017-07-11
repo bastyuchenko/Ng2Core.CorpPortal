@@ -66632,6 +66632,7 @@ NgbCarouselConfig.ctorParameters = function () { return []; };
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__carousel_config__ = __webpack_require__("./node_modules/@ng-bootstrap/ng-bootstrap/carousel/carousel-config.js");
 /* unused harmony export NgbSlide */
 /* unused harmony export NgbCarousel */
+/* unused harmony export NgbSlideEventDirection */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NGB_CAROUSEL_DIRECTIVES; });
 
 
@@ -66666,6 +66667,11 @@ NgbSlide.propDecorators = {
  */
 var NgbCarousel = (function () {
     function NgbCarousel(config) {
+        /**
+         * A carousel slide event fired when the slide transition is completed.
+         * See NgbSlideEvent for payload details
+         */
+        this.slide = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* EventEmitter */]();
         this.interval = config.interval;
         this.wrap = config.wrap;
         this.keyboard = config.keyboard;
@@ -66680,7 +66686,7 @@ var NgbCarousel = (function () {
      * Navigate to a slide with the specified identifier.
      */
     NgbCarousel.prototype.select = function (slideId) {
-        this.cycleToSelected(slideId);
+        this.cycleToSelected(slideId, this._getSlideEventDirection(this.activeId, slideId));
         this._restartTimer();
     };
     /**
@@ -66705,11 +66711,14 @@ var NgbCarousel = (function () {
      * Restarts cycling through the carousel slides from left to right.
      */
     NgbCarousel.prototype.cycle = function () { this._startTimer(); };
-    NgbCarousel.prototype.cycleToNext = function () { this.cycleToSelected(this._getNextSlide(this.activeId)); };
-    NgbCarousel.prototype.cycleToPrev = function () { this.cycleToSelected(this._getPrevSlide(this.activeId)); };
-    NgbCarousel.prototype.cycleToSelected = function (slideIdx) {
+    NgbCarousel.prototype.cycleToNext = function () { this.cycleToSelected(this._getNextSlide(this.activeId), NgbSlideEventDirection.LEFT); };
+    NgbCarousel.prototype.cycleToPrev = function () { this.cycleToSelected(this._getPrevSlide(this.activeId), NgbSlideEventDirection.RIGHT); };
+    NgbCarousel.prototype.cycleToSelected = function (slideIdx, direction) {
         var selectedSlide = this._getSlideById(slideIdx);
         if (selectedSlide) {
+            if (selectedSlide.id !== this.activeId) {
+                this.slide.emit({ prev: this.activeId, current: selectedSlide.id, direction: direction });
+            }
             this.activeId = selectedSlide.id;
         }
     };
@@ -66755,6 +66764,11 @@ var NgbCarousel = (function () {
         return isFirstSlide ? (this.wrap ? slideArr[slideArr.length - 1].id : slideArr[0].id) :
             slideArr[currentSlideIdx - 1].id;
     };
+    NgbCarousel.prototype._getSlideEventDirection = function (currentActiveSlideId, nextActiveSlideId) {
+        var currentActiveSlideIdx = this._getSlideIdxById(currentActiveSlideId);
+        var nextActiveSlideIdx = this._getSlideIdxById(nextActiveSlideId);
+        return currentActiveSlideIdx > nextActiveSlideIdx ? NgbSlideEventDirection.RIGHT : NgbSlideEventDirection.LEFT;
+    };
     return NgbCarousel;
 }());
 
@@ -66771,7 +66785,7 @@ NgbCarousel.decorators = [
                     '(keydown.arrowLeft)': 'keyPrev()',
                     '(keydown.arrowRight)': 'keyNext()'
                 },
-                template: "\n    <ol class=\"carousel-indicators\">\n      <li *ngFor=\"let slide of slides\" [id]=\"slide.id\" [class.active]=\"slide.id === activeId\" (click)=\"cycleToSelected(slide.id)\"></li>\n    </ol>\n    <div class=\"carousel-inner\">\n      <div *ngFor=\"let slide of slides\" class=\"carousel-item\" [class.active]=\"slide.id === activeId\">\n        <ng-template [ngTemplateOutlet]=\"slide.tplRef\"></ng-template>\n      </div>\n    </div>\n    <a class=\"left carousel-control-prev\" role=\"button\" (click)=\"cycleToPrev()\">\n      <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>\n      <span class=\"sr-only\">Previous</span>\n    </a>\n    <a class=\"right carousel-control-next\" role=\"button\" (click)=\"cycleToNext()\">\n      <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>\n      <span class=\"sr-only\">Next</span>\n    </a>\n    "
+                template: "\n    <ol class=\"carousel-indicators\">\n      <li *ngFor=\"let slide of slides\" [id]=\"slide.id\" [class.active]=\"slide.id === activeId\" \n          (click)=\"cycleToSelected(slide.id, _getSlideEventDirection(activeId, slide.id))\"></li>\n    </ol>\n    <div class=\"carousel-inner\">\n      <div *ngFor=\"let slide of slides\" class=\"carousel-item\" [class.active]=\"slide.id === activeId\">\n        <ng-template [ngTemplateOutlet]=\"slide.tplRef\"></ng-template>\n      </div>\n    </div>\n    <a class=\"left carousel-control-prev\" role=\"button\" (click)=\"cycleToPrev()\">\n      <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>\n      <span class=\"sr-only\">Previous</span>\n    </a>\n    <a class=\"right carousel-control-next\" role=\"button\" (click)=\"cycleToNext()\">\n      <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>\n      <span class=\"sr-only\">Next</span>\n    </a>\n    "
             },] },
 ];
 /** @nocollapse */
@@ -66784,7 +66798,16 @@ NgbCarousel.propDecorators = {
     'wrap': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Input */] },],
     'keyboard': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Input */] },],
     'activeId': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Input */] },],
+    'slide': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Output */] },],
 };
+/**
+ * Enum to define the carousel slide event direction
+ */
+var NgbSlideEventDirection;
+(function (NgbSlideEventDirection) {
+    NgbSlideEventDirection[NgbSlideEventDirection["LEFT"] = 'left'] = "LEFT";
+    NgbSlideEventDirection[NgbSlideEventDirection["RIGHT"] = 'right'] = "RIGHT";
+})(NgbSlideEventDirection || (NgbSlideEventDirection = {}));
 var NGB_CAROUSEL_DIRECTIVES = [NgbCarousel, NgbSlide];
 
 
@@ -67061,6 +67084,11 @@ var NgbInputDatepicker = (function () {
         this._calendar = _calendar;
         this._cRef = null;
         /**
+         * Placement of a datepicker popup. Accepts: "top", "bottom", "left", "right", "bottom-left",
+         * "bottom-right" etc.
+         */
+        this.placement = 'bottom-left';
+        /**
          * An event fired when navigation happens and currently displayed month changes.
          * See NgbDatepickerNavigateEvent for the payload info.
          */
@@ -67070,7 +67098,7 @@ var NgbInputDatepicker = (function () {
         this._validatorChange = function () { };
         this._zoneSubscription = ngZone.onStable.subscribe(function () {
             if (_this._cRef) {
-                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__util_positioning__["a" /* positionElements */])(_this._elRef.nativeElement, _this._cRef.location.nativeElement, 'bottom-left');
+                __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__util_positioning__["a" /* positionElements */])(_this._elRef.nativeElement, _this._cRef.location.nativeElement, _this.placement);
             }
         });
     }
@@ -67106,7 +67134,7 @@ var NgbInputDatepicker = (function () {
     };
     NgbInputDatepicker.prototype.manualDateChange = function (value) {
         this._model = this._service.toValidDate(this._parserFormatter.parse(value), null);
-        this._onChange(this._model ? { year: this._model.year, month: this._model.month, day: this._model.day } : value);
+        this._onChange(this._model ? this._model.toStruct() : (value === '' ? null : value));
         this._writeModelValue(this._model);
     };
     NgbInputDatepicker.prototype.isOpen = function () { return !!this._cRef; };
@@ -67229,6 +67257,7 @@ NgbInputDatepicker.propDecorators = {
     'maxDate': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Input */] },],
     'navigation': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Input */] },],
     'outsideDays': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Input */] },],
+    'placement': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Input */] },],
     'showWeekdays': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Input */] },],
     'showWeekNumbers': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Input */] },],
     'startDate': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["O" /* Input */] },],
@@ -67259,6 +67288,14 @@ var NgbDatepickerMonthView = (function () {
             this.select.emit(__WEBPACK_IMPORTED_MODULE_1__ngb_date__["a" /* NgbDate */].from(day.date));
         }
     };
+    NgbDatepickerMonthView.prototype._getDayContext = function (day, month) {
+        return {
+            date: { year: day.date.year, month: day.date.month, day: day.date.day },
+            currentMonth: month.number,
+            disabled: this.isDisabled(day),
+            selected: this.isSelected(day.date)
+        };
+    };
     NgbDatepickerMonthView.prototype.isDisabled = function (day) { return this.disabled || day.disabled; };
     NgbDatepickerMonthView.prototype.isSelected = function (date) { return this.selectedDate && this.selectedDate.equals(date); };
     NgbDatepickerMonthView.prototype.isCollapsed = function (week) {
@@ -67276,7 +67313,7 @@ NgbDatepickerMonthView.decorators = [
                 selector: 'ngb-datepicker-month-view',
                 host: { 'class': 'd-block' },
                 styles: ["\n    .ngb-dp-weekday, .ngb-dp-week-number {\n      line-height: 2rem;\n    }\n    .ngb-dp-day, .ngb-dp-weekday, .ngb-dp-week-number {\n      width: 2rem;\n      height: 2rem;      \n    }\n    .ngb-dp-day {\n      cursor: pointer;\n    }\n    .ngb-dp-day.disabled, .ngb-dp-day.hidden {\n      cursor: default;\n    }\n  "],
-                template: "\n    <div *ngIf=\"showWeekdays\" class=\"ngb-dp-week d-flex\">\n      <div *ngIf=\"showWeekNumbers\" class=\"ngb-dp-weekday\"></div>\n      <div *ngFor=\"let w of month.weekdays\" class=\"ngb-dp-weekday small text-center text-info font-italic\">\n        {{ i18n.getWeekdayShortName(w) }}\n      </div>\n    </div>\n    <ng-template ngFor let-week [ngForOf]=\"month.weeks\">\n      <div *ngIf=\"!isCollapsed(week)\" class=\"ngb-dp-week d-flex\">\n        <div *ngIf=\"showWeekNumbers\" class=\"ngb-dp-week-number small text-center font-italic text-muted\">{{ week.number }}</div>\n        <div *ngFor=\"let day of week.days\" (click)=\"doSelect(day)\" class=\"ngb-dp-day\" [class.disabled]=\"isDisabled(day)\"\n         [class.hidden]=\"isHidden(day)\">\n          <ng-template [ngIf]=\"!isHidden(day)\">\n            <ng-template [ngTemplateOutlet]=\"dayTemplate\"\n            [ngOutletContext]=\"{date: {year: day.date.year, month: day.date.month, day: day.date.day},\n              currentMonth: month.number,\n              disabled: isDisabled(day),\n              selected: isSelected(day.date)}\">\n            </ng-template>\n          </ng-template>\n        </div>\n      </div>\n    </ng-template>\n  "
+                template: "\n    <div *ngIf=\"showWeekdays\" class=\"ngb-dp-week d-flex\">\n      <div *ngIf=\"showWeekNumbers\" class=\"ngb-dp-weekday\"></div>\n      <div *ngFor=\"let w of month.weekdays\" class=\"ngb-dp-weekday small text-center text-info font-italic\">\n        {{ i18n.getWeekdayShortName(w) }}\n      </div>\n    </div>\n    <ng-template ngFor let-week [ngForOf]=\"month.weeks\">\n      <div *ngIf=\"!isCollapsed(week)\" class=\"ngb-dp-week d-flex\">\n        <div *ngIf=\"showWeekNumbers\" class=\"ngb-dp-week-number small text-center font-italic text-muted\">{{ week.number }}</div>\n        <div *ngFor=\"let day of week.days\" (click)=\"doSelect(day)\" class=\"ngb-dp-day\" [class.disabled]=\"isDisabled(day)\"\n         [class.hidden]=\"isHidden(day)\">\n          <ng-template [ngIf]=\"!isHidden(day)\">\n            <ng-template [ngTemplateOutlet]=\"dayTemplate\"\n            [ngOutletContext]=\"_getDayContext(day, month)\">\n            </ng-template>\n          </ng-template>\n        </div>\n      </div>\n    </ng-template>\n  "
             },] },
 ];
 /** @nocollapse */
@@ -68277,6 +68314,7 @@ var NgbDate = (function () {
             return this.year > other.year;
         }
     };
+    NgbDate.prototype.toStruct = function () { return { year: this.year, month: this.month, day: this.day }; };
     NgbDate.prototype.toString = function () { return this.year + "-" + this.month + "-" + this.day; };
     return NgbDate;
 }());
@@ -68562,6 +68600,7 @@ NgbDropdownModule.ctorParameters = function () { return []; };
 /* unused harmony reexport NgbTooltipModule */
 /* unused harmony reexport NgbTooltipConfig */
 /* unused harmony reexport NgbTooltip */
+/* unused harmony reexport NgbHighlight */
 /* unused harmony reexport NgbTypeaheadModule */
 /* unused harmony reexport NgbTypeaheadConfig */
 /* unused harmony reexport NgbTypeahead */
@@ -69397,6 +69436,8 @@ var NgbPopover = (function () {
             if (this.container === 'body') {
                 window.document.querySelector(this.container).appendChild(this._windowRef.location.nativeElement);
             }
+            // position popover along the element
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_positioning__["a" /* positionElements */])(this._elementRef.nativeElement, this._windowRef.location.nativeElement, this.placement, this.container === 'body');
             // we need to manually invoke change detection since events registered via
             // Renderer::listen() are not picked up by change detection with the OnPush strategy
             this._windowRef.changeDetectorRef.markForCheck();
@@ -70452,6 +70493,8 @@ var NgbTooltip = (function () {
             if (this.container === 'body') {
                 window.document.querySelector(this.container).appendChild(this._windowRef.location.nativeElement);
             }
+            // position tooltip along the element
+            __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__util_positioning__["a" /* positionElements */])(this._elementRef.nativeElement, this._windowRef.location.nativeElement, this.placement, this.container === 'body');
             // we need to manually invoke change detection since events registered via
             // Renderer::listen() - to be determined if this is a bug in the Angular itself
             this._windowRef.changeDetectorRef.markForCheck();
@@ -70661,6 +70704,7 @@ var NgbTypeaheadWindow = (function () {
         this.selectEvent = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* EventEmitter */]();
         this.activeChangeEvent = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* EventEmitter */]();
     }
+    NgbTypeaheadWindow.prototype._getResultContext = function (result) { return { result: result, term: this.term, formatter: this.formatter }; };
     NgbTypeaheadWindow.prototype.getActive = function () { return this.results[this.activeIdx]; };
     NgbTypeaheadWindow.prototype.markActive = function (activeIdx) {
         this.activeIdx = activeIdx;
@@ -70703,7 +70747,7 @@ NgbTypeaheadWindow.decorators = [
                 selector: 'ngb-typeahead-window',
                 exportAs: 'ngbTypeaheadWindow',
                 host: { 'class': 'dropdown-menu', 'style': 'display: block', 'role': 'listbox', '[id]': 'id' },
-                template: "\n    <ng-template #rt let-result=\"result\" let-term=\"term\" let-formatter=\"formatter\">\n      <ngb-highlight [result]=\"formatter(result)\" [term]=\"term\"></ngb-highlight>\n    </ng-template>\n    <ng-template ngFor [ngForOf]=\"results\" let-result let-idx=\"index\">\n      <button type=\"button\" class=\"dropdown-item\" role=\"option\"\n        [id]=\"id + '-' + idx\"\n        [class.active]=\"idx === activeIdx\"\n        (mouseenter)=\"markActive(idx)\"\n        (click)=\"select(result)\">\n          <ng-template [ngTemplateOutlet]=\"resultTemplate || rt\"\n          [ngOutletContext]=\"{result: result, term: term, formatter: formatter}\"></ng-template>\n      </button>\n    </ng-template>\n  "
+                template: "\n    <ng-template #rt let-result=\"result\" let-term=\"term\" let-formatter=\"formatter\">\n      <ngb-highlight [result]=\"formatter(result)\" [term]=\"term\"></ngb-highlight>\n    </ng-template>\n    <ng-template ngFor [ngForOf]=\"results\" let-result let-idx=\"index\">\n      <button type=\"button\" class=\"dropdown-item\" role=\"option\"\n        [id]=\"id + '-' + idx\"\n        [class.active]=\"idx === activeIdx\"\n        (mouseenter)=\"markActive(idx)\"\n        (click)=\"select(result)\">\n          <ng-template [ngTemplateOutlet]=\"resultTemplate || rt\"\n          [ngOutletContext]=\"_getResultContext(result)\"></ng-template>\n      </button>\n    </ng-template>\n  "
             },] },
 ];
 /** @nocollapse */
@@ -71018,7 +71062,7 @@ var NgbTypeaheadModule = (function () {
 NgbTypeaheadModule.decorators = [
     { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["b" /* NgModule */], args: [{
                 declarations: [__WEBPACK_IMPORTED_MODULE_4__typeahead__["a" /* NgbTypeahead */], __WEBPACK_IMPORTED_MODULE_2__highlight__["a" /* NgbHighlight */], __WEBPACK_IMPORTED_MODULE_3__typeahead_window__["a" /* NgbTypeaheadWindow */]],
-                exports: [__WEBPACK_IMPORTED_MODULE_4__typeahead__["a" /* NgbTypeahead */]],
+                exports: [__WEBPACK_IMPORTED_MODULE_4__typeahead__["a" /* NgbTypeahead */], __WEBPACK_IMPORTED_MODULE_2__highlight__["a" /* NgbHighlight */]],
                 imports: [__WEBPACK_IMPORTED_MODULE_1__angular_common__["c" /* CommonModule */]],
                 entryComponents: [__WEBPACK_IMPORTED_MODULE_3__typeahead_window__["a" /* NgbTypeaheadWindow */]]
             },] },
@@ -71167,51 +71211,51 @@ var Positioning = (function () {
     };
     Positioning.prototype.positionElements = function (hostElement, targetElement, placement, appendToBody) {
         var hostElPosition = appendToBody ? this.offset(hostElement, false) : this.position(hostElement, false);
-        var shiftWidth = {
-            left: hostElPosition.left,
-            center: hostElPosition.left + hostElPosition.width / 2 - targetElement.offsetWidth / 2,
-            right: hostElPosition.left + hostElPosition.width
-        };
-        var shiftHeight = {
-            top: hostElPosition.top,
-            center: hostElPosition.top + hostElPosition.height / 2 - targetElement.offsetHeight / 2,
-            bottom: hostElPosition.top + hostElPosition.height
-        };
         var targetElBCR = targetElement.getBoundingClientRect();
         var placementPrimary = placement.split('-')[0] || 'top';
         var placementSecondary = placement.split('-')[1] || 'center';
         var targetElPosition = {
-            height: targetElBCR.height || targetElement.offsetHeight,
-            width: targetElBCR.width || targetElement.offsetWidth,
-            top: 0,
-            bottom: targetElBCR.height || targetElement.offsetHeight,
-            left: 0,
-            right: targetElBCR.width || targetElement.offsetWidth
+            'height': targetElBCR.height || targetElement.offsetHeight,
+            'width': targetElBCR.width || targetElement.offsetWidth,
+            'top': 0,
+            'bottom': targetElBCR.height || targetElement.offsetHeight,
+            'left': 0,
+            'right': targetElBCR.width || targetElement.offsetWidth
         };
         switch (placementPrimary) {
             case 'top':
                 targetElPosition.top = hostElPosition.top - targetElement.offsetHeight;
-                targetElPosition.bottom += hostElPosition.top - targetElement.offsetHeight;
-                targetElPosition.left = shiftWidth[placementSecondary];
-                targetElPosition.right += shiftWidth[placementSecondary];
                 break;
             case 'bottom':
-                targetElPosition.top = shiftHeight[placementPrimary];
-                targetElPosition.bottom += shiftHeight[placementPrimary];
-                targetElPosition.left = shiftWidth[placementSecondary];
-                targetElPosition.right += shiftWidth[placementSecondary];
+                targetElPosition.top = hostElPosition.top + hostElPosition.height;
                 break;
             case 'left':
-                targetElPosition.top = shiftHeight[placementSecondary];
-                targetElPosition.bottom += shiftHeight[placementSecondary];
                 targetElPosition.left = hostElPosition.left - targetElement.offsetWidth;
-                targetElPosition.right += hostElPosition.left - targetElement.offsetWidth;
                 break;
             case 'right':
-                targetElPosition.top = shiftHeight[placementSecondary];
-                targetElPosition.bottom += shiftHeight[placementSecondary];
-                targetElPosition.left = shiftWidth[placementPrimary];
-                targetElPosition.right += shiftWidth[placementPrimary];
+                targetElPosition.left = hostElPosition.left + hostElPosition.width;
+                break;
+        }
+        switch (placementSecondary) {
+            case 'top':
+                targetElPosition.top = hostElPosition.top;
+                break;
+            case 'bottom':
+                targetElPosition.top = hostElPosition.top + hostElPosition.height - targetElement.offsetHeight;
+                break;
+            case 'left':
+                targetElPosition.left = hostElPosition.left;
+                break;
+            case 'right':
+                targetElPosition.left = hostElPosition.left + hostElPosition.width - targetElement.offsetWidth;
+                break;
+            case 'center':
+                if (placementPrimary === 'top' || placementPrimary === 'bottom') {
+                    targetElPosition.left = hostElPosition.left + hostElPosition.width / 2 - targetElement.offsetWidth / 2;
+                }
+                else {
+                    targetElPosition.top = hostElPosition.top + hostElPosition.height / 2 - targetElement.offsetHeight / 2;
+                }
                 break;
         }
         targetElPosition.top = Math.round(targetElPosition.top);
@@ -71253,7 +71297,7 @@ var Trigger = (function () {
 }());
 
 var DEFAULT_ALIASES = {
-    hover: ['mouseenter', 'mouseleave']
+    'hover': ['mouseenter', 'mouseleave']
 };
 function parseTriggers(triggers, aliases) {
     if (aliases === void 0) { aliases = DEFAULT_ALIASES; }

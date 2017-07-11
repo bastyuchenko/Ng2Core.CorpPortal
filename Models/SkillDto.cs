@@ -11,6 +11,6 @@ namespace Ng2Core.CorpPortal.Models
     {
         public int SkillId { get; set; }
         public string Title { get; set; }
-        public List<SkillVacancy> SkillVacancies { get; set; }
+        public List<SkillVacancyDto> SkillVacancies { get; set; }
     }
 }
