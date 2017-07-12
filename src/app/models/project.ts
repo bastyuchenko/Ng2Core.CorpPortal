@@ -2,9 +2,9 @@ import { Vacancy } from "./vacancy";
 import { RoleAssignment } from "./role-assignment";
 
 export class Project {
-    ProjectId: number;
-    Title: string;
-    Content: string;
-    RoleAssignments: RoleAssignment[];
-    Vacancies: Vacancy[];
+    projectId: number;
+    title: string;
+    content: string;
+    roleAssignments: RoleAssignment[];
+    vacancies: Vacancy[];
 }

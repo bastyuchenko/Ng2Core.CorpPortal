@@ -2,16 +2,16 @@ import { Employee } from "./employee";
 import { Project } from "./project";
 
 export class RoleAssignment {
-     RoleAssignmentId: number;
-     Position: string;
-     Capacity: number;
-     Duration: number;
-     GroupLeadId: number;
-     GroupLead: Employee;
-     DirectMgrId: number;
-     DirectMgr: Employee;
-     EmployeeId: number;
-     Employee: Employee;
-     ProjectId: number;
-     Project: Project;
+     roleAssignmentId: number;
+     position: string;
+     capacity: number;
+     duration: number;
+     groupLeadId: number;
+     groupLead: Employee;
+     directMgrId: number;
+     directMgr: Employee;
+     employeeId: number;
+     employee: Employee;
+     projectId: number;
+     project: Project;
 }

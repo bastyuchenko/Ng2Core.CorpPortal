@@ -21,23 +21,48 @@ export class SkillEditItemComponent implements OnInit {
     }
 
     private model: Skill = new Skill();
+    private id: number;
+    private sub: any;
 
     ngOnInit() {
-        console.log(this.route.snapshot.params['id']);
+        if (this.id > 0) {
+            this.service.getSkill(this.id).subscribe(
+                (data) => {
+                    this.model = <Skill>data;
+                },
+                (error): void => {
+                    console.log('Something went wrong! Get skills failed!');
+                });
+        }
     }
 
     save(): void {
-        this.service.createSkill(this.model).subscribe(
-            (data) => {
-                this.router.navigate(['/skill-list']);
-            },
-            (error): void => {
-                this.alertService.addAlert({
-                    id: 1,
-                    type: 'danger',
-                    message: error.text(),
+        if (this.model.skillId > 0) {
+            this.service.updateSkill(this.model).subscribe(
+                (data) => {
+
+                },
+                (error): void => {
+                    this.alertService.addAlert({
+                        id: 1,
+                        type: 'danger',
+                        message: error.text(),
+                    });
                 });
-            });
+        }
+        else {
+            this.service.createSkill(this.model).subscribe(
+                (data) => {
+
+                },
+                (error): void => {
+                    this.alertService.addAlert({
+                        id: 1,
+                        type: 'danger',
+                        message: error.text(),
+                    });
+                });
+        }
     }
 
     cancel(): void {

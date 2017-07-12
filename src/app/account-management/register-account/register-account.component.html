@@ -4,7 +4,7 @@
     <div class="text-danger"></div>
     <div class="form-group">
       <label class="col-md-3 control-label required-asterisk">Email</label>
-      <div class="col-md-9">
+      <div class="input-group">
         <input [(ngModel)]="model.Email" required name="Email" #email='ngModel' class="form-control" />
         <div *ngIf="email.errors && (email.dirty || email.touched)">
           <span class="validationMessage" [hidden]="!email.errors.required">Email is required</span>
@@ -13,18 +13,18 @@
     </div>
     <div class="form-group">
       <label class="col-md-3 control-label required-asterisk">Password</label>
-      <div class="col-md-9">
+      <div class="input-group">
         <input type="password" [(ngModel)]="model.Password" name="Password" class="form-control" />
       </div>
     </div>
     <div class="form-group">
       <label class="col-md-3 control-label required-asterisk">Confirm password</label>
-      <div class="col-md-9">
+      <div class="input-group">
         <input type="password" [(ngModel)]="model.ConfirmPassword" name="ConfirmPassword" class="form-control" />
       </div>
     </div>
     <div class="form-group">
-      <div class="col-md-offset-3 col-md-9">
+      <div class="col-md-offset-3 input-group">
         <button type="submit" (click)='register()' class="btn btn-default">Register</button>
       </div>
     </div>

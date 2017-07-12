@@ -37,9 +37,9 @@ import { AlertService } from './../shared/alert/alert.service'
             { path: 'skill-edit-item/:id', component: SkillEditItemComponent },
             { path: 'skill-edit-item', component: SkillEditItemComponent },
             
-            { path: 'vacancy-list', component: SkillListComponent },
-            { path: 'vacancy-edit-item/:id', component: SkillEditItemComponent },
-            { path: 'vacancy-edit-item', component: SkillEditItemComponent },
+            { path: 'vacancy-list', component: VacancyListComponent },
+            { path: 'vacancy-edit-item/:id', component: VacancyEditItemComponent },
+            { path: 'vacancy-edit-item', component: VacancyEditItemComponent },
         ])
     ],
     declarations: [
@@ -53,7 +53,7 @@ import { AlertService } from './../shared/alert/alert.service'
         SkillEditItemComponent,
 
         VacancyListComponent,
-        VacancyEditItemComponent
+        VacancyEditItemComponent,
     ],
     exports: [
         CandidateListComponent,

@@ -4,11 +4,11 @@ import { SkillVacancy } from "./skill-vacancy";
 
 
 export class Vacancy {
-    VacancyId: number;
-    VacancyTitle: string;
-    DueDate: Date;
-    SkillVacancy: SkillVacancy[];
-    Candidates: Candidate[];
-    ProjectKey: number;
-    Project: Project;
+    vacancyId: number;
+    vacancyTitle: string;
+    dueDate: Date;
+    skillVacancy: SkillVacancy[];
+    candidates: Candidate[];
+    projectKey: number;
+    project: Project;
 }

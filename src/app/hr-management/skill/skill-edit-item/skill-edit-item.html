@@ -4,8 +4,8 @@
   <div class="text-danger"></div>
   <div class="form-group">	
     <label class="col-md-3 control-label required-asterisk">Title</label>
-    <div class="col-md-9">
-      <input [(ngModel)]="model.Title" required name="Title" #title='ngModel' class="form-control" />
+    <div class="input-group">
+      <input [(ngModel)]="model.title" required name="Title" #title='ngModel' class="form-control" />
       <div *ngIf="title.errors && (title.dirty || title.touched)">
         <span class="validationMessage" [hidden]="!title.errors.required">Title is required</span>
       </div>
@@ -13,7 +13,7 @@
   </div>
 
   <div class="form-group">
-    <div class="col-md-offset-3 col-md-9">
+    <div class="col-md-offset-3 input-group">
       <button type="submit" (click)='save()' [disabled]="!skillForm.form.valid" class="btn btn-primary">Save</button>
       <button type="submit" (click)='cancel()' class="btn btn-default">Cancel</button>
     </div>

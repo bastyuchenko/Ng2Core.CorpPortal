@@ -11,31 +11,62 @@ import { AlertService } from './../../../shared/alert/alert.service'
     styleUrls: ["project-edit-item.css"]
 })
 
-export class ProjectEditItemComponent {
+export class ProjectEditItemComponent implements OnInit {
     constructor(
         private service: HrService,
         private router: Router,
         private alertService: AlertService) {
     }
 
-    private model: Project = new Project(); 
-    
+    private model: Project = new Project();
+    private id: number;
+    private sub: any;
 
-    save():void{
-        this.service.createProject(this.model).subscribe(
-            (data) => {
-                 this.router.navigate(['/project-list']);
-            },
-            (error): void => {
-                this.alertService.addAlert({
-                    id: 1,
-                    type: 'danger',
-                    message: error.text(),
+    ngOnInit(): void {
+        if (this.id > 0) {
+
+
+            this.service.getProject(this.id).subscribe(
+                (data) => {
+                    this.model = <Project>data;
+                },
+                (error): void => {
+                    console.log('Something went wrong! Get skills failed!');
                 });
-            });
+        }
     }
-    
-    cancel():void{
+
+
+    save(): void {
+        if (this.model.projectId > 0) {
+            this.service.updateProject(this.model).subscribe(
+                (data) => {
+
+                },
+                (error): void => {
+                    this.alertService.addAlert({
+                        id: 1,
+                        type: 'danger',
+                        message: error.text(),
+                    });
+                });
+        }
+        else {
+            this.service.createProject(this.model).subscribe(
+                (data) => {
+
+                },
+                (error): void => {
+                    this.alertService.addAlert({
+                        id: 1,
+                        type: 'danger',
+                        message: error.text(),
+                    });
+                });
+        }
+    }
+
+    cancel(): void {
         this.router.navigate(['/project-list']);
     }
 

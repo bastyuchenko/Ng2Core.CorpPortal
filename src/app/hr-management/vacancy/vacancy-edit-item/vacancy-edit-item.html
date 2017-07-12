@@ -4,8 +4,8 @@
   <div class="text-danger"></div>
   <div class="form-group">
     <label class="col-md-3 control-label required-asterisk">First name</label>
-    <div class="col-md-9">
-      <input [(ngModel)]="model.FirstName" required name="FirstName" #firstName='ngModel' class="form-control" />
+    <div class="input-group">
+      <input [(ngModel)]="model.firstName" required name="FirstName" #firstName='ngModel' class="form-control" />
       <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
         <span class="validationMessage" [hidden]="!firstName.errors.required">First name is required</span>
       </div>
@@ -14,16 +14,39 @@
 
   <div class="form-group">
     <label class="col-md-3 control-label required-asterisk">Last name</label>
-    <div class="col-md-9">
-      <input [(ngModel)]="model.LastName" required name="LastName" #lastName='ngModel' class="form-control" />
+    <div class="input-group">
+      <input [(ngModel)]="model.lastName" required name="LastName" #lastName='ngModel' class="form-control" />
       <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)">
         <span class="validationMessage" [hidden]="!lastName.errors.required">Last name is required</span>
       </div>
     </div>
   </div>
+
+  <div class="form-group">
+    <label class="col-md-3 control-label required-asterisk">Due date</label>
+    <div class="input-group">
+      <input class="form-control" placeholder="yyyy-mm-dd"
+             name="dp" [(ngModel)]="model.dueDate" ngbDatepicker #d="ngbDatepicker">
+      <div class="input-group-addon" (click)="d.toggle()" >
+        <img src="https://ng-bootstrap.github.io/img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-md-3 control-label required-asterisk">Vacancy</label>
+    <div class="input-group">
+      <select [(ngModel)]="model.projectKey" required name="Project" #project='ngModel' class="form-control">
+        <option *ngFor="let proj of projectsOptions" [ngValue]="proj.projectId">{{proj.title}}</option>
+      </select>
+      <div *ngIf="project.errors && (project.dirty || project.touched)">
+        <span class="validationMessage" [hidden]="!project.errors.required">Project is required</span>
+      </div>
+    </div>
+  </div>
   
   <div class="form-group">
-    <div class="col-md-offset-3 col-md-9">
+    <div class="col-md-offset-3 input-group">
       <button type="submit" (click)='save()' [disabled]="!vacancyForm.form.valid" class="btn btn-primary">Save</button>
       <button type="submit" (click)='cancel()' class="btn btn-default">Cancel</button>
     </div>

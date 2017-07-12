@@ -3,11 +3,11 @@ import { RoleAssignment } from "./role-assignment";
 
 
 export class Employee {
-     EmployeeId: number;
-     UserId: string;
-     User: ApplicationUser;
-     RoleAssignmentsGroupLead: RoleAssignment[];
-     RoleAssignmentsDirectMgr: RoleAssignment[];
-     RoleAssignmentsEmployee: RoleAssignment[];
-     Salary: number;
+     employeeId: number;
+     userId: string;
+     user: ApplicationUser;
+     roleAssignmentsGroupLead: RoleAssignment[];
+     roleAssignmentsDirectMgr: RoleAssignment[];
+     roleAssignmentsEmployee: RoleAssignment[];
+     salary: number;
 }
