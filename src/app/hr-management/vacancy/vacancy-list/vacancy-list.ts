@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core"
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { HrService } from "./../../hr-management.service"
 import { Vacancy } from "./../../../models/vacancy"
+import { AlertService } from './../../../shared/alert/alert.service'
+
 
 @Component({
     selector: "vacancy-list",
@@ -12,7 +14,8 @@ import { Vacancy } from "./../../../models/vacancy"
 export class VacancyListComponent implements OnInit {
     constructor(private service: HrService,
         private route: ActivatedRoute,
-        private router: Router, ) {
+        private router: Router,
+        private alertService: AlertService) {
     }
     private vacanciesList: Vacancy[];
 
@@ -23,6 +26,24 @@ export class VacancyListComponent implements OnInit {
             },
             (error): void => {
                 console.log('Something went wrong! Get vacancies failed!');
+            });
+    }
+
+    deleteItem(item): void {
+        this.service.deleteVacancy(item.vacancyId).subscribe(
+            (data) => {
+                // this.router.navigate(['/skill-list']);
+                var index: number = this.vacanciesList.indexOf(item);
+                if (index !== -1) {
+                    this.vacanciesList.splice(index, 1);
+                }
+            },
+            (error): void => {
+                this.alertService.addAlert({
+                    id: 1,
+                    type: 'danger',
+                    message: error.text(),
+                });
             });
     }
 

@@ -15,7 +15,11 @@ export class ProjectEditItemComponent implements OnInit {
     constructor(
         private service: HrService,
         private router: Router,
+        private route: ActivatedRoute,
         private alertService: AlertService) {
+        this.sub = this.route.params.subscribe(params => {
+            this.id = +params['id'];
+        });
     }
 
     private model: Project = new Project();

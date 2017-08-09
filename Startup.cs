@@ -17,6 +17,7 @@ using Ng2Core.CorpPortal.Repository;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System.Security.Claims;
 using System.Security.Principal;
+using Newtonsoft.Json.Serialization;
 
 namespace WebApplication
 {
@@ -50,7 +51,10 @@ namespace WebApplication
             services.AddScoped<IVacancyRepository, VacancyRepository>();
             services.AddScoped<IProjectRepository, ProjectRepository>();
             services.AddScoped<ISkillRepository, SkillRepository>();
-            services.AddMvc();
+            services.AddMvc()
+                .AddJsonOptions(options =>
+                options.SerializerSettings.ContractResolver
+                = new DefaultContractResolver());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

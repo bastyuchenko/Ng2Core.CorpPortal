@@ -8,13 +8,21 @@
       <th>#</th>
       <th>Title</th>
       <th>Content</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let project of projectsList">
       <td>{{project.projectId}}</td>
-      <td>{{project.title}}</td>
+      <td>
+        <a [routerLink]="['/project-edit-item', project.projectId]"> {{project.title}}</a>
+      </td>
       <td>{{project.content}}</td>
+      <td class="align-right">
+        <button type="button" class="btn btn-default btn-xs" (click)=deleteItem(project)>
+          <i class="glyphicon glyphicon-trash"></i>
+        </button>
+      </td>
     </tr>
   </tbody>
 </table>

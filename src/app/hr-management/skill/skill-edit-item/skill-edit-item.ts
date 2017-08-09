@@ -18,6 +18,9 @@ export class SkillEditItemComponent implements OnInit {
         private service: HrService,
         private router: Router,
         private alertService: AlertService) {
+        this.sub = this.route.params.subscribe(params => {
+            this.id = +params['id'];
+        });
     }
 
     private model: Skill = new Skill();
