@@ -30,7 +30,7 @@ export class VacancyListComponent implements OnInit {
     }
 
     deleteItem(item): void {
-        this.service.deleteVacancy(item.vacancyId).subscribe(
+        this.service.deleteVacancy(item.VacancyId).subscribe(
             (data) => {
                 // this.router.navigate(['/skill-list']);
                 var index: number = this.vacanciesList.indexOf(item);

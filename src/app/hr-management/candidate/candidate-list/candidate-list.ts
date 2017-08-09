@@ -30,7 +30,7 @@ export class CandidateListComponent implements OnInit {
     }
 
     deleteItem(item): void {
-        this.service.deleteCandidate(item.candidatId).subscribe(
+        this.service.deleteCandidate(item.CandidatId).subscribe(
             (data) => {
                 // this.router.navigate(['/skill-list']);
                 var index: number = this.candidatesList.indexOf(item);

@@ -15,12 +15,12 @@
     <tr *ngFor="let project of projectsList">
       <td>{{project.ProjectId}}</td>
       <td>
-        <a [routerLink]="['/project-edit-item', project.projectId]"> {{project.Title}}</a>
+        <a [routerLink]="['/project-edit-item', project.ProjectId]"> {{project.Title}}</a>
       </td>
       <td>{{project.Content}}</td>
       <td class="align-right">
-        <button type="button" class="btn btn-default btn-xs" (click)=deleteItem(project)>
-          <i class="glyphicon glyphicon-trash"></i>
+        <button type="button" class="close" aria-label="Close" (click)=deleteItem(project)>
+          <span aria-hidden="true">&times;</span>
         </button>
       </td>
     </tr>

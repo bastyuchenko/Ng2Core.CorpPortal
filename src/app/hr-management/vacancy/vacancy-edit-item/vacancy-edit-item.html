@@ -27,7 +27,7 @@
     <label class="col-md-3 control-label required-asterisk">Vacancy</label>
     <div class="input-group">
       <select [(ngModel)]="model.ProjectKey" required name="Project" #project='ngModel' class="form-control">
-        <option *ngFor="let proj of projectsOptions" [ngValue]="proj.projectId">{{proj.Title}}</option>
+        <option *ngFor="let proj of projectsOptions" [ngValue]="proj.ProjectId">{{proj.Title}}</option>
       </select>
       <div *ngIf="project.errors && (project.dirty || project.touched)">
         <span class="validationMessage" [hidden]="!project.errors.required">Project is required</span>

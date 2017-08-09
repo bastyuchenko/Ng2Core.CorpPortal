@@ -302,7 +302,7 @@ var _a, _b, _c, _d;
 /***/ "./src/app/account-management/login-info/login-info.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"userInfo!=null && userInfo.isAuthenticated\">\r\n    <form asp-area=\"\" asp-controller=\"Account\" asp-action=\"Logout\" method=\"post\" id=\"logoutForm\" class=\"navbar-right\">\r\n        <ul class=\"nav navbar-nav navbar-right\">\r\n            <li>\r\n                <a asp-area=\"\" asp-controller=\"Manage\" asp-action=\"Index\" title=\"Manage\">{{userInfo.userName}}</a>\r\n            </li>\r\n            <li>\r\n                <button type=\"submit\" (click)=\"logout()\" class=\"btn btn-link navbar-btn navbar-link\">Log out</button>\r\n            </li>\r\n        </ul>\r\n    </form>\r\n</div>\r\n<div *ngIf=\"userInfo==null || !userInfo.isAuthenticated\">\r\n    <ul class=\"nav navbar-nav navbar-right\">\r\n        <li><a [routerLink]=\"['register-account']\">Register</a></li>\r\n        <li><a [routerLink]=\"['login-account']\">Log in</a></li>\r\n    </ul>\r\n</div>"
+module.exports = "<div *ngIf=\"userInfo!=null && userInfo.IsAuthenticated\">\r\n  <ul class=\"nav navbar-nav navbar-right\">\r\n    <li>\r\n      <a class=\"nav-link\" href=\"#\">{{userInfo.UserName}}</a>\r\n    </li>\r\n    <li>\r\n      <a class=\"nav-link\" href=\"#\" (click)=\"logout()\">Log out</a>\r\n    </li>\r\n  </ul>\r\n</div>\r\n<div *ngIf=\"userInfo==null || !userInfo.IsAuthenticated\">\r\n  <ul class=\"nav navbar-nav navbar-right\">\r\n    <li><a class=\"nav-link\" [routerLink]=\"['register-account']\">Register</a></li>\r\n    <li><a class=\"nav-link\" [routerLink]=\"['login-account']\">Log in</a></li>\r\n  </ul>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -559,7 +559,7 @@ module.exports = module.exports.toString();
 /***/ "./src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-light bg-faded\">\r\n  <button class=\"navbar-toggler navbar-toggler-right\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\"\r\n    aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n    <span class=\"navbar-toggler-icon\"></span>\r\n  </button>\r\n\r\n  <a asp-area=\"\" asp-controller=\"Home\" asp-action=\"Index\" class=\"navbar-brand\">Ng2Core.CorpPortal</a>\r\n\r\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n    <ul class=\"navbar-nav\">\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" [routerLink]=\"['welcome']\">Home</a>\r\n      </li>\r\n\r\n      <li class=\"nav-item dropdown\">\r\n        <a class=\"nav-link dropdown-toggle\" href=\"#\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Account Management <span class=\"caret\"></span></a>\r\n        <ul class=\"dropdown-menu\">\r\n          <li class=\"nav-item\">\r\n            <a class=\"nav-link\" [routerLink]=\"['role-list']\">Roles</a>\r\n          </li>\r\n        </ul>\r\n\r\n        <li class=\"nav-item dropdown\">\r\n          <a class=\"nav-link dropdown-toggle\" href=\"#\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">HR Management <span class=\"caret\"></span></a>\r\n          <ul class=\"dropdown-menu\">\r\n            <li class=\"nav-item\">\r\n              <a class=\"nav-link\" [routerLink]=\"['candidate-list']\">Candidates</a>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n              <a class=\"nav-link\" [routerLink]=\"['project-list']\">Projects</a>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n              <a class=\"nav-link\" [routerLink]=\"['skill-list']\">Skills</a>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n              <a class=\"nav-link\" [routerLink]=\"['vacancy-list']\">Vacancies</a>\r\n            </li>\r\n          </ul>\r\n        </li>\r\n    </ul>\r\n    <login-info></login-info>\r\n  </div>\r\n\r\n</nav>\r\n<div class=\"container body-content\">\r\n  <div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <main>\r\n        <router-outlet></router-outlet>\r\n        <router-outlet name=\"lastNews\"></router-outlet>\r\n      </main>\r\n\r\n    </div>\r\n  </div>\r\n  <hr />\r\n  <footer>\r\n    <p>&copy; 2017 - Ng2Core.CorpPortal</p>\r\n  </footer>\r\n</div>\r\n"
+module.exports = "<nav class=\"navbar navbar-toggleable-md navbar-light bg-faded\">\r\n  <button class=\"navbar-toggler navbar-toggler-right\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\"\r\n    aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n    <span class=\"navbar-toggler-icon\"></span>\r\n  </button>\r\n\r\n  <a asp-area=\"\" asp-controller=\"Home\" asp-action=\"Index\" class=\"navbar-brand\">Ng2Core.CorpPortal</a>\r\n\r\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n    <ul class=\"navbar-nav mr-auto\">\r\n      <li class=\"nav-item\">\r\n        <a class=\"nav-link\" [routerLink]=\"['welcome']\">Home</a>\r\n      </li>\r\n\r\n      <li class=\"nav-item dropdown\">\r\n        <!-- <a class=\"nav-link dropdown-toggle\" href=\"#\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">Account Management <span class=\"caret\"></span></a>\r\n        <ul class=\"dropdown-menu\">\r\n          <li class=\"nav-item\">\r\n            <a class=\"nav-link\" [routerLink]=\"['role-list']\">Roles</a>\r\n          </li>\r\n        </ul> -->\r\n\r\n        <li class=\"nav-item dropdown\">\r\n          <a class=\"nav-link dropdown-toggle\" href=\"#\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">HR Management <span class=\"caret\"></span></a>\r\n          <ul class=\"dropdown-menu\">\r\n            <li class=\"nav-item\">\r\n              <a class=\"nav-link\" [routerLink]=\"['candidate-list']\">Candidates</a>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n              <a class=\"nav-link\" [routerLink]=\"['project-list']\">Projects</a>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n              <a class=\"nav-link\" [routerLink]=\"['skill-list']\">Skills</a>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n              <a class=\"nav-link\" [routerLink]=\"['vacancy-list']\">Vacancies</a>\r\n            </li>\r\n          </ul>\r\n        </li>\r\n    </ul>\r\n    <ul class=\"nav navbar-nav\">\r\n      <li class=\"nav-item\">\r\n        <login-info></login-info>\r\n      </li>\r\n    </ul>\r\n\r\n  </div>\r\n\r\n</nav>\r\n<div class=\"container body-content\">\r\n  <div class=\"row\">\r\n    <div class=\"col-md-12\">\r\n      <main>\r\n        <router-outlet></router-outlet>\r\n        <router-outlet name=\"lastNews\"></router-outlet>\r\n      </main>\r\n\r\n    </div>\r\n  </div>\r\n  <hr />\r\n  <footer>\r\n    <p>&copy; 2017 - Ng2Core.CorpPortal</p>\r\n  </footer>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -772,7 +772,7 @@ module.exports = module.exports.toString();
 /***/ "./src/app/hr-management/candidate/candidate-edit-item/candidate-edit-item.html":
 /***/ (function(module, exports) {
 
-module.exports = "<form #candidateForm=\"ngForm\" class=\"form-horizontal\">\r\n  <h4>Create new candidate</h4>\r\n  <hr />\r\n  <div class=\"text-danger\"></div>\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label required-asterisk\">First name</label>\r\n    <div class=\"input-group\">\r\n      <input [(ngModel)]=\"model.FirstName\" required name=\"FirstName\" #firstName='ngModel' class=\"form-control\" />\r\n      <div *ngIf=\"firstName.errors && (firstName.dirty || firstName.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!firstName.errors.required\">First name is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label required-asterisk\">Last name</label>\r\n    <div class=\"input-group\">\r\n      <input [(ngModel)]=\"model.LastName\" required name=\"LastName\" #lastName='ngModel' class=\"form-control\" />\r\n      <div *ngIf=\"lastName.errors && (lastName.dirty || lastName.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!lastName.errors.required\">Last name is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label required-asterisk\">Vacancy</label>\r\n    <div class=\"input-group\">\r\n      <select [(ngModel)]=\"model.VacancyKey\" required name=\"Vacancy\" #vacancy='ngModel' class=\"form-control\">\r\n        <option *ngFor=\"let vac of vacanciesOptions\" [ngValue]=\"vac.vacancyId\">{{vac.VacancyTitle}}</option>\r\n      </select>\r\n      <div *ngIf=\"vacancy.errors && (vacancy.dirty || vacancy.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!vacancy.errors.required\">Vacancy is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n    <div class=\"col-md-offset-3 input-group\">\r\n      <button type=\"submit\" (click)='save()' [disabled]=\"!candidateForm.form.valid\" class=\"btn btn-primary\">Save</button>\r\n      <button type=\"submit\" (click)='cancel()' class=\"btn btn-default\">Cancel</button>\r\n    </div>\r\n  </div>\r\n</form>\r\n"
+module.exports = "<form #candidateForm=\"ngForm\" class=\"form-horizontal\">\r\n  <h4>Create new candidate</h4>\r\n  <hr />\r\n  <div class=\"text-danger\"></div>\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label required-asterisk\">First name</label>\r\n    <div class=\"input-group\">\r\n      <input [(ngModel)]=\"model.FirstName\" required name=\"FirstName\" #firstName='ngModel' class=\"form-control\" />\r\n      <div *ngIf=\"firstName.errors && (firstName.dirty || firstName.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!firstName.errors.required\">First name is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label required-asterisk\">Last name</label>\r\n    <div class=\"input-group\">\r\n      <input [(ngModel)]=\"model.LastName\" required name=\"LastName\" #lastName='ngModel' class=\"form-control\" />\r\n      <div *ngIf=\"lastName.errors && (lastName.dirty || lastName.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!lastName.errors.required\">Last name is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label required-asterisk\">Vacancy</label>\r\n    <div class=\"input-group\">\r\n      <select [(ngModel)]=\"model.VacancyKey\" required name=\"Vacancy\" #vacancy='ngModel' class=\"form-control\">\r\n        <option *ngFor=\"let vac of vacanciesOptions\" [ngValue]=\"vac.VacancyId\">{{vac.VacancyTitle}}</option>\r\n      </select>\r\n      <div *ngIf=\"vacancy.errors && (vacancy.dirty || vacancy.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!vacancy.errors.required\">Vacancy is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n    <div class=\"col-md-offset-3 input-group\">\r\n      <button type=\"submit\" (click)='save()' [disabled]=\"!candidateForm.form.valid\" class=\"btn btn-primary\">Save</button>\r\n      <button type=\"submit\" (click)='cancel()' class=\"btn btn-default\">Cancel</button>\r\n    </div>\r\n  </div>\r\n</form>\r\n"
 
 /***/ }),
 
@@ -832,6 +832,7 @@ var CandidateEditItemComponent = (function () {
         var _this = this;
         if (this.model.CandidatId > 0) {
             this.service.updateCandidate(this.model).subscribe(function (data) {
+                _this.router.navigate(['/candidate-list']);
             }, function (error) {
                 _this.alertService.addAlert({
                     id: 1,
@@ -842,6 +843,7 @@ var CandidateEditItemComponent = (function () {
         }
         else {
             this.service.createCandidate(this.model).subscribe(function (data) {
+                _this.router.navigate(['/candidate-list']);
             }, function (error) {
                 _this.alertService.addAlert({
                     id: 1,
@@ -891,7 +893,7 @@ module.exports = module.exports.toString();
 /***/ "./src/app/hr-management/candidate/candidate-list/candidate-list.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Candidate list</h2>\r\n<div class=\"form-group\">\r\n  <button type=\"button\" (click)='moveToCreateForm()' class=\"btn btn-primary\">Add item</button>\r\n</div>\r\n<table>\r\n  <thead>\r\n    <tr>\r\n      <th>#</th>\r\n      <th>FirstName</th>\r\n      <th>LastName</th>\r\n      <th>Vacancy</th>\r\n      <th></th>\r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr *ngFor=\"let candidate of candidatesList\">\r\n      <td>{{candidate.CandidatId}}</td>\r\n      <td>\r\n        <a [routerLink]=\"['/candidate-edit-item', candidate.candidatId]\"> {{candidate.FirstName}}</a>\r\n      </td>\r\n      <td>{{candidate.LastName}}</td>\r\n      <td>{{candidate.Vacancy.VacancyTitle}}</td>\r\n\r\n      <td class=\"align-right\">\r\n        <button type=\"button\" class=\"btn btn-default btn-xs\" (click)=deleteItem(candidate)>\r\n          <i class=\"glyphicon glyphicon-trash\"></i>\r\n        </button>\r\n      </td>\r\n    </tr>\r\n  </tbody>\r\n</table>\r\n"
+module.exports = "<h2>Candidate list</h2>\r\n<div class=\"form-group\">\r\n  <button type=\"button\" (click)='moveToCreateForm()' class=\"btn btn-primary\">Add item</button>\r\n</div>\r\n<table>\r\n  <thead>\r\n    <tr>\r\n      <th>#</th>\r\n      <th>FirstName</th>\r\n      <th>LastName</th>\r\n      <th>Vacancy</th>\r\n      <th></th>\r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr *ngFor=\"let candidate of candidatesList\">\r\n      <td>{{candidate.CandidatId}}</td>\r\n      <td>\r\n        <a [routerLink]=\"['/candidate-edit-item', candidate.CandidatId]\"> {{candidate.FirstName}}</a>\r\n      </td>\r\n      <td>{{candidate.LastName}}</td>\r\n      <td>{{candidate.Vacancy.VacancyTitle}}</td>\r\n\r\n      <td class=\"align-right\">\r\n\r\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=deleteItem(candidate)>\r\n          <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n      </td>\r\n    </tr>\r\n  </tbody>\r\n</table>\r\n"
 
 /***/ }),
 
@@ -934,7 +936,7 @@ var CandidateListComponent = (function () {
     };
     CandidateListComponent.prototype.deleteItem = function (item) {
         var _this = this;
-        this.service.deleteCandidate(item.candidatId).subscribe(function (data) {
+        this.service.deleteCandidate(item.CandidatId).subscribe(function (data) {
             // this.router.navigate(['/skill-list']);
             var index = _this.candidatesList.indexOf(item);
             if (index !== -1) {
@@ -1330,6 +1332,7 @@ var ProjectEditItemComponent = (function () {
         var _this = this;
         if (this.model.ProjectId > 0) {
             this.service.updateProject(this.model).subscribe(function (data) {
+                _this.router.navigate(['/project-list']);
             }, function (error) {
                 _this.alertService.addAlert({
                     id: 1,
@@ -1340,6 +1343,7 @@ var ProjectEditItemComponent = (function () {
         }
         else {
             this.service.createProject(this.model).subscribe(function (data) {
+                _this.router.navigate(['/project-list']);
             }, function (error) {
                 _this.alertService.addAlert({
                     id: 1,
@@ -1389,7 +1393,7 @@ module.exports = module.exports.toString();
 /***/ "./src/app/hr-management/project/project-list/project-list.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Project list</h2>\r\n<div class=\"form-group\">\r\n  <button type=\"button\" (click)='moveToCreateForm()' class=\"btn btn-primary\">Add item</button>\r\n</div>\r\n<table>\r\n  <thead>\r\n    <tr>\r\n      <th>#</th>\r\n      <th>Title</th>\r\n      <th>Content</th>\r\n      <th></th>\r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr *ngFor=\"let project of projectsList\">\r\n      <td>{{project.ProjectId}}</td>\r\n      <td>\r\n        <a [routerLink]=\"['/project-edit-item', project.projectId]\"> {{project.Title}}</a>\r\n      </td>\r\n      <td>{{project.Content}}</td>\r\n      <td class=\"align-right\">\r\n        <button type=\"button\" class=\"btn btn-default btn-xs\" (click)=deleteItem(project)>\r\n          <i class=\"glyphicon glyphicon-trash\"></i>\r\n        </button>\r\n      </td>\r\n    </tr>\r\n  </tbody>\r\n</table>\r\n"
+module.exports = "<h2>Project list</h2>\r\n<div class=\"form-group\">\r\n  <button type=\"button\" (click)='moveToCreateForm()' class=\"btn btn-primary\">Add item</button>\r\n</div>\r\n<table>\r\n  <thead>\r\n    <tr>\r\n      <th>#</th>\r\n      <th>Title</th>\r\n      <th>Content</th>\r\n      <th></th>\r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr *ngFor=\"let project of projectsList\">\r\n      <td>{{project.ProjectId}}</td>\r\n      <td>\r\n        <a [routerLink]=\"['/project-edit-item', project.ProjectId]\"> {{project.Title}}</a>\r\n      </td>\r\n      <td>{{project.Content}}</td>\r\n      <td class=\"align-right\">\r\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=deleteItem(project)>\r\n          <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n      </td>\r\n    </tr>\r\n  </tbody>\r\n</table>\r\n"
 
 /***/ }),
 
@@ -1432,7 +1436,7 @@ var ProjectListComponent = (function () {
     };
     ProjectListComponent.prototype.deleteItem = function (item) {
         var _this = this;
-        this.service.deleteProject(item.projectId).subscribe(function (data) {
+        this.service.deleteProject(item.ProjectId).subscribe(function (data) {
             // this.router.navigate(['/skill-list']);
             var index = _this.projectsList.indexOf(item);
             if (index !== -1) {
@@ -1540,6 +1544,7 @@ var SkillEditItemComponent = (function () {
         var _this = this;
         if (this.model.SkillId > 0) {
             this.service.updateSkill(this.model).subscribe(function (data) {
+                _this.router.navigate(['/skill-list']);
             }, function (error) {
                 _this.alertService.addAlert({
                     id: 1,
@@ -1550,6 +1555,7 @@ var SkillEditItemComponent = (function () {
         }
         else {
             this.service.createSkill(this.model).subscribe(function (data) {
+                _this.router.navigate(['/skill-list']);
             }, function (error) {
                 _this.alertService.addAlert({
                     id: 1,
@@ -1599,7 +1605,7 @@ module.exports = module.exports.toString();
 /***/ "./src/app/hr-management/skill/skill-list/skill-list.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Skill list</h2>\r\n<div class=\"form-group\">\r\n  <button type=\"button\" (click)='moveToCreateForm()' class=\"btn btn-primary\">Add item</button>\r\n</div>\r\n<table>\r\n  <thead>\r\n    <tr>\r\n      <th>#</th>\r\n      <th>Title</th>\r\n      <th></th>\r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr *ngFor=\"let skill of skillsList\">\r\n      <td>{{skill.SkillId}}</td>\r\n      <td>\r\n        <a [routerLink]=\"['/skill-edit-item', skill.skillId]\"> {{skill.Title}}</a>\r\n        </td>\r\n      <td class=\"align-right\">\r\n        <button type=\"button\" class=\"btn btn-default btn-xs\" (click)=deleteItem(skill)>\r\n          <i class=\"glyphicon glyphicon-trash\"></i>\r\n        </button>\r\n      </td>\r\n    </tr>\r\n  </tbody>\r\n</table>\r\n"
+module.exports = "<h2>Skill list</h2>\r\n<div class=\"form-group\">\r\n  <button type=\"button\" (click)='moveToCreateForm()' class=\"btn btn-primary\">Add item</button>\r\n</div>\r\n<table>\r\n  <thead>\r\n    <tr>\r\n      <th>#</th>\r\n      <th>Title</th>\r\n      <th></th>\r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr *ngFor=\"let skill of skillsList\">\r\n      <td>{{skill.SkillId}}</td>\r\n      <td>\r\n        <a [routerLink]=\"['/skill-edit-item', skill.SkillId]\"> {{skill.Title}}</a>\r\n        </td>\r\n      <td class=\"align-right\">\r\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=deleteItem(skill)>\r\n          <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n      </td>\r\n    </tr>\r\n  </tbody>\r\n</table>\r\n"
 
 /***/ }),
 
@@ -1645,7 +1651,7 @@ var SkillListComponent = (function () {
     };
     SkillListComponent.prototype.deleteItem = function (item) {
         var _this = this;
-        this.service.deleteSkill(item.skillId).subscribe(function (data) {
+        this.service.deleteSkill(item.SkillId).subscribe(function (data) {
             // this.router.navigate(['/skill-list']);
             var index = _this.skillsList.indexOf(item);
             if (index !== -1) {
@@ -1696,7 +1702,7 @@ module.exports = module.exports.toString();
 /***/ "./src/app/hr-management/vacancy/vacancy-edit-item/vacancy-edit-item.html":
 /***/ (function(module, exports) {
 
-module.exports = "<form #vacancyForm=\"ngForm\" class=\"form-horizontal\">\r\n  <h4>Create new vacancy</h4>\r\n  <hr />\r\n  <div class=\"text-danger\"></div>\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label required-asterisk\">Title</label>\r\n    <div class=\"input-group\">\r\n      <input [(ngModel)]=\"model.VacancyTitle\" required name=\"VacancyTitle\" #vacancyTitle='ngModel' class=\"form-control\" />\r\n      <div *ngIf=\"vacancyTitle.errors && (vacancyTitle.dirty || vacancyTitle.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!vacancyTitle.errors.required\">First name is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label required-asterisk\">Due date</label>\r\n    <div class=\"input-group\">\r\n      <input class=\"form-control\" placeholder=\"yyyy-mm-dd\"\r\n             name=\"dp\" [(ngModel)]=\"model.DueDate\" ngbDatepicker #d=\"ngbDatepicker\">\r\n      <div class=\"input-group-addon\" (click)=\"d.toggle()\" >\r\n        <img src=\"https://ng-bootstrap.github.io/img/calendar-icon.svg\" style=\"width: 1.2rem; height: 1rem; cursor: pointer;\"/>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label required-asterisk\">Vacancy</label>\r\n    <div class=\"input-group\">\r\n      <select [(ngModel)]=\"model.ProjectKey\" required name=\"Project\" #project='ngModel' class=\"form-control\">\r\n        <option *ngFor=\"let proj of projectsOptions\" [ngValue]=\"proj.projectId\">{{proj.Title}}</option>\r\n      </select>\r\n      <div *ngIf=\"project.errors && (project.dirty || project.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!project.errors.required\">Project is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  \r\n  <div class=\"form-group\">\r\n    <div class=\"col-md-offset-3 input-group\">\r\n      <button type=\"submit\" (click)='save()' [disabled]=\"!vacancyForm.form.valid\" class=\"btn btn-primary\">Save</button>\r\n      <button type=\"submit\" (click)='cancel()' class=\"btn btn-default\">Cancel</button>\r\n    </div>\r\n  </div>\r\n</form>\r\n"
+module.exports = "<form #vacancyForm=\"ngForm\" class=\"form-horizontal\">\r\n  <h4>Create new vacancy</h4>\r\n  <hr />\r\n  <div class=\"text-danger\"></div>\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label required-asterisk\">Title</label>\r\n    <div class=\"input-group\">\r\n      <input [(ngModel)]=\"model.VacancyTitle\" required name=\"VacancyTitle\" #vacancyTitle='ngModel' class=\"form-control\" />\r\n      <div *ngIf=\"vacancyTitle.errors && (vacancyTitle.dirty || vacancyTitle.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!vacancyTitle.errors.required\">First name is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label required-asterisk\">Due date</label>\r\n    <div class=\"input-group\">\r\n      <input class=\"form-control\" placeholder=\"yyyy-mm-dd\"\r\n             name=\"dp\" [(ngModel)]=\"model.DueDate\" ngbDatepicker #d=\"ngbDatepicker\">\r\n      <div class=\"input-group-addon\" (click)=\"d.toggle()\" >\r\n        <img src=\"https://ng-bootstrap.github.io/img/calendar-icon.svg\" style=\"width: 1.2rem; height: 1rem; cursor: pointer;\"/>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n    <label class=\"col-md-3 control-label required-asterisk\">Vacancy</label>\r\n    <div class=\"input-group\">\r\n      <select [(ngModel)]=\"model.ProjectKey\" required name=\"Project\" #project='ngModel' class=\"form-control\">\r\n        <option *ngFor=\"let proj of projectsOptions\" [ngValue]=\"proj.ProjectId\">{{proj.Title}}</option>\r\n      </select>\r\n      <div *ngIf=\"project.errors && (project.dirty || project.touched)\">\r\n        <span class=\"validationMessage\" [hidden]=\"!project.errors.required\">Project is required</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  \r\n  <div class=\"form-group\">\r\n    <div class=\"col-md-offset-3 input-group\">\r\n      <button type=\"submit\" (click)='save()' [disabled]=\"!vacancyForm.form.valid\" class=\"btn btn-primary\">Save</button>\r\n      <button type=\"submit\" (click)='cancel()' class=\"btn btn-default\">Cancel</button>\r\n    </div>\r\n  </div>\r\n</form>\r\n"
 
 /***/ }),
 
@@ -1757,6 +1763,7 @@ var VacancyEditItemComponent = (function () {
         this.model.DueDate = new Date();
         if (this.model.VacancyId > 0) {
             this.service.updateVacancy(this.model).subscribe(function (data) {
+                _this.router.navigate(['/vacancy-list']);
             }, function (error) {
                 _this.alertService.addAlert({
                     id: 1,
@@ -1767,6 +1774,7 @@ var VacancyEditItemComponent = (function () {
         }
         else {
             this.service.createVacancy(this.model).subscribe(function (data) {
+                _this.router.navigate(['/vacancy-list']);
             }, function (error) {
                 _this.alertService.addAlert({
                     id: 1,
@@ -1816,7 +1824,7 @@ module.exports = module.exports.toString();
 /***/ "./src/app/hr-management/vacancy/vacancy-list/vacancy-list.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Vacancy list</h2>\r\n<div class=\"form-group\">\r\n  <button type=\"button\" (click)='moveToCreateForm()' class=\"btn btn-primary\">Add item</button>\r\n</div>\r\n<table>\r\n  <thead>\r\n    <tr>\r\n      <th>#</th>\r\n      <th>Title</th>\r\n      <th></th>\r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr *ngFor=\"let vacancy of vacanciesList\">\r\n      <td>{{vacancy.VacancyId}}</td>\r\n      <td>\r\n        <a [routerLink]=\"['/vacancy-edit-item', vacancy.vacancyId]\"> {{vacancy.VacancyTitle}}</a>\r\n      </td>\r\n      <td class=\"align-right\">\r\n        <button type=\"button\" class=\"btn btn-default btn-xs\" (click)=deleteItem(vacancy)>\r\n          <i class=\"glyphicon glyphicon-trash\"></i>\r\n        </button>\r\n      </td>\r\n    </tr>\r\n  </tbody>\r\n</table>\r\n"
+module.exports = "<h2>Vacancy list</h2>\r\n<div class=\"form-group\">\r\n  <button type=\"button\" (click)='moveToCreateForm()' class=\"btn btn-primary\">Add item</button>\r\n</div>\r\n<table>\r\n  <thead>\r\n    <tr>\r\n      <th>#</th>\r\n      <th>Title</th>\r\n      <th></th>\r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr *ngFor=\"let vacancy of vacanciesList\">\r\n      <td>{{vacancy.VacancyId}}</td>\r\n      <td>\r\n        <a [routerLink]=\"['/vacancy-edit-item', vacancy.VacancyId]\"> {{vacancy.VacancyTitle}}</a>\r\n      </td>\r\n      <td class=\"align-right\">\r\n        <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=deleteItem(vacancy)>\r\n          <span aria-hidden=\"true\">&times;</span>\r\n        </button>\r\n      </td>\r\n    </tr>\r\n  </tbody>\r\n</table>\r\n"
 
 /***/ }),
 
@@ -1859,7 +1867,7 @@ var VacancyListComponent = (function () {
     };
     VacancyListComponent.prototype.deleteItem = function (item) {
         var _this = this;
-        this.service.deleteVacancy(item.vacancyId).subscribe(function (data) {
+        this.service.deleteVacancy(item.VacancyId).subscribe(function (data) {
             // this.router.navigate(['/skill-list']);
             var index = _this.vacanciesList.indexOf(item);
             if (index !== -1) {

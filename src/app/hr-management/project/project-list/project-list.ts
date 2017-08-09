@@ -30,7 +30,7 @@ export class ProjectListComponent implements OnInit {
     }
 
     deleteItem(item): void {
-        this.service.deleteProject(item.projectId).subscribe(
+        this.service.deleteProject(item.ProjectId).subscribe(
             (data) => {
                 // this.router.navigate(['/skill-list']);
                 var index: number = this.projectsList.indexOf(item);

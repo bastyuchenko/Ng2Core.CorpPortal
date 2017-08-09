@@ -16,14 +16,15 @@
     <tr *ngFor="let candidate of candidatesList">
       <td>{{candidate.CandidatId}}</td>
       <td>
-        <a [routerLink]="['/candidate-edit-item', candidate.candidatId]"> {{candidate.FirstName}}</a>
+        <a [routerLink]="['/candidate-edit-item', candidate.CandidatId]"> {{candidate.FirstName}}</a>
       </td>
       <td>{{candidate.LastName}}</td>
       <td>{{candidate.Vacancy.VacancyTitle}}</td>
 
       <td class="align-right">
-        <button type="button" class="btn btn-default btn-xs" (click)=deleteItem(candidate)>
-          <i class="glyphicon glyphicon-trash"></i>
+
+        <button type="button" class="close" aria-label="Close" (click)=deleteItem(candidate)>
+          <span aria-hidden="true">&times;</span>
         </button>
       </td>
     </tr>

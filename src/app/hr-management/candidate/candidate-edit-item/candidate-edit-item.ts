@@ -61,7 +61,7 @@ export class CandidateEditItemComponent implements OnInit {
         if (this.model.CandidatId > 0) {
             this.service.updateCandidate(this.model).subscribe(
                 (data) => {
-
+                    this.router.navigate(['/candidate-list']);
                 },
                 (error): void => {
                     this.alertService.addAlert({
@@ -71,10 +71,10 @@ export class CandidateEditItemComponent implements OnInit {
                     });
                 });
         }
-        else  {
+        else {
             this.service.createCandidate(this.model).subscribe(
                 (data) => {
-
+                    this.router.navigate(['/candidate-list']);
                 },
                 (error): void => {
                     this.alertService.addAlert({

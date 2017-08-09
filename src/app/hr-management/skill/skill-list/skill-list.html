@@ -14,11 +14,11 @@
     <tr *ngFor="let skill of skillsList">
       <td>{{skill.SkillId}}</td>
       <td>
-        <a [routerLink]="['/skill-edit-item', skill.skillId]"> {{skill.Title}}</a>
+        <a [routerLink]="['/skill-edit-item', skill.SkillId]"> {{skill.Title}}</a>
         </td>
       <td class="align-right">
-        <button type="button" class="btn btn-default btn-xs" (click)=deleteItem(skill)>
-          <i class="glyphicon glyphicon-trash"></i>
+        <button type="button" class="close" aria-label="Close" (click)=deleteItem(skill)>
+          <span aria-hidden="true">&times;</span>
         </button>
       </td>
     </tr>

@@ -45,7 +45,7 @@ export class ProjectEditItemComponent implements OnInit {
         if (this.model.ProjectId > 0) {
             this.service.updateProject(this.model).subscribe(
                 (data) => {
-
+                    this.router.navigate(['/project-list']);
                 },
                 (error): void => {
                     this.alertService.addAlert({
@@ -58,7 +58,7 @@ export class ProjectEditItemComponent implements OnInit {
         else {
             this.service.createProject(this.model).subscribe(
                 (data) => {
-
+                    this.router.navigate(['/project-list']);
                 },
                 (error): void => {
                     this.alertService.addAlert({

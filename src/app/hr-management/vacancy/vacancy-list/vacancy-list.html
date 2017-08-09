@@ -14,11 +14,11 @@
     <tr *ngFor="let vacancy of vacanciesList">
       <td>{{vacancy.VacancyId}}</td>
       <td>
-        <a [routerLink]="['/vacancy-edit-item', vacancy.vacancyId]"> {{vacancy.VacancyTitle}}</a>
+        <a [routerLink]="['/vacancy-edit-item', vacancy.VacancyId]"> {{vacancy.VacancyTitle}}</a>
       </td>
       <td class="align-right">
-        <button type="button" class="btn btn-default btn-xs" (click)=deleteItem(vacancy)>
-          <i class="glyphicon glyphicon-trash"></i>
+        <button type="button" class="close" aria-label="Close" (click)=deleteItem(vacancy)>
+          <span aria-hidden="true">&times;</span>
         </button>
       </td>
     </tr>

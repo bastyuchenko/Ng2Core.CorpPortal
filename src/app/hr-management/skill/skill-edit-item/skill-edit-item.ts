@@ -43,7 +43,7 @@ export class SkillEditItemComponent implements OnInit {
         if (this.model.SkillId > 0) {
             this.service.updateSkill(this.model).subscribe(
                 (data) => {
-
+                    this.router.navigate(['/skill-list']);
                 },
                 (error): void => {
                     this.alertService.addAlert({
@@ -56,7 +56,7 @@ export class SkillEditItemComponent implements OnInit {
         else {
             this.service.createSkill(this.model).subscribe(
                 (data) => {
-
+                    this.router.navigate(['/skill-list']);
                 },
                 (error): void => {
                     this.alertService.addAlert({

@@ -60,7 +60,7 @@ export class VacancyEditItemComponent implements OnInit {
         if (this.model.VacancyId > 0) {
             this.service.updateVacancy(this.model).subscribe(
                 (data) => {
-
+                    this.router.navigate(['/vacancy-list']);
                 },
                 (error): void => {
                     this.alertService.addAlert({
@@ -73,7 +73,7 @@ export class VacancyEditItemComponent implements OnInit {
         else {
             this.service.createVacancy(this.model).subscribe(
                 (data) => {
-
+                    this.router.navigate(['/vacancy-list']);
                 },
                 (error): void => {
                     this.alertService.addAlert({

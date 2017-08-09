@@ -33,7 +33,7 @@ export class SkillListComponent implements OnInit {
     }
 
     deleteItem(item): void {
-        this.service.deleteSkill(item.skillId).subscribe(
+        this.service.deleteSkill(item.SkillId).subscribe(
             (data) => {
                 // this.router.navigate(['/skill-list']);
                 var index: number = this.skillsList.indexOf(item);
