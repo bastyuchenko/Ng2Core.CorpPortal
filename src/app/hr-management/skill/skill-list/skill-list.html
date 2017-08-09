@@ -12,9 +12,9 @@
   </thead>
   <tbody>
     <tr *ngFor="let skill of skillsList">
-      <td>{{skill.skillId}}</td>
+      <td>{{skill.SkillId}}</td>
       <td>
-        <a [routerLink]="['/skill-edit-item', skill.skillId]"> {{skill.title}}</a>
+        <a [routerLink]="['/skill-edit-item', skill.skillId]"> {{skill.Title}}</a>
         </td>
       <td class="align-right">
         <button type="button" class="btn btn-default btn-xs" (click)=deleteItem(skill)>

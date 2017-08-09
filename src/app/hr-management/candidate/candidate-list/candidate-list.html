@@ -14,12 +14,12 @@
   </thead>
   <tbody>
     <tr *ngFor="let candidate of candidatesList">
-      <td>{{candidate.candidatId}}</td>
+      <td>{{candidate.CandidatId}}</td>
       <td>
-        <a [routerLink]="['/candidate-edit-item', candidate.candidatId]"> {{candidate.firstName}}</a>
+        <a [routerLink]="['/candidate-edit-item', candidate.candidatId]"> {{candidate.FirstName}}</a>
       </td>
-      <td>{{candidate.lastName}}</td>
-      <td>{{candidate.vacancy.vacancyTitle}}</td>
+      <td>{{candidate.LastName}}</td>
+      <td>{{candidate.Vacancy.VacancyTitle}}</td>
 
       <td class="align-right">
         <button type="button" class="btn btn-default btn-xs" (click)=deleteItem(candidate)>

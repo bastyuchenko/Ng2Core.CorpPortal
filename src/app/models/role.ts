@@ -1,5 +1,5 @@
-export class Role {
-    id:number;
-    name:string;
-    normalizedName:string;
+﻿export class Role {
+    Id:number;
+    Name:string;
+    NormalizedName:string;
 }

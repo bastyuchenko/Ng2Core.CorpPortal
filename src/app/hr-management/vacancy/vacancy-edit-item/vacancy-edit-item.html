@@ -5,7 +5,7 @@
   <div class="form-group">
     <label class="col-md-3 control-label required-asterisk">Title</label>
     <div class="input-group">
-      <input [(ngModel)]="model.vacancyTitle" required name="VacancyTitle" #vacancyTitle='ngModel' class="form-control" />
+      <input [(ngModel)]="model.VacancyTitle" required name="VacancyTitle" #vacancyTitle='ngModel' class="form-control" />
       <div *ngIf="vacancyTitle.errors && (vacancyTitle.dirty || vacancyTitle.touched)">
         <span class="validationMessage" [hidden]="!vacancyTitle.errors.required">First name is required</span>
       </div>
@@ -16,7 +16,7 @@
     <label class="col-md-3 control-label required-asterisk">Due date</label>
     <div class="input-group">
       <input class="form-control" placeholder="yyyy-mm-dd"
-             name="dp" [(ngModel)]="model.dueDate" ngbDatepicker #d="ngbDatepicker">
+             name="dp" [(ngModel)]="model.DueDate" ngbDatepicker #d="ngbDatepicker">
       <div class="input-group-addon" (click)="d.toggle()" >
         <img src="https://ng-bootstrap.github.io/img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
       </div>
@@ -26,8 +26,8 @@
   <div class="form-group">
     <label class="col-md-3 control-label required-asterisk">Vacancy</label>
     <div class="input-group">
-      <select [(ngModel)]="model.projectKey" required name="Project" #project='ngModel' class="form-control">
-        <option *ngFor="let proj of projectsOptions" [ngValue]="proj.projectId">{{proj.title}}</option>
+      <select [(ngModel)]="model.ProjectKey" required name="Project" #project='ngModel' class="form-control">
+        <option *ngFor="let proj of projectsOptions" [ngValue]="proj.projectId">{{proj.Title}}</option>
       </select>
       <div *ngIf="project.errors && (project.dirty || project.touched)">
         <span class="validationMessage" [hidden]="!project.errors.required">Project is required</span>

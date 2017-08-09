@@ -5,7 +5,7 @@
   <div class="form-group">	
     <label class="col-md-3 control-label required-asterisk">Title</label>
     <div class="input-group">
-      <input [(ngModel)]="model.title" required name="Title" #title='ngModel' class="form-control" />
+      <input [(ngModel)]="model.Title" required name="Title" #title='ngModel' class="form-control" />
       <div *ngIf="title.errors && (title.dirty || title.touched)">
         <span class="validationMessage" [hidden]="!title.errors.required">Title is required</span>
       </div>
@@ -15,7 +15,7 @@
   <div class="form-group">
     <label class="col-md-3 control-label required-asterisk">Content</label>
     <div class="input-group">
-      <input [(ngModel)]="model.content" required name="Content" #content='ngModel' class="form-control" />
+      <input [(ngModel)]="model.Content" required name="Content" #content='ngModel' class="form-control" />
       <div *ngIf="content.errors && (content.dirty || content.touched)">
         <span class="validationMessage" [hidden]="!content.errors.required">Content is required</span>
       </div>

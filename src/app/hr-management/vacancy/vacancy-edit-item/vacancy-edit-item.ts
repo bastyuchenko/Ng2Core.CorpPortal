@@ -56,8 +56,8 @@ export class VacancyEditItemComponent implements OnInit {
 
 
     save(): void {
-        this.model.dueDate = new Date();
-        if (this.model.vacancyId > 0) {
+        this.model.DueDate = new Date();
+        if (this.model.VacancyId > 0) {
             this.service.updateVacancy(this.model).subscribe(
                 (data) => {
 

@@ -42,7 +42,7 @@ export class ProjectEditItemComponent implements OnInit {
 
 
     save(): void {
-        if (this.model.projectId > 0) {
+        if (this.model.ProjectId > 0) {
             this.service.updateProject(this.model).subscribe(
                 (data) => {
 

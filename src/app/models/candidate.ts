@@ -1,11 +1,11 @@
-import { ApplicationUser } from "./application-user";
+﻿import { ApplicationUser } from "./application-user";
 import { Vacancy } from "./vacancy";
 
 export class Candidate {
-    candidatId: number;
-    firstName: string;
-    lastName: string;
+    CandidatId: number;
+    FirstName: string;
+    LastName: string;
 
-    vacancyKey: number;
-    vacancy: Vacancy;
+    VacancyKey: number;
+    Vacancy: Vacancy;
 }

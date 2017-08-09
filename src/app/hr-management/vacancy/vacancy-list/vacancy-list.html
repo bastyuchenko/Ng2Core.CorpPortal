@@ -12,9 +12,9 @@
   </thead>
   <tbody>
     <tr *ngFor="let vacancy of vacanciesList">
-      <td>{{vacancy.vacancyId}}</td>
+      <td>{{vacancy.VacancyId}}</td>
       <td>
-        <a [routerLink]="['/vacancy-edit-item', vacancy.vacancyId]"> {{vacancy.vacancyTitle}}</a>
+        <a [routerLink]="['/vacancy-edit-item', vacancy.vacancyId]"> {{vacancy.VacancyTitle}}</a>
       </td>
       <td class="align-right">
         <button type="button" class="btn btn-default btn-xs" (click)=deleteItem(vacancy)>

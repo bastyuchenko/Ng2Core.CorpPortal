@@ -1,13 +1,13 @@
-import { ApplicationUser } from "./application-user";
+﻿import { ApplicationUser } from "./application-user";
 import { RoleAssignment } from "./role-assignment";
 
 
 export class Employee {
-     employeeId: number;
-     userId: string;
-     user: ApplicationUser;
-     roleAssignmentsGroupLead: RoleAssignment[];
-     roleAssignmentsDirectMgr: RoleAssignment[];
-     roleAssignmentsEmployee: RoleAssignment[];
-     salary: number;
+     EmployeeId: number;
+     UserId: string;
+     User: ApplicationUser;
+     RoleAssignmentsGroupLead: RoleAssignment[];
+     RoleAssignmentsDirectMgr: RoleAssignment[];
+     RoleAssignmentsEmployee: RoleAssignment[];
+     Salary: number;
 }

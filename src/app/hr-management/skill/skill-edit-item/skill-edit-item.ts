@@ -40,7 +40,7 @@ export class SkillEditItemComponent implements OnInit {
     }
 
     save(): void {
-        if (this.model.skillId > 0) {
+        if (this.model.SkillId > 0) {
             this.service.updateSkill(this.model).subscribe(
                 (data) => {
 

@@ -1,7 +1,7 @@
-import { SkillVacancy } from "./skill-vacancy";
+﻿import { SkillVacancy } from "./skill-vacancy";
 
 export class Skill {
-     skillId: number;
-     title: number;
-     skillVacancies: SkillVacancy[];
+     SkillId: number;
+     Title: number;
+     SkillVacancies: SkillVacancy[];
 }

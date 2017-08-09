@@ -1,5 +1,5 @@
 ﻿export class ApplicationUser {
-    birthDay:Date;
-    isAuthenticated:boolean;
-    userName:string;
+    BirthDay:Date;
+    IsAuthenticated:boolean;
+    UserName:string;
 }

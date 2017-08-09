@@ -58,7 +58,7 @@ export class CandidateEditItemComponent implements OnInit {
 
 
     save(): void {
-        if (this.model.candidatId > 0) {
+        if (this.model.CandidatId > 0) {
             this.service.updateCandidate(this.model).subscribe(
                 (data) => {
 

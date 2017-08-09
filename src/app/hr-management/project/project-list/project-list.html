@@ -13,11 +13,11 @@
   </thead>
   <tbody>
     <tr *ngFor="let project of projectsList">
-      <td>{{project.projectId}}</td>
+      <td>{{project.ProjectId}}</td>
       <td>
-        <a [routerLink]="['/project-edit-item', project.projectId]"> {{project.title}}</a>
+        <a [routerLink]="['/project-edit-item', project.projectId]"> {{project.Title}}</a>
       </td>
-      <td>{{project.content}}</td>
+      <td>{{project.Content}}</td>
       <td class="align-right">
         <button type="button" class="btn btn-default btn-xs" (click)=deleteItem(project)>
           <i class="glyphicon glyphicon-trash"></i>
