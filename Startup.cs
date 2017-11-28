@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 //using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration.AzureKeyVault;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Ng2Core.CorpPortal.Models;
@@ -18,6 +19,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System.Security.Claims;
 using System.Security.Principal;
 using Newtonsoft.Json.Serialization;
+using Microsoft.AspNetCore.Identity;
 
 namespace WebApplication
 {
@@ -32,6 +34,10 @@ namespace WebApplication
 
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
+            Configuration = builder.AddAzureKeyVault(
+              $"https://{Configuration["Vault"]}.vault.azure.net/",
+              Configuration["ClientId"],
+              Configuration["ClientSecret"]).Build();
         }
 
         public IConfigurationRoot Configuration { get; }
@@ -40,7 +46,7 @@ namespace WebApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("AzureDbConnection")));
+                options.UseSqlServer(Configuration["NetCoreCorpPortalSQLConnection"]));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -71,7 +77,7 @@ namespace WebApplication
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
-            app.UseIdentity();
+            app.UseAuthentication();
 
             app.UseMvc();
 

@@ -2224,7 +2224,7 @@ __decorate([
     __metadata("design:type", Number)
 ], CounterComponent.prototype, "amount", void 0);
 __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Output */])(),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_6" /* Output */])(),
     __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* EventEmitter */]) === "function" && _a || Object)
 ], CounterComponent.prototype, "amountChange", void 0);
 CounterComponent = __decorate([
@@ -2489,7 +2489,7 @@ __decorate([
     __metadata("design:type", Number)
 ], StarComponent.prototype, "rating", void 0);
 __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Output */])(),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_6" /* Output */])(),
     __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* EventEmitter */]) === "function" && _a || Object)
 ], StarComponent.prototype, "onChangeStar", void 0);
 StarComponent = __decorate([
@@ -2566,7 +2566,7 @@ __decorate([
     __metadata("design:type", Boolean)
 ], ToggleComponent.prototype, "active", void 0);
 __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Output */])(),
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_6" /* Output */])(),
     __metadata("design:type", Object)
 ], ToggleComponent.prototype, "activeChange", void 0);
 ToggleComponent = __decorate([

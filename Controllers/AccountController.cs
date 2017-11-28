@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -23,23 +23,19 @@ namespace Ng2Core.CorpPortal.Controllers
         private readonly ILogger _logger;
         private readonly string _externalCookieScheme;
 
-        public AccountController(
-            UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager,
-            IOptions<IdentityCookieOptions> identityCookieOptions,
-            ILoggerFactory loggerFactory)
-        {
-            _userManager = userManager;
-            _signInManager = signInManager;
-            _externalCookieScheme = identityCookieOptions.Value.ExternalCookieAuthenticationScheme;
-            //_emailSender = emailSender;
-            //_smsSender = smsSender;
-            _logger = loggerFactory.CreateLogger<AccountController>();
-        }
+    public AccountController(
+        UserManager<ApplicationUser> userManager,
+        SignInManager<ApplicationUser> signInManager,
+        ILogger<AccountController> logger)
+    {
+      _userManager = userManager;
+      _signInManager = signInManager;
+      _logger = logger;
+    }
 
-        //
-        // POST: /Account/Login
-        [HttpPost("login")]
+    //
+    // POST: /Account/Login
+    [HttpPost("login")]
         [AllowAnonymous]
         // [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login([FromBody]LoginModel model)

@@ -8,7 +8,7 @@ exports = module.exports = __webpack_require__("./node_modules/css-loader/lib/cs
 
 
 // module
-exports.push([module.i, ".validationMessage {\n  color: red;\n  font-style: italic;\n}\n\n.required-asterisk:after {\n  content: \" *\";\n  color: red;\n}\n\ntable {\n  border-collapse: collapse;\n  width: 100%;\n}\n\nth,\ntd {\n  text-align: left;\n  padding: 8px;\n}\n\ntr:nth-child(even) {\n  background-color: #f2f2f2\n}\n\nth {\n  background-color: #337ab7;\n  color: white;\n}\n\ntd.align-right {\n  text-align: right\n}\n", ""]);
+exports.push([module.i, ".validationMessage {\r\n  color: red;\r\n  font-style: italic;\r\n}\r\n\r\n.required-asterisk:after {\r\n  content: \" *\";\r\n  color: red;\r\n}\r\n\r\ntable {\r\n  border-collapse: collapse;\r\n  width: 100%;\r\n}\r\n\r\nth,\r\ntd {\r\n  text-align: left;\r\n  padding: 8px;\r\n}\r\n\r\ntr:nth-child(even) {\r\n  background-color: #f2f2f2\r\n}\r\n\r\nth {\r\n  background-color: #337ab7;\r\n  color: white;\r\n}\r\n\r\ntd.align-right {\r\n  text-align: right\r\n}\r\n", ""]);
 
 // exports
 
